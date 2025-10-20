@@ -14,6 +14,7 @@ const Navigation = () => {
     { path: '/zk-verification', label: 'ZK Verify' },
     { path: '/proof-uniqueness', label: 'Uniqueness' },
     { path: '/zk-badges', label: 'My Badges' },
+    { path: '/testnet', label: 'Testnet' },
     { path: '/passport', label: 'Passport' },
     { path: '/analytics', label: 'Analytics' },
     { path: '/roadmap', label: 'Roadmap' },

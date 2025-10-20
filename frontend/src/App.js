@@ -12,6 +12,7 @@ import ZKVerification from '@/components/ZKVerification';
 import ProofOfUniqueness from '@/components/ProofOfUniqueness';
 import ZKBadgeDisplay from '@/components/ZKBadgeDisplay';
 import Footer from '@/components/Footer';
+import Testnet from '@/components/Testnet';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/zk-verification" element={<ZKVerification />} />
             <Route path="/proof-uniqueness" element={<ProofOfUniqueness />} />
             <Route path="/zk-badges" element={<ZKBadgeDisplay />} />
+            <Route path="/testnet" element={<Testnet />} />
           </Routes>
           <Footer />
         </BrowserRouter>
