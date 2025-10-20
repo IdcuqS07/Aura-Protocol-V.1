@@ -12,10 +12,10 @@ module.exports = {
     }
   },
   networks: {
-    "polygon-mumbai": {
-      url: "https://rpc-mumbai.maticvigil.com",
+    "localhost": {
+      url: "http://127.0.0.1:8545",
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
-      chainId: 80001
+      chainId: 31337
     },
     "polygon-amoy": {
       url: "https://rpc-amoy.polygon.technology",

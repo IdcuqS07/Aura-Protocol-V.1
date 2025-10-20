@@ -1,4 +1,40 @@
 {
   "_format": "hh-sol-cache-2",
-  "files": {}
+  "files": {
+    "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/contracts/contracts/SimpleZKBadge.sol": {
+      "lastModificationDate": 1760967946120,
+      "contentHash": "1e564596b268a122dfdcc91d234e150b",
+      "sourceName": "contracts/SimpleZKBadge.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "SimpleZKBadge"
+      ]
+    }
+  }
 }

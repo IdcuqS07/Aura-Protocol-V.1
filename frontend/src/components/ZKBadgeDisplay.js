@@ -155,7 +155,7 @@ const ZKBadgeDisplay = () => {
   const ownedCount = ownedBadges.length;
 
   return (
-    <div className="space-y-6">
+    <div className="pt-20 px-4 space-y-6">
       {/* Header */}
       <div className="text-center">
         <h2 className="text-3xl font-bold text-white mb-4">Your ZK-ID Badges</h2>

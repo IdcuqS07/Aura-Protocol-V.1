@@ -6,52 +6,22 @@ async function main() {
   // Get the deployer account
   const [deployer] = await ethers.getSigners();
   console.log("Deploying contracts with account:", deployer.address);
-  console.log("Account balance:", (await deployer.getBalance()).toString());
+  console.log("Account balance:", (await ethers.provider.getBalance(deployer.address)).toString());
 
-  // Deploy AuraZKBadge contract
-  console.log("\nDeploying AuraZKBadge...");
-  const AuraZKBadge = await ethers.getContractFactory("AuraZKBadge");
-  const zkBadge = await AuraZKBadge.deploy();
-  await zkBadge.deployed();
-  console.log("AuraZKBadge deployed to:", zkBadge.address);
+  // Deploy SimpleZKBadge contract
+  console.log("\nDeploying SimpleZKBadge...");
+  const SimpleZKBadge = await ethers.getContractFactory("SimpleZKBadge");
+  const zkBadge = await SimpleZKBadge.deploy();
+  await zkBadge.waitForDeployment();
+  console.log("SimpleZKBadge deployed to:", await zkBadge.getAddress());
 
-  // Deploy CivicIntegration contract
-  console.log("\nDeploying CivicIntegration...");
-  const CivicIntegration = await ethers.getContractFactory("CivicIntegration");
-  const civicIntegration = await CivicIntegration.deploy(zkBadge.address);
-  await civicIntegration.deployed();
-  console.log("CivicIntegration deployed to:", civicIntegration.address);
-
-  // Deploy WorldcoinIntegration contract
-  console.log("\nDeploying WorldcoinIntegration...");
-  const WorldcoinIntegration = await ethers.getContractFactory("WorldcoinIntegration");
-  const worldcoinIntegration = await WorldcoinIntegration.deploy(
-    zkBadge.address,
-    "0x1234567890123456789012345678901234567890", // WorldID contract address (replace with actual)
-    "app_staging_12345", // App ID
-    "verify-human" // Action ID
-  );
-  await worldcoinIntegration.deployed();
-  console.log("WorldcoinIntegration deployed to:", worldcoinIntegration.address);
-
-  // Authorize verifiers
-  console.log("\nAuthorizing verifiers...");
-  
-  // Authorize CivicIntegration for CIVIC badge type
-  await zkBadge.authorizeVerifier(civicIntegration.address, 3); // BadgeType.CIVIC = 3
-  console.log("CivicIntegration authorized for CIVIC badges");
-  
-  // Authorize WorldcoinIntegration for WORLDCOIN badge type
-  await zkBadge.authorizeVerifier(worldcoinIntegration.address, 4); // BadgeType.WORLDCOIN = 4
-  console.log("WorldcoinIntegration authorized for WORLDCOIN badges");
+  const zkBadgeAddress = await zkBadge.getAddress();
 
   // Save deployment addresses
   const deploymentInfo = {
-    network: "polygon-mumbai",
+    network: "localhost",
     contracts: {
-      AuraZKBadge: zkBadge.address,
-      CivicIntegration: civicIntegration.address,
-      WorldcoinIntegration: worldcoinIntegration.address
+      SimpleZKBadge: zkBadgeAddress
     },
     deployer: deployer.address,
     timestamp: new Date().toISOString()

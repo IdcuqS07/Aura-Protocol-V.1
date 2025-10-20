@@ -11,6 +11,7 @@ import Navigation from '@/components/Navigation';
 import ZKVerification from '@/components/ZKVerification';
 import ProofOfUniqueness from '@/components/ProofOfUniqueness';
 import ZKBadgeDisplay from '@/components/ZKBadgeDisplay';
+import Footer from '@/components/Footer';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/proof-uniqueness" element={<ProofOfUniqueness />} />
             <Route path="/zk-badges" element={<ZKBadgeDisplay />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </div>
     </WalletProvider>

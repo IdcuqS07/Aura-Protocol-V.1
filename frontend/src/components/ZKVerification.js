@@ -125,7 +125,7 @@ const ZKVerification = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="pt-20 px-4 space-y-6">
       <div className="text-center">
         <h2 className="text-3xl font-bold text-white mb-4">ZK Identity Verification</h2>
         <p className="text-gray-300 max-w-2xl mx-auto">
