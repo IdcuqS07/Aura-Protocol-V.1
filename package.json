@@ -2,10 +2,7 @@
   "name": "aura-protocol",
   "version": "1.0.0",
   "scripts": {
-    "build": "cd frontend && yarn install && yarn build",
-    "start": "cd frontend && yarn start"
-  },
-  "workspaces": [
-    "frontend"
-  ]
+    "build": "cd frontend && yarn build",
+    "install": "cd frontend && yarn install"
+  }
 }
