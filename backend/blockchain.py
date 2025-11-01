@@ -4,6 +4,11 @@ import json
 import os
 from typing import Dict, Any, Optional
 import logging
+from dotenv import load_dotenv
+from pathlib import Path
+
+# Load environment variables
+load_dotenv(Path(__file__).parent / '.env')
 
 logger = logging.getLogger(__name__)
 
@@ -21,8 +26,8 @@ class PolygonIntegration:
         }
         
         # Load private key from environment
-        self.private_key = os.getenv("POLYGON_PRIVATE_KEY")
-        if self.private_key:
+        self.private_key = os.getenv("POLYGON_PRIVATE_KEY", "").strip('"')
+        if self.private_key and self.private_key != "your_private_key_here":
             self.account = Account.from_key(self.private_key)
         else:
             logger.warning("No private key found. Blockchain operations will be read-only.")
@@ -205,7 +210,7 @@ class PolygonIntegration:
             
             # Sign and send
             signed_txn = self.w3.eth.account.sign_transaction(transaction, self.private_key)
-            tx_hash = self.w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+            tx_hash = self.w3.eth.send_raw_transaction(signed_txn.raw_transaction)
             
             logger.info(f"Badge minted. TX: {tx_hash.hex()}")
             return tx_hash.hex()
