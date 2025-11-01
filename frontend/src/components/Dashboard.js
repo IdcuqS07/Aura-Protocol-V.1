@@ -98,19 +98,9 @@ const Dashboard = () => {
     }
   };
 
-  const handleVerifyIdentity = async (method) => {
-    try {
-      await axios.post(`${API}/users/${user.id}/verify?method=${method}`);
-      setShowVerifyModal(false);
-      // Refresh data
-      if (isConnected && address) {
-        initializeDashboard(address);
-      } else {
-        initializeDashboard();
-      }
-    } catch (error) {
-      console.error('Verification error:', error);
-    }
+  const handleVerifyIdentity = (method) => {
+    setShowVerifyModal(false);
+    window.location.href = '/verify-identity';
   };
 
   const handleCreatePassport = async () => {
