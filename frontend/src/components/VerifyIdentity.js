@@ -57,27 +57,25 @@ const VerifyIdentity = () => {
   ];
 
   const handleVerify = async (method) => {
+    if (!isConnected) {
+      setError('Please connect your wallet first');
+      return;
+    }
+
     setVerifying(true);
     setError('');
     setTxHash('');
 
     try {
-      // Save to backend only (no blockchain)
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      const demoAddress = address || `0xDemo${Date.now().toString(16)}`;
-      const badgeData = {
-        wallet_address: demoAddress,
-        badge_type: method.badgeType,
-        zk_proof_hash: `${method.id}_proof_${Date.now()}`,
-        is_demo: true
-      };
-      
-      await axios.post(`${BACKEND_URL}/api/badges/demo`, badgeData);
+      // Mint on-chain
+      const { issueBadge } = await import('../utils/web3');
+      const zkProofHash = `${method.id}_proof_${Date.now()}`;
+      const hash = await issueBadge(address, method.badgeType, zkProofHash);
+      setTxHash(hash);
       
       setTimeout(() => {
         window.location.href = '/dashboard';
-      }, 2000);
+      }, 3000);
     } catch (err) {
       setError(err.message || 'Verification failed');
     } finally {
@@ -94,6 +92,14 @@ const VerifyIdentity = () => {
           <h1 className="text-4xl font-bold text-white mb-4">Verify Your Identity</h1>
           <p className="text-gray-300">Choose a verification method to earn ZK-ID badges</p>
         </div>
+
+        {!isConnected && (
+          <Card className="bg-yellow-900/20 border-yellow-500/50 mb-6">
+            <CardContent className="py-4">
+              <p className="text-yellow-400">⚠️ Please connect your wallet to verify and mint badges on-chain</p>
+            </CardContent>
+          </Card>
+        )}
 
         {txHash && (
           <Card className="bg-green-900/20 border-green-500/50 mb-6">
