@@ -1,8 +1,8 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  const badgeAddress = "0xa297944E0A63aDB57730687d44aF6235aa8D0DA7";
-  const recipientAddress = "0xb024196a8c1AB0b4960E2060Ceb4Ba32a43F2C29";
+  const badgeAddress = "0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678";
+  const recipientAddress = "0xC3EcE9AC328CB232dDB0BC677d2e980a1a3D3974";
 
   const badge = await ethers.getContractAt("SimpleZKBadge", badgeAddress);
 
