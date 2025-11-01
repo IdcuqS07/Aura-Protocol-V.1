@@ -16,8 +16,32 @@ const VerifyIdentity = () => {
 
   const verificationMethods = [
     {
+      id: 'uniqueness',
+      name: 'Proof of Uniqueness',
+      icon: Shield,
+      color: 'purple',
+      description: 'Verify you are a unique human',
+      badgeType: 'Proof of Uniqueness'
+    },
+    {
+      id: 'identity',
+      name: 'Identity Verified',
+      icon: CheckCircle,
+      color: 'blue',
+      description: 'Verify your digital identity',
+      badgeType: 'Identity Verified'
+    },
+    {
+      id: 'reputation',
+      name: 'Reputation Badge',
+      icon: Shield,
+      color: 'yellow',
+      description: 'Build your on-chain reputation',
+      badgeType: 'Reputation Badge'
+    },
+    {
       id: 'civic',
-      name: 'Civic',
+      name: 'Civic Verified',
       icon: CheckCircle,
       color: 'green',
       description: 'Verify with Civic identity platform',
@@ -25,7 +49,7 @@ const VerifyIdentity = () => {
     },
     {
       id: 'worldcoin',
-      name: 'Worldcoin',
+      name: 'Worldcoin Verified',
       icon: Globe,
       color: 'indigo',
       description: 'Proof of personhood via Worldcoin',
@@ -159,12 +183,20 @@ const VerifyIdentity = () => {
           </Card>
         )}
 
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {verificationMethods.map((method) => {
             const Icon = method.icon;
-            const iconBg = method.id === 'civic' ? 'bg-green-500/20' : 'bg-indigo-500/20';
-            const iconColor = method.id === 'civic' ? 'text-green-400' : 'text-indigo-400';
-            const btnBg = method.id === 'civic' ? 'bg-green-600 hover:bg-green-700' : 'bg-indigo-600 hover:bg-indigo-700';
+            const colorMap = {
+              purple: { bg: 'bg-purple-500/20', text: 'text-purple-400', btn: 'bg-purple-600 hover:bg-purple-700' },
+              blue: { bg: 'bg-blue-500/20', text: 'text-blue-400', btn: 'bg-blue-600 hover:bg-blue-700' },
+              yellow: { bg: 'bg-yellow-500/20', text: 'text-yellow-400', btn: 'bg-yellow-600 hover:bg-yellow-700' },
+              green: { bg: 'bg-green-500/20', text: 'text-green-400', btn: 'bg-green-600 hover:bg-green-700' },
+              indigo: { bg: 'bg-indigo-500/20', text: 'text-indigo-400', btn: 'bg-indigo-600 hover:bg-indigo-700' }
+            };
+            const colors = colorMap[method.color];
+            const iconBg = colors.bg;
+            const iconColor = colors.text;
+            const btnBg = colors.btn;
             
             return (
               <Card key={method.id} className="bg-slate-800/50 border-slate-700 hover:border-purple-500/50 transition">
