@@ -1,2 +1,9 @@
 INFO:     Will watch for changes in these directories: ['/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend']
-ERROR:    [Errno 48] Address already in use
+INFO:     Uvicorn running on http://0.0.0.0:9000 (Press CTRL+C to quit)
+INFO:     Started reloader process [52045] using StatReload
+No private key found. Blockchain operations will be read-only.
+INFO:     Started server process [52047]
+INFO:     Waiting for application startup.
+2025-11-01 18:14:20,956 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:52626 - "GET /docs HTTP/1.1" 200 OK

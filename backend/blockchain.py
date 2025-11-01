@@ -163,6 +163,57 @@ class PolygonIntegration:
             logger.error(f"Error verifying Worldcoin proof: {str(e)}")
             return False
     
+    async def mint_badge(self, recipient: str, badge_type: str, zk_proof_hash: str) -> Optional[str]:
+        """Mint badge using backend wallet (protocol-controlled)"""
+        if not self.account:
+            logger.error("No account configured for minting")
+            return None
+        
+        try:
+            # Load SimpleZKBadge contract
+            contract_address = "0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678"
+            
+            # SimpleZKBadge ABI for issueBadge function
+            contract_abi = [{
+                "inputs": [
+                    {"name": "recipient", "type": "address"},
+                    {"name": "badgeType", "type": "string"},
+                    {"name": "zkProofHash", "type": "string"}
+                ],
+                "name": "issueBadge",
+                "outputs": [{"name": "", "type": "uint256"}],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            }]
+            
+            contract = self.w3.eth.contract(
+                address=Web3.to_checksum_address(contract_address),
+                abi=contract_abi
+            )
+            
+            # Build transaction
+            transaction = contract.functions.issueBadge(
+                Web3.to_checksum_address(recipient),
+                badge_type,
+                zk_proof_hash
+            ).build_transaction({
+                'from': self.account.address,
+                'gas': 300000,
+                'gasPrice': self.w3.to_wei('35', 'gwei'),
+                'nonce': self.w3.eth.get_transaction_count(self.account.address)
+            })
+            
+            # Sign and send
+            signed_txn = self.w3.eth.account.sign_transaction(transaction, self.private_key)
+            tx_hash = self.w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+            
+            logger.info(f"Badge minted. TX: {tx_hash.hex()}")
+            return tx_hash.hex()
+            
+        except Exception as e:
+            logger.error(f"Minting error: {str(e)}")
+            return None
+    
     async def check_user_badges(self, user_address: str) -> Dict[str, bool]:
         """Check which badge types a user has"""
         try:

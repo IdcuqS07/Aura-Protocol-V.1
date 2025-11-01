@@ -215,6 +215,48 @@ async def verify_user(user_id: str, method: str, wallet_address: Optional[str] =
         "blockchain_tx": blockchain_tx
     }
 
+# Badge Minting Model
+class BadgeMintRequest(BaseModel):
+    wallet_address: str
+    badge_type: str
+    zk_proof_hash: str
+
+# Backend Minting Endpoint
+@api_router.post("/badges/mint")
+async def mint_badge(badge_data: BadgeMintRequest):
+    """Mint badge on-chain via backend (protocol-controlled)"""
+    try:
+        # Mint using backend wallet (deployer)
+        success = await polygon_integration.mint_badge(
+            badge_data.wallet_address,
+            badge_data.badge_type,
+            badge_data.zk_proof_hash
+        )
+        
+        if success:
+            # Save to database
+            badge_doc = {
+                "id": str(uuid.uuid4()),
+                "wallet_address": badge_data.wallet_address,
+                "badge_type": badge_data.badge_type,
+                "zk_proof_hash": badge_data.zk_proof_hash,
+                "token_id": f"ZK-{uuid.uuid4().hex[:8].upper()}",
+                "created_at": datetime.now(timezone.utc).isoformat()
+            }
+            await db.badges.insert_one(badge_doc)
+            
+            return {
+                "success": True,
+                "tx_hash": success,
+                "token_id": badge_doc["token_id"],
+                "message": "Badge minted successfully"
+            }
+        else:
+            return {"success": False, "message": "Minting failed"}
+    except Exception as e:
+        logger.error(f"Minting error: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 # Demo Badge Model
 class DemoBadge(BaseModel):
     wallet_address: str
