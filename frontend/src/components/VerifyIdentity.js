@@ -67,6 +67,34 @@ const VerifyIdentity = () => {
     setTxHash('');
 
     try {
+      // Check and switch to Polygon Amoy
+      const { ethereum } = window;
+      const chainId = await ethereum.request({ method: 'eth_chainId' });
+      
+      if (chainId !== '0x13882') {
+        try {
+          await ethereum.request({
+            method: 'wallet_switchEthereumChain',
+            params: [{ chainId: '0x13882' }],
+          });
+        } catch (switchError) {
+          if (switchError.code === 4902) {
+            await ethereum.request({
+              method: 'wallet_addEthereumChain',
+              params: [{
+                chainId: '0x13882',
+                chainName: 'Polygon Amoy Testnet',
+                nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 },
+                rpcUrls: ['https://rpc-amoy.polygon.technology'],
+                blockExplorerUrls: ['https://amoy.polygonscan.com']
+              }]
+            });
+          } else {
+            throw switchError;
+          }
+        }
+      }
+
       // Mint on-chain
       const { issueBadge } = await import('../utils/web3');
       const zkProofHash = `${method.id}_proof_${Date.now()}`;
