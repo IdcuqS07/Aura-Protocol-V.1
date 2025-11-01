@@ -220,12 +220,25 @@ class BadgeMintRequest(BaseModel):
     wallet_address: str
     badge_type: str
     zk_proof_hash: str
+    message: str
+    signature: str
 
 # Backend Minting Endpoint
 @api_router.post("/badges/mint")
 async def mint_badge(badge_data: BadgeMintRequest):
     """Mint badge on-chain via backend (protocol-controlled)"""
     try:
+        # Verify signature
+        from eth_account.messages import encode_defunct
+        from web3 import Web3
+        
+        w3 = Web3()
+        message = encode_defunct(text=badge_data.message)
+        recovered_address = w3.eth.account.recover_message(message, signature=badge_data.signature)
+        
+        if recovered_address.lower() != badge_data.wallet_address.lower():
+            return {"success": False, "message": "Invalid signature"}
+        
         # Mint using backend wallet (deployer)
         success = await polygon_integration.mint_badge(
             badge_data.wallet_address,

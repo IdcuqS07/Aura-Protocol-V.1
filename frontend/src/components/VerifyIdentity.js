@@ -67,11 +67,22 @@ const VerifyIdentity = () => {
     setTxHash('');
 
     try {
-      // Request backend to mint badge
+      // User signs message to prove ownership
+      const { ethereum } = window;
+      const message = `Verify identity for ${method.badgeType} badge\nWallet: ${address}\nTimestamp: ${Date.now()}`;
+      
+      const signature = await ethereum.request({
+        method: 'personal_sign',
+        params: [message, address]
+      });
+
+      // Send to backend with signature
       const response = await axios.post(`${BACKEND_URL}/api/badges/mint`, {
         wallet_address: address,
         badge_type: method.badgeType,
-        zk_proof_hash: `${method.id}_proof_${Date.now()}`
+        zk_proof_hash: `${method.id}_proof_${Date.now()}`,
+        message: message,
+        signature: signature
       });
       
       if (response.data.success) {
@@ -83,7 +94,11 @@ const VerifyIdentity = () => {
         setError(response.data.message || 'Minting failed');
       }
     } catch (err) {
-      setError(err.response?.data?.detail || err.message || 'Verification failed');
+      if (err.code === 4001) {
+        setError('Signature rejected by user');
+      } else {
+        setError(err.response?.data?.detail || err.message || 'Verification failed');
+      }
     } finally {
       setVerifying(false);
     }

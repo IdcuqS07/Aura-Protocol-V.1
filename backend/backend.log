@@ -1,32 +1,18 @@
 INFO:     Will watch for changes in these directories: ['/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend']
 INFO:     Uvicorn running on http://0.0.0.0:9000 (Press CTRL+C to quit)
-INFO:     Started reloader process [57675] using StatReload
-INFO:     Started server process [57677]
+INFO:     Started reloader process [59505] using StatReload
+INFO:     Started server process [59512]
 INFO:     Waiting for application startup.
-2025-11-01 18:37:15,210 - blockchain - WARNING - Deployment file not found. Using default addresses.
+2025-11-01 18:44:55,282 - blockchain - WARNING - Deployment file not found. Using default addresses.
 INFO:     Application startup complete.
-INFO:     127.0.0.1:53485 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
-2025-11-01 18:37:27,366 - blockchain - INFO - Badge minted. TX: 95bc54b147376691d90ffaeba9d26078ed6b7cba59affe7cd3f9ef1e88f0cf4d
-INFO:     127.0.0.1:53485 - "POST /api/badges/mint HTTP/1.1" 200 OK
-2025-11-01 18:37:30,827 - blockchain - ERROR - Minting error: {'code': -32000, 'message': 'replacement transaction underpriced'}
-INFO:     127.0.0.1:53485 - "POST /api/badges/mint HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53497 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
-2025-11-01 18:37:43,583 - blockchain - INFO - Badge minted. TX: b4849701b646f7adc6d2d0a799439fda4ee1cd1f9c4aab183f1344e93c3547f3
-INFO:     127.0.0.1:53507 - "POST /api/badges/mint HTTP/1.1" 200 OK
-2025-11-01 18:37:46,525 - blockchain - ERROR - Minting error: {'code': -32000, 'message': 'replacement transaction underpriced'}
-INFO:     127.0.0.1:53507 - "POST /api/badges/mint HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53507 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
-2025-11-01 18:37:55,847 - blockchain - INFO - Badge minted. TX: 7af55dac55ce4533ee72e3ba0a0b0d1bd0e4895e53148da92a87da71c479315f
-INFO:     127.0.0.1:53522 - "POST /api/badges/mint HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53530 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
-2025-11-01 18:38:33,350 - blockchain - INFO - Badge minted. TX: 806166a0eecdc4967d2cddc02636d48f7d35b024da0d7ff8751dcad871107d38
-INFO:     127.0.0.1:53544 - "POST /api/badges/mint HTTP/1.1" 200 OK
-2025-11-01 18:38:37,086 - blockchain - ERROR - Minting error: {'code': -32000, 'message': 'replacement transaction underpriced'}
-INFO:     127.0.0.1:53544 - "POST /api/badges/mint HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53554 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53560 - "GET /api/analytics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53605 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53611 - "GET /api/analytics HTTP/1.1" 200 OK
-2025-11-01 18:41:06,537 - blockchain - INFO - Badge minted. TX: d0921a9c1c2227b32eeb2c643e8800c63c231494a7fbb8cdef79153e142b1da3
-INFO:     127.0.0.1:53613 - "POST /api/badges/mint HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53613 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-01 18:45:41,864 - blockchain - INFO - Badge minted. TX: 8704d528a40ee9f027e833a9b99a57c621c81d623e36b82ac0e94b30c273fbdf
+INFO:     127.0.0.1:53683 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53683 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53718 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53735 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-01 18:49:30,923 - blockchain - INFO - Badge minted. TX: 42ac463ed2c6362a7b8392ffe44373cffb05832efcb4947d21989aa419111f56
+INFO:     127.0.0.1:53735 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53747 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53752 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53754 - "OPTIONS /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53754 - "POST /api/api-keys HTTP/1.1" 200 OK
