@@ -1,1 +1,2 @@
-/opt/homebrew/opt/python@3.13/bin/python3.13: No module named uvicorn
+INFO:     Will watch for changes in these directories: ['/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend']
+ERROR:    [Errno 48] Address already in use
