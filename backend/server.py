@@ -215,6 +215,46 @@ async def verify_user(user_id: str, method: str, wallet_address: Optional[str] =
         "blockchain_tx": blockchain_tx
     }
 
+# Demo Badge Model
+class DemoBadge(BaseModel):
+    wallet_address: str
+    badge_type: str
+    zk_proof_hash: str
+    is_demo: bool = True
+
+# Demo Badge routes
+@api_router.post("/badges/demo")
+async def create_demo_badge(badge_data: DemoBadge):
+    """Create demo badge without blockchain minting"""
+    badge_doc = {
+        "id": str(uuid.uuid4()),
+        "wallet_address": badge_data.wallet_address,
+        "badge_type": badge_data.badge_type,
+        "zk_proof_hash": badge_data.zk_proof_hash,
+        "is_demo": True,
+        "token_id": f"DEMO-{uuid.uuid4().hex[:8].upper()}",
+        "created_at": datetime.now(timezone.utc).isoformat()
+    }
+    
+    await db.demo_badges.insert_one(badge_doc)
+    
+    return {
+        "success": True,
+        "badge_id": badge_doc["id"],
+        "token_id": badge_doc["token_id"],
+        "message": "Demo badge created successfully"
+    }
+
+@api_router.get("/badges/demo/{wallet_address}")
+async def get_demo_badges(wallet_address: str):
+    """Get demo badges for wallet address"""
+    badges = await db.demo_badges.find(
+        {"wallet_address": wallet_address}, 
+        {"_id": 0}
+    ).to_list(100)
+    
+    return {"wallet_address": wallet_address, "badges": badges}
+
 # ZK Badge routes
 @api_router.get("/badges/{user_id}", response_model=List[ZKBadge])
 async def get_user_badges(user_id: str):

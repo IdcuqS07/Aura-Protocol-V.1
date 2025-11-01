@@ -27,6 +27,29 @@ const Dashboard = () => {
     }
   }, [isConnected, address]);
 
+  useEffect(() => {
+    // Load demo badges from backend
+    const loadDemoBadges = async () => {
+      if (address) {
+        try {
+          const response = await axios.get(`${API}/badges/demo/${address}`);
+          if (response.data.badges && response.data.badges.length > 0) {
+            const demoBadges = response.data.badges.map(b => ({
+              id: b.id,
+              badge_type: b.badge_type,
+              token_id: b.token_id,
+              is_demo: true
+            }));
+            setBadges(prev => [...prev, ...demoBadges]);
+          }
+        } catch (err) {
+          console.log('No demo badges found');
+        }
+      }
+    };
+    loadDemoBadges();
+  }, [address]);
+
   const initializeDashboard = async (walletAddress) => {
     setLoading(true);
     try {
@@ -290,11 +313,20 @@ const Dashboard = () => {
                       className="p-4 bg-slate-900/50 rounded-xl border border-purple-500/20"
                     >
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                          badge.is_demo 
+                            ? 'bg-gradient-to-r from-yellow-600 to-orange-600' 
+                            : 'bg-gradient-to-r from-purple-600 to-blue-600'
+                        }`}>
                           <Award className="w-6 h-6 text-white" />
                         </div>
                         <div className="flex-1">
-                          <div className="text-sm font-medium text-white capitalize">{badge.badge_type}</div>
+                          <div className="flex items-center space-x-2">
+                            <div className="text-sm font-medium text-white capitalize">{badge.badge_type}</div>
+                            {badge.is_demo && (
+                              <span className="text-xs px-2 py-0.5 bg-yellow-500/20 text-yellow-400 rounded-full">Demo</span>
+                            )}
+                          </div>
                           <div className="text-xs text-gray-400 font-mono">{badge.token_id}</div>
                         </div>
                       </div>

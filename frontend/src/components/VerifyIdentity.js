@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useWallet } from './WalletContext';
-import { CheckCircle, Globe, Shield, Loader2, ExternalLink } from 'lucide-react';
+import { CheckCircle, Globe, Shield, Loader2, ExternalLink, Zap } from 'lucide-react';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000';
 
 const VerifyIdentity = () => {
   const { address, isConnected } = useWallet();
   const [verifying, setVerifying] = useState(false);
   const [txHash, setTxHash] = useState('');
   const [error, setError] = useState('');
+  const [demoMode, setDemoMode] = useState(true);
 
   const verificationMethods = [
     {
@@ -30,28 +34,46 @@ const VerifyIdentity = () => {
   ];
 
   const handleVerify = async (method) => {
-    if (!isConnected) {
-      setError('Please connect your wallet');
-      return;
-    }
-
     setVerifying(true);
     setError('');
     setTxHash('');
 
     try {
-      // Simulate verification process
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // Mint badge after verification
-      const { issueBadge } = await import('../utils/web3');
-      const zkProofHash = `${method.id}_proof_${Date.now()}`;
-      const hash = await issueBadge(address, method.badgeType, zkProofHash);
-      setTxHash(hash);
-      
-      setTimeout(() => {
-        window.location.href = '/zk-badges';
-      }, 3000);
+      if (demoMode) {
+        // Demo mode: Save to backend only
+        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        const demoAddress = address || `0xDemo${Date.now().toString(16)}`;
+        const badgeData = {
+          wallet_address: demoAddress,
+          badge_type: method.badgeType,
+          zk_proof_hash: `${method.id}_proof_${Date.now()}`,
+          is_demo: true
+        };
+        
+        await axios.post(`${BACKEND_URL}/api/badges/demo`, badgeData);
+        
+        setTimeout(() => {
+          window.location.href = '/dashboard';
+        }, 2000);
+      } else {
+        // Live mode: Mint on-chain
+        if (!isConnected) {
+          setError('Please connect your wallet for on-chain minting');
+          return;
+        }
+        
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
+        const { issueBadge } = await import('../utils/web3');
+        const zkProofHash = `${method.id}_proof_${Date.now()}`;
+        const hash = await issueBadge(address, method.badgeType, zkProofHash);
+        setTxHash(hash);
+        
+        setTimeout(() => {
+          window.location.href = '/zk-badges';
+        }, 3000);
+      }
     } catch (err) {
       setError(err.message || 'Verification failed');
     } finally {
@@ -59,19 +81,7 @@ const VerifyIdentity = () => {
     }
   };
 
-  if (!isConnected) {
-    return (
-      <div className="min-h-screen pt-20 px-4 flex items-center justify-center">
-        <Card className="bg-slate-800/50 border-slate-700 max-w-md">
-          <CardContent className="text-center py-12">
-            <Shield className="h-12 w-12 text-slate-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">Connect Your Wallet</h3>
-            <p className="text-slate-400">Connect your wallet to verify your identity</p>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
+
 
   return (
     <div className="min-h-screen pt-20 px-4 py-8">
@@ -79,9 +89,47 @@ const VerifyIdentity = () => {
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-white mb-4">Verify Your Identity</h1>
           <p className="text-gray-300">Choose a verification method to earn ZK-ID badges</p>
+          
+          {/* Demo Mode Toggle */}
+          <div className="mt-6 inline-flex items-center space-x-3 px-6 py-3 bg-slate-800/50 border border-slate-700 rounded-xl">
+            <button
+              onClick={() => setDemoMode(true)}
+              className={`px-4 py-2 rounded-lg font-medium transition ${
+                demoMode 
+                  ? 'bg-purple-600 text-white' 
+                  : 'bg-transparent text-gray-400 hover:text-white'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <Zap className="h-4 w-4" />
+                <span>Demo Mode</span>
+              </div>
+            </button>
+            <button
+              onClick={() => setDemoMode(false)}
+              className={`px-4 py-2 rounded-lg font-medium transition ${
+                !demoMode 
+                  ? 'bg-green-600 text-white' 
+                  : 'bg-transparent text-gray-400 hover:text-white'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                <Shield className="h-4 w-4" />
+                <span>On-Chain</span>
+              </div>
+            </button>
+          </div>
+          
+          <div className="mt-3 text-sm text-gray-400">
+            {demoMode ? (
+              <span>✨ Free & instant - No wallet or gas fees required</span>
+            ) : (
+              <span>🔗 Mint on-chain - Requires wallet connection & MATIC</span>
+            )}
+          </div>
         </div>
 
-        {txHash && (
+        {txHash && !demoMode && (
           <Card className="bg-green-900/20 border-green-500/50 mb-6">
             <CardContent className="py-4">
               <div className="flex items-center space-x-3">
@@ -138,12 +186,19 @@ const VerifyIdentity = () => {
                     {verifying ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        Verifying...
+                        {demoMode ? 'Creating Demo Badge...' : 'Minting On-Chain...'}
                       </>
                     ) : (
-                      `Verify with ${method.name}`
+                      <>
+                        {demoMode ? '⚡ Try Demo' : '🔗 Mint On-Chain'}
+                      </>
                     )}
                   </Button>
+                  {demoMode && (
+                    <p className="text-xs text-gray-400 mt-2 text-center">
+                      Demo badges can be upgraded to on-chain later
+                    </p>
+                  )}
                 </CardContent>
               </Card>
             );
