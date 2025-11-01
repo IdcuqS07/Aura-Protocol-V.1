@@ -1,0 +1,10 @@
+{
+  "network": "polygon-amoy",
+  "chainId": "80002",
+  "contracts": {
+    "SimpleZKBadge": "0xa297944E0A63aDB57730687d44aF6235aa8D0DA7",
+    "ProofRegistry": "0xE380607e7f5516E3b0dd593cE89F79D6acEfC037"
+  },
+  "deployer": "0xb024196a8c1AB0b4960E2060Ceb4Ba32a43F2C29",
+  "timestamp": "2025-10-31T12:58:10.465Z"
+}
