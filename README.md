@@ -1,6 +1,6 @@
 # Aura Protocol V.1
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://aura-protocol-r6xg.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://www.aurapass.xyz/)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 Universal Trust in a Trustless World - Polygon ZK-ID Credit Layer
@@ -9,7 +9,7 @@ Universal Trust in a Trustless World - Polygon ZK-ID Credit Layer
 
 Aura Protocol is a decentralized credibility layer that builds **ZK Credit Passports** — on-chain financial identities that verify reputation without revealing personal data.
 
-**Live Demo**: [https://aura-protocol-r6xg.vercel.app/](https://aura-protocol-r6xg.vercel.app/)
+**Live Demo**: [https://www.aurapass.xyz/](https://www.aurapass.xyz/)
 
 ## ✨ Wave 2 Features (Latest)
 
@@ -179,7 +179,7 @@ npx hardhat run scripts/deploy.js --network localhost
 
 ## 🗺️ Roadmap
 
-Visit [/roadmap](https://aura-protocol-r6xg.vercel.app/roadmap) for detailed development timeline.
+Visit [/roadmap](https://www.aurapass.xyz/roadmap) for detailed development timeline.
 
 ## 🤝 Contributing
 
@@ -191,9 +191,9 @@ MIT License - see [LICENSE](LICENSE) for details
 
 ## 🔗 Links
 
-- **Live Demo**: https://aura-protocol-r6xg.vercel.app/
+- **Live Demo**: https://www.aurapass.xyz/
 - **GitHub**: https://github.com/IdcuqS07/Aura-Protocol-V.1
-- **Testnet Guide**: [/testnet](https://aura-protocol-r6xg.vercel.app/testnet)
+- **Testnet Guide**: [/testnet](https://www.aurapass.xyz/testnet)
 
 ---
 
