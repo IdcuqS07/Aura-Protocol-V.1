@@ -16,7 +16,7 @@ const Analytics = () => {
   const loadAnalytics = async () => {
     try {
       // Fetch real analytics from backend
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000'}/api/analytics`);
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz')}/api/analytics`);
       
       if (response.ok) {
         const data = await response.json();

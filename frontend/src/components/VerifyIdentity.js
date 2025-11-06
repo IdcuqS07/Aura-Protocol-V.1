@@ -6,7 +6,7 @@ import { CheckCircle, Globe, Shield, Loader2, ExternalLink } from 'lucide-react'
 import axios from 'axios';
 import { NETWORK } from '../config/contracts';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz');
 
 const VerifyIdentity = () => {
   const { address, isConnected } = useWallet();
@@ -40,20 +40,20 @@ const VerifyIdentity = () => {
       badgeType: 'Reputation Badge'
     },
     {
-      id: 'civic',
-      name: 'Civic Verified',
+      id: 'aura-proof',
+      name: 'Aura Proof',
       icon: CheckCircle,
       color: 'green',
-      description: 'Verify with Civic identity platform',
-      badgeType: 'Civic Verified'
+      description: 'Zero-knowledge proof verification',
+      badgeType: 'Aura Proof'
     },
     {
-      id: 'worldcoin',
-      name: 'Worldcoin Verified',
+      id: 'aura-identity',
+      name: 'Aura Identity',
       icon: Globe,
       color: 'indigo',
-      description: 'Proof of personhood via Worldcoin',
-      badgeType: 'Worldcoin Verified'
+      description: 'Decentralized identity verification',
+      badgeType: 'Aura Identity'
     }
   ];
 
@@ -135,7 +135,17 @@ const VerifyIdentity = () => {
       } else if (err.message?.includes('network')) {
         setError('Please switch to Polygon Amoy network in your wallet');
       } else {
-        setError(err.response?.data?.detail || err.message || 'Verification failed');
+        const errorMsg = err.response?.data?.message || err.response?.data?.detail || err.message || 'Verification failed';
+        setError(errorMsg);
+        
+        // Redirect to waitlist if not authorized
+        if (errorMsg.includes('approved') || errorMsg.includes('waitlist')) {
+          setTimeout(() => {
+            if (window.confirm('You need to join the waitlist first. Go to waitlist page?')) {
+              window.location.href = '/waitlist';
+            }
+          }, 1500);
+        }
       }
     } finally {
       setVerifying(false);
@@ -250,7 +260,7 @@ const VerifyIdentity = () => {
               <div className="w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0">1</div>
               <div>
                 <p className="font-medium text-white">Choose Verification Method</p>
-                <p className="text-gray-400">Select Civic or Worldcoin to verify your identity</p>
+                <p className="text-gray-400">Select a verification method to prove your identity</p>
               </div>
             </div>
             <div className="flex items-start space-x-3">

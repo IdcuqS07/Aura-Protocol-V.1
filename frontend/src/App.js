@@ -20,6 +20,7 @@ import AdminMonitoring from '@/components/AdminMonitoring';
 import Waitlist from '@/components/Waitlist';
 import AdminWaitlist from '@/components/AdminWaitlist';
 import DirectMint from '@/components/DirectMint';
+import ProofOfHumanity from '@/components/ProofOfHumanity';
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
             <Route path="/waitlist" element={<Waitlist />} />
             <Route path="/admin" element={<AdminMonitoring />} />
             <Route path="/admin/waitlist" element={<AdminWaitlist />} />
+            <Route path="/poh" element={<ProofOfHumanity />} />
+            <Route path="/poh/callback" element={<ProofOfHumanity />} />
           </Routes>
           <Footer />
         </BrowserRouter>

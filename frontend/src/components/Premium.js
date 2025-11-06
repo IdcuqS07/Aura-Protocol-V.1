@@ -65,7 +65,7 @@ const Premium = () => {
     setSelectedPlan(planId);
     if (planId !== 'free') {
       try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000'}/api/api-keys`, {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz')}/api/api-keys`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ tier: planId })

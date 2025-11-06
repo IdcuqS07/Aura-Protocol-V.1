@@ -14,6 +14,7 @@ from blockchain import polygon_integration
 from proof_service import ProofService
 from api_key_auth import verify_api_key, set_db
 from waitlist import WaitlistEntry, WaitlistCreate
+from poh_routes import router as poh_router
 
 
 ROOT_DIR = Path(__file__).parent
@@ -232,10 +233,19 @@ async def mint_badge(badge_data: BadgeMintRequest):
         logger.info(f"Mint request for {badge_data.wallet_address}")
         
         # Check if user is in approved waitlist (case-insensitive)
+        wallet_lower = badge_data.wallet_address.lower()
         waitlist_entry = await db.waitlist.find_one({
-            "wallet_address": {"$regex": f"^{badge_data.wallet_address}$", "$options": "i"},
+            "wallet_address": wallet_lower,
             "status": "approved"
         })
+        
+        # If not found, try case-insensitive search
+        if not waitlist_entry:
+            all_entries = await db.waitlist.find({"status": "approved"}).to_list(1000)
+            for entry in all_entries:
+                if entry.get("wallet_address", "").lower() == wallet_lower:
+                    waitlist_entry = entry
+                    break
         
         if not waitlist_entry:
             logger.error(f"User not authorized: {badge_data.wallet_address}")
@@ -812,6 +822,9 @@ async def startup_event():
 
 # Include the router in the main app
 app.include_router(api_router)
+
+# Include PoH router
+app.include_router(poh_router, prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,

@@ -1329,3 +1329,272 @@ INFO:     127.0.0.1:57248 - "GET /api/waitlist HTTP/1.1" 200 OK
 2025-11-06 17:45:31,473 - server - INFO - Mint result: {'tx_hash': 'cc73619caed66876f5fbb4b28ffd30d1e34e78d9abbd084a36ab250f7093b01a', 'gas_used': 239861, 'gas_fee': '0.008395135'}
 INFO:     127.0.0.1:57274 - "POST /api/badges/mint HTTP/1.1" 200 OK
 INFO:     127.0.0.1:57291 - "GET /api/badges/demo/0xa2670b104dc40475b299b66dbb0207adc30a61fe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57581 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:59:31,304 - server - INFO - Mint request for 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+2025-11-06 17:59:31,353 - server - INFO - Recovered address: 0xA2670B104dc40475B299b66dBb0207adC30A61Fe
+2025-11-06 17:59:31,353 - server - INFO - Signature verified, minting...
+2025-11-06 17:59:55,375 - blockchain - INFO - Badge minted successfully. TX: c8e888e17af3279e9a77b803942aa778c00085ceb33dd374eac002bea9cebea1, Gas: 0.007196455 MATIC
+2025-11-06 17:59:55,376 - server - INFO - Mint result: {'tx_hash': 'c8e888e17af3279e9a77b803942aa778c00085ceb33dd374eac002bea9cebea1', 'gas_used': 205613, 'gas_fee': '0.007196455'}
+INFO:     127.0.0.1:57581 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57581 - "GET /api/badges/demo/0xa2670b104dc40475b299b66dbb0207adc30a61fe HTTP/1.1" 200 OK
+2025-11-06 18:00:10,966 - server - INFO - Mint request for 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+2025-11-06 18:00:10,985 - server - INFO - Recovered address: 0xA2670B104dc40475B299b66dBb0207adC30A61Fe
+2025-11-06 18:00:10,986 - server - INFO - Signature verified, minting...
+2025-11-06 18:00:15,540 - blockchain - INFO - Badge minted successfully. TX: f5bf9f94e06817f2c255d7eae8c4965fbdd2f8ad185b5a6cffc16e96079650bc, Gas: 0.007197295 MATIC
+2025-11-06 18:00:15,541 - server - INFO - Mint result: {'tx_hash': 'f5bf9f94e06817f2c255d7eae8c4965fbdd2f8ad185b5a6cffc16e96079650bc', 'gas_used': 205637, 'gas_fee': '0.007197295'}
+INFO:     127.0.0.1:57605 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57627 - "GET /api/badges/demo/0xa2670b104dc40475b299b66dbb0207adc30a61fe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57648 - "GET /api/badges/demo/0xeae667806921043c4f267bf0ebbe5b7a9662fdc5 HTTP/1.1" 200 OK
+2025-11-06 18:01:17,772 - server - INFO - Mint request for 0xeae667806921043c4f267bf0ebbe5b7a9662fdc5
+2025-11-06 18:01:17,773 - server - ERROR - User not authorized: 0xeae667806921043c4f267bf0ebbe5b7a9662fdc5
+INFO:     127.0.0.1:57656 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57668 - "OPTIONS /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57668 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57684 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57684 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57684 - "POST /api/waitlist/0901b09f-85ac-48e1-8d50-f4710d2385cf/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57684 - "GET /api/waitlist HTTP/1.1" 200 OK
+2025-11-06 18:02:11,381 - server - INFO - Mint request for 0xeae667806921043c4f267bf0ebbe5b7a9662fdc5
+2025-11-06 18:02:11,403 - server - INFO - Recovered address: 0xEaE667806921043c4F267bF0ebBe5B7A9662fDc5
+2025-11-06 18:02:11,403 - server - INFO - Signature verified, minting...
+2025-11-06 18:02:15,577 - blockchain - INFO - Badge minted successfully. TX: 1c9f30e5b6047f8326972ae681d7beb1a086971a42139787049190b98089a401, Gas: 0.008395135 MATIC
+2025-11-06 18:02:15,577 - server - INFO - Mint result: {'tx_hash': '1c9f30e5b6047f8326972ae681d7beb1a086971a42139787049190b98089a401', 'gas_used': 239861, 'gas_fee': '0.008395135'}
+INFO:     127.0.0.1:57670 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57695 - "GET /api/badges/demo/0xeae667806921043c4f267bf0ebbe5b7a9662fdc5 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57698 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58242 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58466 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58614 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58614 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58624 - "OPTIONS /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58624 - "POST /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58630 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58635 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58748 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58748 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58795 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 19:45:09,903 - server - INFO - Mint request for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f
+2025-11-06 19:45:09,939 - server - ERROR - User not authorized: 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f
+INFO:     127.0.0.1:58795 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58809 - "OPTIONS /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58809 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58813 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58813 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58827 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58827 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58827 - "POST /api/waitlist/71ca3455-6bd9-41a3-8822-118d13df813c/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58838 - "GET /api/waitlist HTTP/1.1" 200 OK
+2025-11-06 19:45:52,167 - server - INFO - Mint request for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f
+2025-11-06 19:45:52,184 - server - INFO - Recovered address: 0xEaAd95A8403D9E4f14ef8c55680A4fbc0aF21a4F
+2025-11-06 19:45:52,184 - server - INFO - Signature verified, minting...
+2025-11-06 19:46:16,478 - blockchain - INFO - Badge minted successfully. TX: 9c787e59f4eccb7a644527b7b5fa9c3cb9eff57ee5b8122c3c78ca5a901d99bc, Gas: 0.008395135 MATIC
+2025-11-06 19:46:16,480 - server - INFO - Mint result: {'tx_hash': '9c787e59f4eccb7a644527b7b5fa9c3cb9eff57ee5b8122c3c78ca5a901d99bc', 'gas_used': 239861, 'gas_fee': '0.008395135'}
+2025-11-06 19:46:19,466 - server - INFO - Mint request for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f
+2025-11-06 19:46:19,480 - server - INFO - Recovered address: 0xEaAd95A8403D9E4f14ef8c55680A4fbc0aF21a4F
+2025-11-06 19:46:19,480 - server - INFO - Signature verified, minting...
+2025-11-06 19:46:23,547 - blockchain - INFO - Badge minted successfully. TX: c4f96e5c77ce10cc2ea9ad9a933d1ffb9cec20b0ebb424d0adb8be6929620925, Gas: 0.007198135 MATIC
+2025-11-06 19:46:23,547 - server - INFO - Mint result: {'tx_hash': 'c4f96e5c77ce10cc2ea9ad9a933d1ffb9cec20b0ebb424d0adb8be6929620925', 'gas_used': 205661, 'gas_fee': '0.007198135'}
+INFO:     127.0.0.1:58873 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58993 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59149 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59149 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59177 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59177 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59180 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59180 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59479 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59479 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59515 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59515 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59522 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59522 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59572 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59716 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 20:54:37,982 - server - INFO - Mint request for 0x4967e3c6f7112afa3789968dc74463dd8f122e81
+2025-11-06 20:54:37,994 - server - ERROR - User not authorized: 0x4967e3c6f7112afa3789968dc74463dd8f122e81
+INFO:     127.0.0.1:59716 - "POST /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 20:57:26,159 - server - INFO - Mint request for 0x4967e3c6f7112afa3789968dc74463dd8f122e81
+2025-11-06 20:57:26,162 - server - ERROR - User not authorized: 0x4967e3c6f7112afa3789968dc74463dd8f122e81
+INFO:     127.0.0.1:59744 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59752 - "OPTIONS /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59752 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59764 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60088 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 21:04:18,382 - server - INFO - Mint request for 0x4a905ebab5afc2bf99244b9fe82536f10631c5f9
+2025-11-06 21:04:18,412 - server - ERROR - User not authorized: 0x4a905ebab5afc2bf99244b9fe82536f10631c5f9
+INFO:     127.0.0.1:60088 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60105 - "OPTIONS /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60105 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60114 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60122 - "POST /api/waitlist/4cd49bfa-cb63-491b-bfb4-0d6801925c3b/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60122 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60132 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60132 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60132 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60132 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60149 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60149 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60255 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 21:23:34,496 - server - INFO - Mint request for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f
+2025-11-06 21:23:34,644 - server - INFO - Recovered address: 0xEaAd95A8403D9E4f14ef8c55680A4fbc0aF21a4F
+2025-11-06 21:23:34,644 - server - INFO - Signature verified, minting...
+2025-11-06 21:23:59,427 - blockchain - INFO - Badge minted successfully. TX: e7197313722a6825ffdc8789d97ff9248d53f4be4a38f458344682392dc4e667, Gas: 0.007197295 MATIC
+2025-11-06 21:23:59,430 - server - INFO - Mint result: {'tx_hash': 'e7197313722a6825ffdc8789d97ff9248d53f4be4a38f458344682392dc4e667', 'gas_used': 205637, 'gas_fee': '0.007197295'}
+2025-11-06 21:23:59,434 - server - INFO - Mint request for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f
+2025-11-06 21:23:59,463 - server - INFO - Recovered address: 0xEaAd95A8403D9E4f14ef8c55680A4fbc0aF21a4F
+2025-11-06 21:23:59,463 - server - INFO - Signature verified, minting...
+2025-11-06 21:24:03,413 - blockchain - INFO - Badge minted successfully. TX: 43d415678e25f78613a5d93a0f4bacffa7bc71e88ae1423421d135a8855a9fa5, Gas: 0.007197295 MATIC
+2025-11-06 21:24:03,413 - server - INFO - Mint result: {'tx_hash': '43d415678e25f78613a5d93a0f4bacffa7bc71e88ae1423421d135a8855a9fa5', 'gas_used': 205637, 'gas_fee': '0.007197295'}
+INFO:     127.0.0.1:60276 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60290 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60303 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60303 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60315 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60341 - "GET /api/waitlist HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [35575]
+INFO:     Started server process [64957]
+INFO:     Waiting for application startup.
+2025-11-06 21:31:20,596 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:60776 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60776 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60776 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60781 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60781 - "POST /api/waitlist/7f548e47-4ca2-498d-ae6d-eda4fb3ba4b5/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60781 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60790 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60941 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60960 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60960 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60960 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60960 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61075 - "GET /api/badges/demo/0x4967e3c6f7112afa3789968dc74463dd8f122e81 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61967 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61967 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [64957]
+INFO:     Started server process [11863]
+INFO:     Waiting for application startup.
+2025-11-07 00:54:21,531 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'poh_routes.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11863]
+INFO:     Started server process [11932]
+INFO:     Waiting for application startup.
+2025-11-07 00:54:34,000 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'poh_routes.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [11932]
+Process SpawnProcess-16:
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/config.py", line 467, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/importer.py", line 24, in import_from_string
+    raise exc from None
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 17, in <module>
+    from poh_routes import router as poh_router
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/poh_routes.py", line 14, in <module>
+    from github_service import exchange_code_for_token as github_exchange, get_github_data
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/github_service.py", line 1, in <module>
+    import httpx
+ModuleNotFoundError: No module named 'httpx'
+WARNING:  StatReload detected changes in 'poh_routes.py'. Reloading...
+Process SpawnProcess-17:
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/config.py", line 467, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/importer.py", line 24, in import_from_string
+    raise exc from None
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 17, in <module>
+    from poh_routes import router as poh_router
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/poh_routes.py", line 14, in <module>
+    from github_service import exchange_code_for_token as github_exchange, get_github_data
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/github_service.py", line 1, in <module>
+    import httpx
+ModuleNotFoundError: No module named 'httpx'
+INFO:     Stopping reloader process [10366]

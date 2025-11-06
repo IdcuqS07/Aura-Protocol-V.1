@@ -17,10 +17,10 @@ const AdminMonitoring = () => {
     setLoading(true);
     try {
       const [usersRes, keysRes, badgesRes, analyticsRes] = await Promise.all([
-        fetch(`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000'}/api/users`),
-        fetch(`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000'}/api/admin/api-keys`),
-        fetch(`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000'}/api/admin/recent-badges`),
-        fetch(`${process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000'}/api/analytics`)
+        fetch(`${process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz')}/api/users`),
+        fetch(`${process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz')}/api/admin/api-keys`),
+        fetch(`${process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz')}/api/admin/recent-badges`),
+        fetch(`${process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz')}/api/analytics`)
       ]);
 
       const users = usersRes.ok ? await usersRes.json() : [];
