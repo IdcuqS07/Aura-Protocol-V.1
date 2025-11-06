@@ -16,13 +16,11 @@ cd ../..
 
 # Upload to VPS
 echo "📤 Uploading to VPS..."
-echo "Enter VPS password when prompted:"
-scp -o PreferredAuthentications=password aura-frontend.tar.gz root@159.65.134.137:/tmp/
+sshpass -p "12Shaquille" scp aura-frontend.tar.gz root@159.65.134.137:/tmp/
 
 # Deploy on VPS
 echo "🔧 Deploying on VPS..."
-echo "Enter VPS password again:"
-ssh -o PreferredAuthentications=password -t root@159.65.134.137 << 'EOF'
+sshpass -p "12Shaquille" ssh root@159.65.134.137 << 'EOF'
   # Create directory
   sudo mkdir -p /var/www/aura-frontend
   

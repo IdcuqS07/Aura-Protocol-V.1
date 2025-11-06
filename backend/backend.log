@@ -1,18 +1,1331 @@
 INFO:     Will watch for changes in these directories: ['/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend']
 INFO:     Uvicorn running on http://0.0.0.0:9000 (Press CTRL+C to quit)
-INFO:     Started reloader process [59505] using StatReload
-INFO:     Started server process [59512]
+INFO:     Started reloader process [10366] using StatReload
+INFO:     Started server process [10368]
 INFO:     Waiting for application startup.
-2025-11-01 18:44:55,282 - blockchain - WARNING - Deployment file not found. Using default addresses.
+2025-11-06 15:58:06,591 - blockchain - WARNING - Deployment file not found. Using default addresses.
 INFO:     Application startup complete.
-2025-11-01 18:45:41,864 - blockchain - INFO - Badge minted. TX: 8704d528a40ee9f027e833a9b99a57c621c81d623e36b82ac0e94b30c273fbdf
-INFO:     127.0.0.1:53683 - "POST /api/badges/mint HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53683 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53718 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53735 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
-2025-11-01 18:49:30,923 - blockchain - INFO - Badge minted. TX: 42ac463ed2c6362a7b8392ffe44373cffb05832efcb4947d21989aa419111f56
-INFO:     127.0.0.1:53735 - "POST /api/badges/mint HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53747 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53752 - "GET /api/analytics HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53754 - "OPTIONS /api/api-keys HTTP/1.1" 200 OK
-INFO:     127.0.0.1:53754 - "POST /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52590 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52601 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52604 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52618 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52618 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52618 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52618 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52618 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52627 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52635 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52635 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52638 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52645 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52645 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52645 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52653 - "GET /api/waitlist/.../approve HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:52653 - "GET /api/waitlist/.../approve HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:52663 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52655 - "GET /api/waitlist/.../approve HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:52668 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52675 - "POST /api/waitlist/test/approve HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:52680 - "GET /api/waitlist/.../approve HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:52695 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52695 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52695 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52701 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52715 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52715 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52720 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52738 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52738 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52771 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52781 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:52825 - "POST /api/waitlist/87e62920-c81f-4045-8693-b1f638a1f8e6/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+INFO:     127.0.0.1:53320 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53320 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53344 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/protocols/http/h11_impl.py", line 408, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/middleware/proxy_headers.py", line 84, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/applications.py", line 123, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 93, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/cors.py", line 148, in simple_response
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/middleware/exceptions.py", line 65, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 756, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 776, in app
+    await route.handle(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 297, in handle
+    await self.app(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 77, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 64, in wrapped_app
+    raise exc
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    await app(scope, receive, sender)
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/starlette/routing.py", line 72, in app
+    response = await func(request)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 278, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        dependant=dependant, values=values, is_coroutine=is_coroutine
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/fastapi/routing.py", line 191, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 355, in approve_waitlist
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'SignedTransaction' object has no attribute 'rawTransaction'. Did you mean: 'raw_transaction'?
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [10368]
+INFO:     Started server process [12063]
+INFO:     Waiting for application startup.
+2025-11-06 16:05:28,170 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:53654 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53654 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53654 - "POST /api/waitlist/e775461e-4ed5-4d73-9284-7c95883d5e71/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53654 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53825 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 16:07:28,922 - server - INFO - Mint request for 0x31e85bdededee4faf023f1c0a511cbdcbce238e3
+2025-11-06 16:07:28,941 - server - INFO - Recovered address: 0x31e85bdEdeDEe4faf023F1c0A511CbdcbCE238e3
+2025-11-06 16:07:28,941 - server - INFO - Signature verified, minting...
+2025-11-06 16:07:33,559 - blockchain - INFO - Badge minted successfully. TX: 28497515d4ac0e341c84ab610f53eaba916b6095cfe0e21de13f48428016cc14
+2025-11-06 16:07:33,559 - server - INFO - Mint result: 28497515d4ac0e341c84ab610f53eaba916b6095cfe0e21de13f48428016cc14
+INFO:     127.0.0.1:53842 - "OPTIONS /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53842 - "POST /api/waitlist HTTP/1.1" 200 OK
+2025-11-06 16:07:44,932 - server - INFO - Mint request for 0x31e85bdededee4faf023f1c0a511cbdcbce238e3
+2025-11-06 16:07:44,942 - server - INFO - Recovered address: 0x31e85bdEdeDEe4faf023F1c0A511CbdcbCE238e3
+2025-11-06 16:07:44,942 - server - INFO - Signature verified, minting...
+2025-11-06 16:07:49,657 - blockchain - INFO - Badge minted successfully. TX: 560577d3f971101cbe582248d4baead7f11f66906330c3eba98bf3868fba2d52
+2025-11-06 16:07:49,657 - server - INFO - Mint result: 560577d3f971101cbe582248d4baead7f11f66906330c3eba98bf3868fba2d52
+INFO:     127.0.0.1:53857 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53869 - "GET /api/badges/demo/0x31e85bdededee4faf023f1c0a511cbdcbce238e3 HTTP/1.1" 200 OK
+2025-11-06 16:08:04,380 - server - INFO - Mint request for 0x31e85bdededee4faf023f1c0a511cbdcbce238e3
+2025-11-06 16:08:04,398 - server - INFO - Recovered address: 0x31e85bdEdeDEe4faf023F1c0A511CbdcbCE238e3
+2025-11-06 16:08:04,399 - server - INFO - Signature verified, minting...
+2025-11-06 16:08:09,464 - blockchain - INFO - Badge minted successfully. TX: 2f0cfa1c6b6a0e3531c177bbf159a244f7bbcd170af349721ae64ecc11d01b62
+2025-11-06 16:08:09,464 - server - INFO - Mint result: 2f0cfa1c6b6a0e3531c177bbf159a244f7bbcd170af349721ae64ecc11d01b62
+INFO:     127.0.0.1:53880 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53889 - "GET /api/badges/demo/0x31e85bdededee4faf023f1c0a511cbdcbce238e3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53911 - "POST /api/waitlist/87e62920-c81f-4045-8693-b1f638a1f8e6/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53911 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53924 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 16:09:42,057 - server - INFO - Mint request for 0x8f2b9a160d0fd6efe248da22fc237eb0bddbd9b2
+2025-11-06 16:09:42,066 - server - INFO - Recovered address: 0x8f2B9A160D0FD6EfE248dA22fC237eb0bddbD9B2
+2025-11-06 16:09:42,066 - server - INFO - Signature verified, minting...
+2025-11-06 16:09:47,345 - blockchain - INFO - Badge minted successfully. TX: a89c0e87665a829f9d43dc02c56a40237a536f5ce34d58819bbb540dd2eff7c4
+2025-11-06 16:09:47,345 - server - INFO - Mint result: a89c0e87665a829f9d43dc02c56a40237a536f5ce34d58819bbb540dd2eff7c4
+INFO:     127.0.0.1:53924 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53943 - "GET /api/badges/demo/0x8f2b9a160d0fd6efe248da22fc237eb0bddbd9b2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53988 - "GET /api/badges/demo/0x717fe17632c423cf7b0d66c0c293ebee786e8bb1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53991 - "OPTIONS /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53991 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54005 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54005 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54005 - "POST /api/waitlist/9cf2f1bb-dcf8-4798-a31c-1a0d55ee05d1/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54005 - "GET /api/waitlist HTTP/1.1" 200 OK
+2025-11-06 16:10:49,897 - server - INFO - Mint request for 0x717fe17632c423cf7b0d66c0c293ebee786e8bb1
+2025-11-06 16:10:49,908 - server - INFO - Recovered address: 0x717fe17632C423cf7b0d66c0C293Ebee786e8bB1
+2025-11-06 16:10:49,908 - server - INFO - Signature verified, minting...
+2025-11-06 16:10:55,444 - blockchain - INFO - Badge minted successfully. TX: 0d0e33274a51967f48778208d7ba6cf40baba1b4d9a754a64f71acc0629e3461
+2025-11-06 16:10:55,444 - server - INFO - Mint result: 0d0e33274a51967f48778208d7ba6cf40baba1b4d9a754a64f71acc0629e3461
+INFO:     127.0.0.1:54018 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54018 - "GET /api/badges/demo/0x717fe17632c423cf7b0d66c0c293ebee786e8bb1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54553 - "OPTIONS /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54553 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54568 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54568 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54568 - "POST /api/waitlist/b418b7dd-af16-4fd9-a27c-18c49b0b113d/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54568 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54555 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 16:15:40,061 - server - INFO - Mint request for 0xd7713566a7e74d40505ef715b1c27b25b25f197a
+2025-11-06 16:15:40,071 - server - INFO - Recovered address: 0xd7713566a7e74d40505eF715B1C27b25b25f197A
+2025-11-06 16:15:40,071 - server - INFO - Signature verified, minting...
+2025-11-06 16:16:03,561 - blockchain - INFO - Badge minted successfully. TX: 04b0062880a0bd0aeefde084ae2d0dbb8291644ab5830948490a15962ba1dcc6
+2025-11-06 16:16:03,561 - server - INFO - Mint result: 04b0062880a0bd0aeefde084ae2d0dbb8291644ab5830948490a15962ba1dcc6
+INFO:     127.0.0.1:54555 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54555 - "GET /api/badges/demo/0xd7713566a7e74d40505ef715b1c27b25b25f197a HTTP/1.1" 200 OK
+2025-11-06 16:17:37,299 - server - INFO - Mint request for 0xd7713566a7e74d40505ef715b1c27b25b25f197a
+2025-11-06 16:17:37,309 - server - INFO - Recovered address: 0xd7713566a7e74d40505eF715B1C27b25b25f197A
+2025-11-06 16:17:37,309 - server - INFO - Signature verified, minting...
+2025-11-06 16:17:41,310 - blockchain - INFO - Badge minted successfully. TX: 45f016efc251a52ae270418ea716bd7b9baca78393776bf2bfda7c7ee86c193f
+2025-11-06 16:17:41,310 - server - INFO - Mint result: 45f016efc251a52ae270418ea716bd7b9baca78393776bf2bfda7c7ee86c193f
+INFO:     127.0.0.1:54600 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54600 - "GET /api/badges/demo/0xd7713566a7e74d40505ef715b1c27b25b25f197a HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54600 - "GET /api/badges/demo/0xd7713566a7e74d40505ef715b1c27b25b25f197a HTTP/1.1" 200 OK
+2025-11-06 16:17:54,435 - server - INFO - Mint request for 0xd7713566a7e74d40505ef715b1c27b25b25f197a
+2025-11-06 16:17:54,448 - server - INFO - Recovered address: 0xd7713566a7e74d40505eF715B1C27b25b25f197A
+2025-11-06 16:17:54,448 - server - INFO - Signature verified, minting...
+2025-11-06 16:17:59,378 - blockchain - INFO - Badge minted successfully. TX: e0564fbd0304f398b572005fb25aaf302aeea0cafdbc6d6e4dd0b2e31c43a9c1
+2025-11-06 16:17:59,378 - server - INFO - Mint result: e0564fbd0304f398b572005fb25aaf302aeea0cafdbc6d6e4dd0b2e31c43a9c1
+INFO:     127.0.0.1:54607 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54607 - "GET /api/badges/demo/0xd7713566a7e74d40505ef715b1c27b25b25f197a HTTP/1.1" 200 OK
+2025-11-06 16:18:08,726 - server - INFO - Mint request for 0xd7713566a7e74d40505ef715b1c27b25b25f197a
+2025-11-06 16:18:08,735 - server - INFO - Recovered address: 0xd7713566a7e74d40505eF715B1C27b25b25f197A
+2025-11-06 16:18:08,735 - server - INFO - Signature verified, minting...
+2025-11-06 16:18:13,302 - blockchain - INFO - Badge minted successfully. TX: cf044f8dfdad14833743bae9c73c4df2056551a098033195d6b7061fc6150d89
+2025-11-06 16:18:13,303 - server - INFO - Mint result: cf044f8dfdad14833743bae9c73c4df2056551a098033195d6b7061fc6150d89
+INFO:     127.0.0.1:54609 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54609 - "GET /api/badges/demo/0xd7713566a7e74d40505ef715b1c27b25b25f197a HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [12063]
+INFO:     Started server process [15147]
+INFO:     Waiting for application startup.
+2025-11-06 16:18:52,792 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+2025-11-06 16:19:33,456 - server - INFO - Mint request for 0xd7713566a7e74d40505ef715b1c27b25b25f197a
+2025-11-06 16:19:33,465 - server - INFO - Recovered address: 0xd7713566a7e74d40505eF715B1C27b25b25f197A
+2025-11-06 16:19:33,466 - server - INFO - Signature verified, minting...
+2025-11-06 16:19:37,208 - blockchain - INFO - Badge minted successfully. TX: 1f4829e1611e2dbb23bf056bd89d7778a0d7c4adf5bd1057447387d258900b6c
+2025-11-06 16:19:37,209 - server - INFO - Mint result: 1f4829e1611e2dbb23bf056bd89d7778a0d7c4adf5bd1057447387d258900b6c
+INFO:     127.0.0.1:54624 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54624 - "GET /api/badges/demo/0xd7713566a7e74d40505ef715b1c27b25b25f197a HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54643 - "GET /api/badges/demo/0xd7713566a7e74d40505ef715b1c27b25b25f197a HTTP/1.1" 200 OK
+2025-11-06 16:21:05,612 - server - INFO - Mint request for 0xd7713566a7e74d40505ef715b1c27b25b25f197a
+2025-11-06 16:21:05,620 - server - INFO - Recovered address: 0xd7713566a7e74d40505eF715B1C27b25b25f197A
+2025-11-06 16:21:05,620 - server - INFO - Signature verified, minting...
+2025-11-06 16:21:06,869 - blockchain - ERROR - Minting error: {'code': -32000, 'message': 'insufficient funds for gas * price + value: balance 6316896531198179, tx cost 10500000000000000, overshot 4183103468801821'}
+2025-11-06 16:21:06,869 - server - INFO - Mint result: None
+INFO:     127.0.0.1:54646 - "POST /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 16:21:12,639 - server - INFO - Mint request for 0xd7713566a7e74d40505ef715b1c27b25b25f197a
+2025-11-06 16:21:12,646 - server - INFO - Recovered address: 0xd7713566a7e74d40505eF715B1C27b25b25f197A
+2025-11-06 16:21:12,646 - server - INFO - Signature verified, minting...
+2025-11-06 16:21:13,832 - blockchain - ERROR - Minting error: {'code': -32000, 'message': 'insufficient funds for gas * price + value: balance 6316896531198179, tx cost 10500000000000000, overshot 4183103468801821'}
+2025-11-06 16:21:13,832 - server - INFO - Mint result: None
+INFO:     127.0.0.1:54650 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54844 - "OPTIONS /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54844 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54860 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54860 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54868 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54868 - "POST /api/waitlist/5aa4b397-ad97-4d86-be8d-3fc617cf23ce/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54868 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54907 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 16:25:09,352 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 16:25:09,367 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 16:25:09,367 - server - INFO - Signature verified, minting...
+2025-11-06 16:25:10,622 - blockchain - ERROR - Minting error: {'code': -32000, 'message': 'insufficient funds for gas * price + value: balance 4659191531198179, tx cost 10500000000000000, overshot 5840808468801821'}
+2025-11-06 16:25:10,623 - server - INFO - Mint result: None
+INFO:     127.0.0.1:54907 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54983 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54983 - "GET /api/waitlist HTTP/1.1" 200 OK
+2025-11-06 16:30:59,711 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 16:30:59,720 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 16:30:59,720 - server - INFO - Signature verified, minting...
+2025-11-06 16:31:23,456 - blockchain - INFO - Badge minted successfully. TX: 2155f3f2306aafcbd0c996eb7402f75e833e303222621aecc4ad614a01c90dcc
+2025-11-06 16:31:23,456 - server - INFO - Mint result: 2155f3f2306aafcbd0c996eb7402f75e833e303222621aecc4ad614a01c90dcc
+INFO:     127.0.0.1:55250 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55250 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+2025-11-06 16:33:30,390 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 16:33:30,405 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 16:33:30,405 - server - INFO - Signature verified, minting...
+2025-11-06 16:33:35,562 - blockchain - INFO - Badge minted successfully. TX: 732ed14cfa458951d977a4aa37b229f986cd8c49aad948d6d6d1932789492481
+2025-11-06 16:33:35,562 - server - INFO - Mint result: 732ed14cfa458951d977a4aa37b229f986cd8c49aad948d6d6d1932789492481
+INFO:     127.0.0.1:55291 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55291 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+2025-11-06 16:33:57,908 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 16:33:57,918 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 16:33:57,918 - server - INFO - Signature verified, minting...
+2025-11-06 16:34:03,517 - blockchain - INFO - Badge minted successfully. TX: cce298b5cfcb6eb28fcd9d429e202bd8599e370e5768c2b313b9370e11c9a6b1
+2025-11-06 16:34:03,517 - server - INFO - Mint result: cce298b5cfcb6eb28fcd9d429e202bd8599e370e5768c2b313b9370e11c9a6b1
+INFO:     127.0.0.1:55295 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55295 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55315 - "GET /api/waitlist HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [15147]
+INFO:     Started server process [19304]
+INFO:     Waiting for application startup.
+2025-11-06 16:35:07,465 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:55339 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 16:35:52,915 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 16:35:52,925 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 16:35:52,925 - server - INFO - Signature verified, minting...
+2025-11-06 16:35:57,346 - blockchain - INFO - Badge minted successfully. TX: 5866fcdce2f8ca0f08ff843ec55a50a879d4190cd0f1dd669bc9892a951a22fb
+2025-11-06 16:35:57,346 - server - INFO - Mint result: 5866fcdce2f8ca0f08ff843ec55a50a879d4190cd0f1dd669bc9892a951a22fb
+INFO:     127.0.0.1:55339 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55339 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [19304]
+INFO:     Started server process [19742]
+INFO:     Waiting for application startup.
+2025-11-06 16:36:36,196 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:55359 - "GET /api/waitlist HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [19742]
+INFO:     Started server process [20245]
+INFO:     Waiting for application startup.
+2025-11-06 16:38:42,250 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+2025-11-06 16:39:34,086 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 16:39:34,097 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 16:39:34,097 - server - INFO - Signature verified, minting...
+2025-11-06 16:39:39,561 - blockchain - INFO - Badge minted successfully. TX: 2b7cf7c31289b335fb85c0c3ac16d54b3e5b6c2ca8f7fb3108a2a0effce9b821
+2025-11-06 16:39:39,562 - server - INFO - Mint result: 2b7cf7c31289b335fb85c0c3ac16d54b3e5b6c2ca8f7fb3108a2a0effce9b821
+INFO:     127.0.0.1:55420 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55432 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+2025-11-06 16:41:13,339 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 16:41:13,349 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 16:41:13,349 - server - INFO - Signature verified, minting...
+2025-11-06 16:41:17,554 - blockchain - INFO - Badge minted successfully. TX: 7d47f0c59ad1dbaff670f3527e09c95cd2f7cb26328d624feab3092849b41cdf
+2025-11-06 16:41:17,554 - server - INFO - Mint result: 7d47f0c59ad1dbaff670f3527e09c95cd2f7cb26328d624feab3092849b41cdf
+INFO:     127.0.0.1:55452 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55461 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'blockchain.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [20245]
+INFO:     Started server process [22780]
+INFO:     Waiting for application startup.
+2025-11-06 16:50:26,231 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22780]
+INFO:     Started server process [22832]
+INFO:     Waiting for application startup.
+2025-11-06 16:50:41,544 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:55563 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 16:51:33,044 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 16:51:33,054 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 16:51:33,054 - server - INFO - Signature verified, minting...
+2025-11-06 16:51:37,588 - blockchain - INFO - Badge minted successfully. TX: 1fcf18ee8f65de22e68541e04d5464a21dd097488b19266ad261b74f03d6d9db, Gas: 0.007193935 MATIC
+2025-11-06 16:51:37,588 - server - INFO - Mint result: {'tx_hash': '1fcf18ee8f65de22e68541e04d5464a21dd097488b19266ad261b74f03d6d9db', 'gas_used': 205541, 'gas_fee': '0.007193935'}
+INFO:     127.0.0.1:55563 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55582 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+2025-11-06 17:00:20,534 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 17:00:20,549 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 17:00:20,549 - server - INFO - Signature verified, minting...
+2025-11-06 17:00:45,560 - blockchain - INFO - Badge minted successfully. TX: 47aa11eb12e9ebb2cf5d69e4d3a685f88b65ea43fef94d5d2d1fdb80d0416b34, Gas: 0.007198135 MATIC
+2025-11-06 17:00:45,561 - server - INFO - Mint result: {'tx_hash': '47aa11eb12e9ebb2cf5d69e4d3a685f88b65ea43fef94d5d2d1fdb80d0416b34', 'gas_used': 205661, 'gas_fee': '0.007198135'}
+INFO:     127.0.0.1:55803 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55807 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+2025-11-06 17:01:22,113 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 17:01:22,134 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 17:01:22,135 - server - INFO - Signature verified, minting...
+2025-11-06 17:01:27,337 - blockchain - INFO - Badge minted successfully. TX: 6558b012922142d47df698b7a4aa814ff97c23adbd5f710dde508b93f5c0852c, Gas: 0.007197295 MATIC
+2025-11-06 17:01:27,337 - server - INFO - Mint result: {'tx_hash': '6558b012922142d47df698b7a4aa814ff97c23adbd5f710dde508b93f5c0852c', 'gas_used': 205637, 'gas_fee': '0.007197295'}
+INFO:     127.0.0.1:55820 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55830 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55854 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55868 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:03:10,583 - server - INFO - Mint request for 0x96eb6dcbb03ce5818b9df1446c1df378eb98de15
+2025-11-06 17:03:10,597 - server - INFO - Recovered address: 0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
+2025-11-06 17:03:10,597 - server - INFO - Signature verified, minting...
+2025-11-06 17:03:15,313 - blockchain - INFO - Badge minted successfully. TX: 296bf21f2585034b89103ed1bd0b33c0ad520c97f9b9de8fe2e69aee73333915, Gas: 0.007193935 MATIC
+2025-11-06 17:03:15,314 - server - INFO - Mint result: {'tx_hash': '296bf21f2585034b89103ed1bd0b33c0ad520c97f9b9de8fe2e69aee73333915', 'gas_used': 205541, 'gas_fee': '0.007193935'}
+INFO:     127.0.0.1:55868 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55880 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55891 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55893 - "OPTIONS /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55893 - "POST /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55897 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55900 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55902 - "GET /api/badges/demo/0x96eb6dcbb03ce5818b9df1446c1df378eb98de15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55906 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55995 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55997 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55997 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56004 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56010 - "GET /api/analytics HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [22832]
+INFO:     Started server process [27249]
+INFO:     Waiting for application startup.
+2025-11-06 17:08:44,288 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:56016 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56022 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56081 - "OPTIONS /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56081 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56086 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56086 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56086 - "POST /api/waitlist/5694c98f-bc1c-4de7-8f3f-5d5ac27aa700/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56086 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56084 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:11:14,702 - server - INFO - Mint request for 0x76d89468002099e9c71faf9cbf5d8e34288366af
+2025-11-06 17:11:14,716 - server - INFO - Recovered address: 0x76D89468002099E9C71fAF9CBF5d8e34288366AF
+2025-11-06 17:11:14,716 - server - INFO - Signature verified, minting...
+2025-11-06 17:11:19,504 - blockchain - INFO - Badge minted successfully. TX: e82efa0e4ba1c4b65a4173bb3a503d1205733f80129664738a0adb6a6000472d, Gas: 0.008394715 MATIC
+2025-11-06 17:11:19,504 - server - INFO - Mint result: {'tx_hash': 'e82efa0e4ba1c4b65a4173bb3a503d1205733f80129664738a0adb6a6000472d', 'gas_used': 239849, 'gas_fee': '0.008394715'}
+INFO:     127.0.0.1:56084 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56096 - "GET /api/badges/demo/0x76d89468002099e9c71faf9cbf5d8e34288366af HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56105 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56257 - "GET /api/badges/demo/0x717fe17632c423cf7b0d66c0c293ebee786e8bb1 HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [27249]
+INFO:     Started server process [29260]
+INFO:     Waiting for application startup.
+2025-11-06 17:17:02,530 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:56303 - "GET /api/badges/demo/0x717fe17632c423cf7b0d66c0c293ebee786e8bb1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56318 - "GET /api/badges/demo/0x717fe17632c423cf7b0d66c0c293ebee786e8bb1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56631 - "OPTIONS /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56631 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56652 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56652 - "POST /api/waitlist/4f3e5f3f-eb58-4f43-8627-9798c7f1ba1e/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56652 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56698 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:22:41,204 - server - INFO - Mint request for 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+2025-11-06 17:22:41,209 - server - ERROR - User not authorized: 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+INFO:     127.0.0.1:56698 - "POST /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:22:53,690 - server - INFO - Mint request for 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+2025-11-06 17:22:53,701 - server - ERROR - User not authorized: 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+INFO:     127.0.0.1:56716 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56727 - "POST /api/waitlist HTTP/1.1" 200 OK
+2025-11-06 17:23:06,475 - server - INFO - Mint request for 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+2025-11-06 17:23:06,483 - server - ERROR - User not authorized: 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+INFO:     127.0.0.1:56740 - "POST /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:23:23,794 - server - INFO - Mint request for 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+2025-11-06 17:23:23,799 - server - ERROR - User not authorized: 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+INFO:     127.0.0.1:56763 - "POST /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:23:33,076 - server - INFO - Mint request for 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+2025-11-06 17:23:33,079 - server - ERROR - User not authorized: 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+INFO:     127.0.0.1:56779 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56785 - "GET /api/waitlist HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [29260]
+INFO:     Started server process [31346]
+INFO:     Waiting for application startup.
+2025-11-06 17:24:55,017 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+2025-11-06 17:25:32,025 - server - INFO - Mint request for 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+2025-11-06 17:25:32,069 - server - ERROR - User not authorized: 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+INFO:     127.0.0.1:56810 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56828 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56847 - "POST /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56857 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56861 - "POST /api/waitlist/70869b77-60ee-42de-a609-a5a6b22297f0/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56861 - "GET /api/waitlist HTTP/1.1" 200 OK
+2025-11-06 17:26:33,669 - server - INFO - Mint request for 0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc
+2025-11-06 17:26:33,687 - server - INFO - Recovered address: 0xd2E074a9958e3CCcDF2fA110AeeDDD56A5988ECc
+2025-11-06 17:26:33,687 - server - INFO - Signature verified, minting...
+2025-11-06 17:26:37,279 - blockchain - INFO - Badge minted successfully. TX: 30b4307532b4cbaebeb8452d8c97f163b048807188785c766efcfcdc2f549986, Gas: 0.008395135 MATIC
+2025-11-06 17:26:37,279 - server - INFO - Mint result: {'tx_hash': '30b4307532b4cbaebeb8452d8c97f163b048807188785c766efcfcdc2f549986', 'gas_used': 239861, 'gas_fee': '0.008395135'}
+INFO:     127.0.0.1:56891 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56913 - "GET /api/badges/demo/0xd2e074a9958e3cccdf2fa110aeeddd56a5988ecc HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56924 - "GET /api/badges/demo/0xa2670b104dc40475b299b66dbb0207adc30a61fe HTTP/1.1" 200 OK
+2025-11-06 17:27:18,778 - server - INFO - Mint request for 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+2025-11-06 17:27:18,780 - server - ERROR - User not authorized: 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+INFO:     127.0.0.1:56939 - "POST /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:27:48,374 - server - INFO - Mint request for 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+2025-11-06 17:27:48,380 - server - ERROR - User not authorized: 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+INFO:     127.0.0.1:56964 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57066 - "GET /api/badges/demo/0xa2670b104dc40475b299b66dbb0207adc30a61fe HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57130 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:41:22,609 - server - INFO - Mint request for 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+2025-11-06 17:41:22,781 - server - ERROR - User not authorized: 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+INFO:     127.0.0.1:57130 - "POST /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:41:41,128 - server - INFO - Mint request for 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+2025-11-06 17:41:41,136 - server - ERROR - User not authorized: 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+INFO:     127.0.0.1:57155 - "POST /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:43:11,482 - server - INFO - Mint request for 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+2025-11-06 17:43:11,520 - server - ERROR - User not authorized: 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+INFO:     127.0.0.1:57183 - "POST /api/badges/mint HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'server.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [31346]
+INFO:     Started server process [35575]
+INFO:     Waiting for application startup.
+2025-11-06 17:44:14,322 - blockchain - WARNING - Deployment file not found. Using default addresses.
+INFO:     Application startup complete.
+2025-11-06 17:44:50,278 - server - INFO - Mint request for 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+2025-11-06 17:44:50,424 - server - ERROR - User not authorized: 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+INFO:     127.0.0.1:57214 - "POST /api/badges/mint HTTP/1.1" 200 OK
+2025-11-06 17:45:00,626 - server - INFO - Mint request for 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+2025-11-06 17:45:00,629 - server - ERROR - User not authorized: 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+INFO:     127.0.0.1:57233 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57248 - "GET /api/waitlist HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57248 - "POST /api/waitlist/92eea6cc-db77-4938-8c67-66389bdd35b0/approve HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57248 - "GET /api/waitlist HTTP/1.1" 200 OK
+2025-11-06 17:45:26,996 - server - INFO - Mint request for 0xa2670b104dc40475b299b66dbb0207adc30a61fe
+2025-11-06 17:45:27,018 - server - INFO - Recovered address: 0xA2670B104dc40475B299b66dBb0207adC30A61Fe
+2025-11-06 17:45:27,018 - server - INFO - Signature verified, minting...
+2025-11-06 17:45:31,472 - blockchain - INFO - Badge minted successfully. TX: cc73619caed66876f5fbb4b28ffd30d1e34e78d9abbd084a36ab250f7093b01a, Gas: 0.008395135 MATIC
+2025-11-06 17:45:31,473 - server - INFO - Mint result: {'tx_hash': 'cc73619caed66876f5fbb4b28ffd30d1e34e78d9abbd084a36ab250f7093b01a', 'gas_used': 239861, 'gas_fee': '0.008395135'}
+INFO:     127.0.0.1:57274 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57291 - "GET /api/badges/demo/0xa2670b104dc40475b299b66dbb0207adc30a61fe HTTP/1.1" 200 OK

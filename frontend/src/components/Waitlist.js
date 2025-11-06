@@ -7,7 +7,7 @@ import { useWallet } from './WalletContext';
 import { CheckCircle, Loader2 } from 'lucide-react';
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz');
 
 const Waitlist = () => {
   const { address, isConnected } = useWallet();

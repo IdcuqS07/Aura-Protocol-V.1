@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useWallet } from './WalletContext';
 import { CheckCircle, Globe, Shield, Loader2, ExternalLink } from 'lucide-react';
 import axios from 'axios';
+import { NETWORK } from '../config/contracts';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000';
 
@@ -56,6 +57,29 @@ const VerifyIdentity = () => {
     }
   ];
 
+  const switchToPolygonAmoy = async () => {
+    const chainId = await window.ethereum.request({ method: 'eth_chainId' });
+    if (chainId === NETWORK.chainId) return;
+
+    try {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: NETWORK.chainId }],
+      });
+    } catch (switchError) {
+      if (switchError.code === 4902) {
+        await window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [NETWORK],
+        });
+      } else if (switchError.code === 4001) {
+        throw new Error('Please switch to Polygon Amoy network');
+      } else {
+        throw switchError;
+      }
+    }
+  };
+
   const handleVerify = async (method) => {
     if (!isConnected) {
       setError('Please connect your wallet first');
@@ -67,6 +91,9 @@ const VerifyIdentity = () => {
     setTxHash('');
 
     try {
+      // Switch to Polygon Amoy
+      await switchToPolygonAmoy();
+
       // User signs message to prove ownership
       const { ethereum } = window;
       const message = `Verify identity for ${method.badgeType} badge\nWallet: ${address}\nTimestamp: ${Date.now()}`;
@@ -76,7 +103,7 @@ const VerifyIdentity = () => {
         params: [message, address]
       });
 
-      // Send to backend with signature
+      // Send to backend with signature (backend mints and pays gas)
       const response = await axios.post(`${BACKEND_URL}/api/badges/mint`, {
         wallet_address: address,
         badge_type: method.badgeType,
@@ -91,11 +118,22 @@ const VerifyIdentity = () => {
           window.location.href = '/dashboard';
         }, 3000);
       } else {
-        setError(response.data.message || 'Minting failed');
+        const errorMsg = response.data.message || 'Minting failed';
+        setError(errorMsg);
+        if (errorMsg.includes('not authorized') || errorMsg.includes('waitlist')) {
+          setTimeout(() => {
+            if (window.confirm('You need to be approved first. Go to waitlist page?')) {
+              window.location.href = '/waitlist';
+            }
+          }, 1000);
+        }
       }
     } catch (err) {
+      console.error('Verification error:', err);
       if (err.code === 4001) {
-        setError('Signature rejected by user');
+        setError('User rejected the request');
+      } else if (err.message?.includes('network')) {
+        setError('Please switch to Polygon Amoy network in your wallet');
       } else {
         setError(err.response?.data?.detail || err.message || 'Verification failed');
       }
@@ -125,20 +163,24 @@ const VerifyIdentity = () => {
         {txHash && (
           <Card className="bg-green-900/20 border-green-500/50 mb-6">
             <CardContent className="py-4">
-              <div className="flex items-center space-x-3">
-                <CheckCircle className="h-6 w-6 text-green-400" />
-                <div className="flex-1">
-                  <p className="text-green-400 font-medium">Verification successful! Badge minted.</p>
-                  <a 
-                    href={`https://amoy.polygonscan.com/tx/${txHash}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-green-300 hover:underline flex items-center space-x-1"
-                  >
-                    <span>View on Explorer</span>
-                    <ExternalLink className="h-3 w-3" />
-                  </a>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <CheckCircle className="h-6 w-6 text-green-400" />
+                  <div>
+                    <p className="text-green-400 font-medium">Verification successful! Badge minted on-chain.</p>
+                    <p className="text-sm text-green-300 font-mono mt-1">TX: {txHash.slice(0, 10)}...{txHash.slice(-8)}</p>
+                    <p className="text-xs text-green-200/80 mt-1">✅ Confirmed on Polygon Amoy</p>
+                  </div>
                 </div>
+                <a
+                  href={`https://amoy.polygonscan.com/tx/${txHash}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  <span>View on Explorer</span>
+                </a>
               </div>
             </CardContent>
           </Card>

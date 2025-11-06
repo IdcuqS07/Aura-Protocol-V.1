@@ -210,10 +210,33 @@ class PolygonIntegration:
             
             # Sign and send
             signed_txn = self.w3.eth.account.sign_transaction(transaction, self.private_key)
-            tx_hash = self.w3.eth.send_raw_transaction(signed_txn.raw_transaction)
             
-            logger.info(f"Badge minted. TX: {tx_hash.hex()}")
-            return tx_hash.hex()
+            # Try both attribute names for compatibility
+            raw_tx = getattr(signed_txn, 'rawTransaction', None) or getattr(signed_txn, 'raw_transaction', None)
+            if raw_tx is None:
+                logger.error(f"Cannot get raw transaction. Available attributes: {dir(signed_txn)}")
+                return None
+            
+            tx_hash = self.w3.eth.send_raw_transaction(raw_tx)
+            
+            # Wait for receipt
+            receipt = self.w3.eth.wait_for_transaction_receipt(tx_hash, timeout=120)
+            
+            if receipt['status'] == 1:
+                gas_used = receipt['gasUsed']
+                gas_price = receipt['effectiveGasPrice']
+                gas_fee_wei = gas_used * gas_price
+                gas_fee_matic = self.w3.from_wei(gas_fee_wei, 'ether')
+                
+                logger.info(f"Badge minted successfully. TX: {tx_hash.hex()}, Gas: {gas_fee_matic} MATIC")
+                return {
+                    'tx_hash': tx_hash.hex(),
+                    'gas_used': gas_used,
+                    'gas_fee': str(gas_fee_matic)
+                }
+            else:
+                logger.error(f"Transaction failed: {tx_hash.hex()}")
+                return None
             
         except Exception as e:
             logger.error(f"Minting error: {str(e)}")

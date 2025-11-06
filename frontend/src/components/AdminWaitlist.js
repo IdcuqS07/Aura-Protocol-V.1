@@ -5,7 +5,7 @@ import { CheckCircle, XCircle, Clock, Loader2, Shield } from 'lucide-react';
 import { useWallet } from './WalletContext';
 import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz');
 
 // Admin wallets (deployer wallet)
 const ADMIN_WALLETS = [
@@ -38,7 +38,13 @@ const AdminWaitlist = () => {
   const handleApprove = async (entryId) => {
     setProcessing(entryId);
     try {
-      await axios.post(`${BACKEND_URL}/api/waitlist/${entryId}/approve`);
+      const response = await axios.post(`${BACKEND_URL}/api/waitlist/${entryId}/approve`);
+      if (response.data.success && response.data.tx_hash) {
+        const explorerUrl = `https://amoy.polygonscan.com/tx/${response.data.tx_hash}`;
+        if (window.confirm('Approved! View transaction on explorer?')) {
+          window.open(explorerUrl, '_blank');
+        }
+      }
       await loadWaitlist();
     } catch (err) {
       alert('Failed to approve: ' + err.message);
@@ -137,6 +143,19 @@ const AdminWaitlist = () => {
                       <p className="text-gray-500 text-xs mt-2">
                         {new Date(entry.created_at).toLocaleString()}
                       </p>
+                      {entry.status === 'approved' && entry.tx_hash && (
+                        <div className="mt-2">
+                          <a 
+                            href={`https://amoy.polygonscan.com/tx/${entry.tx_hash}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center space-x-1 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded transition"
+                          >
+                            <span>🔗</span>
+                            <span>View on Explorer</span>
+                          </a>
+                        </div>
+                      )}
                     </div>
 
                     {entry.status === 'pending' && (

@@ -231,6 +231,19 @@ async def mint_badge(badge_data: BadgeMintRequest):
     try:
         logger.info(f"Mint request for {badge_data.wallet_address}")
         
+        # Check if user is in approved waitlist (case-insensitive)
+        waitlist_entry = await db.waitlist.find_one({
+            "wallet_address": {"$regex": f"^{badge_data.wallet_address}$", "$options": "i"},
+            "status": "approved"
+        })
+        
+        if not waitlist_entry:
+            logger.error(f"User not authorized: {badge_data.wallet_address}")
+            return {
+                "success": False, 
+                "message": "Currently, only approved wallets can complete identity verification. Please join the waitlist."
+            }
+        
         # Verify signature
         from eth_account.messages import encode_defunct
         from web3 import Web3
@@ -248,15 +261,29 @@ async def mint_badge(badge_data: BadgeMintRequest):
         logger.info("Signature verified, minting...")
         
         # Mint using backend wallet (deployer)
-        tx_hash = await polygon_integration.mint_badge(
+        result = await polygon_integration.mint_badge(
             badge_data.wallet_address,
             badge_data.badge_type,
             badge_data.zk_proof_hash
         )
         
-        logger.info(f"Mint result: {tx_hash}")
+        logger.info(f"Mint result: {result}")
         
-        if tx_hash:
+        if result:
+            # Handle both old string format and new dict format
+            if isinstance(result, dict):
+                tx_hash = result['tx_hash']
+                gas_used = result.get('gas_used')
+                gas_fee = result.get('gas_fee')
+            else:
+                tx_hash = result
+                gas_used = None
+                gas_fee = None
+            
+            # Ensure 0x prefix
+            if not tx_hash.startswith('0x'):
+                tx_hash = '0x' + tx_hash
+            
             # Save to database
             badge_doc = {
                 "id": str(uuid.uuid4()),
@@ -264,6 +291,9 @@ async def mint_badge(badge_data: BadgeMintRequest):
                 "badge_type": badge_data.badge_type,
                 "zk_proof_hash": badge_data.zk_proof_hash,
                 "token_id": f"ZK-{uuid.uuid4().hex[:8].upper()}",
+                "tx_hash": tx_hash,
+                "gas_used": gas_used,
+                "gas_fee": gas_fee,
                 "created_at": datetime.now(timezone.utc).isoformat()
             }
             await db.badges.insert_one(badge_doc)
@@ -272,6 +302,8 @@ async def mint_badge(badge_data: BadgeMintRequest):
                 "success": True,
                 "tx_hash": tx_hash,
                 "token_id": badge_doc["token_id"],
+                "gas_used": gas_used,
+                "gas_fee": gas_fee,
                 "message": "Badge minted successfully"
             }
         else:
@@ -352,18 +384,22 @@ async def approve_waitlist(entry_id: str):
     })
     
     signed_txn = w3.eth.account.sign_transaction(tx, private_key)
-    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.raw_transaction)
     receipt = w3.eth.wait_for_transaction_receipt(tx_hash, timeout=120)
     
     if receipt['status'] == 1:
+        tx_hash_hex = tx_hash.hex()
+        if not tx_hash_hex.startswith('0x'):
+            tx_hash_hex = '0x' + tx_hash_hex
         await db.waitlist.update_one(
             {"id": entry_id},
             {"$set": {
                 "status": "approved",
-                "approved_at": datetime.now(timezone.utc).isoformat()
+                "approved_at": datetime.now(timezone.utc).isoformat(),
+                "tx_hash": tx_hash_hex
             }}
         )
-        return {"success": True, "tx_hash": tx_hash.hex(), "message": "Approved and authorized"}
+        return {"success": True, "tx_hash": tx_hash_hex, "message": "Approved and authorized"}
     else:
         return {"success": False, "message": "Blockchain authorization failed"}
 
@@ -523,9 +559,16 @@ async def get_analytics():
     if total_users == 0:
         total_users = unique_users + total_badges
     
-    verified_users = await db.users.count_documents({"is_verified": True})
+    # Count verified users from badges (users who minted badges)
+    verified_users_pipeline = [
+        {"$group": {"_id": "$wallet_address"}},
+        {"$count": "total"}
+    ]
+    verified_result = await db.badges.aggregate(verified_users_pipeline).to_list(1)
+    verified_users = verified_result[0]['total'] if verified_result else 0
+    
     if verified_users == 0:
-        verified_users = unique_users
+        verified_users = await db.users.count_documents({"is_verified": True})
     
     total_passports = await db.passports.count_documents({})
     if total_passports == 0:
