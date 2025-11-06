@@ -3,10 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import { Shield, Menu, X, Wallet, LogOut } from 'lucide-react';
 import { useWallet } from './WalletContext';
 
+const ADMIN_WALLETS = ['0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974'];
+
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { address, isConnected, isConnecting, connectWallet, disconnectWallet } = useWallet();
+
+  const isAdmin = isConnected && ADMIN_WALLETS.includes(address?.toLowerCase());
 
   const navItems = [
     { path: '/', label: 'Home' },
@@ -15,9 +19,11 @@ const Navigation = () => {
     { path: '/passport', label: 'Passport' },
     { path: '/zk-badges', label: 'Badges' },
     { path: '/verify', label: 'Verify' },
+    { path: '/direct-mint', label: 'Direct Mint' },
+    { path: '/waitlist', label: 'Waitlist' },
     { path: '/analytics', label: 'Analytics' },
     { path: '/premium', label: 'Premium' },
-    { path: '/testnet', label: 'Testnet' },
+    ...(isAdmin ? [{ path: '/admin/waitlist', label: '🔐 Admin' }] : []),
   ];
 
   const isActive = (path) => location.pathname === path;

@@ -13,6 +13,7 @@ import random
 from blockchain import polygon_integration
 from proof_service import ProofService
 from api_key_auth import verify_api_key, set_db
+from waitlist import WaitlistEntry, WaitlistCreate
 
 
 ROOT_DIR = Path(__file__).parent
@@ -228,6 +229,8 @@ class BadgeMintRequest(BaseModel):
 async def mint_badge(badge_data: BadgeMintRequest):
     """Mint badge on-chain via backend (protocol-controlled)"""
     try:
+        logger.info(f"Mint request for {badge_data.wallet_address}")
+        
         # Verify signature
         from eth_account.messages import encode_defunct
         from web3 import Web3
@@ -236,17 +239,24 @@ async def mint_badge(badge_data: BadgeMintRequest):
         message = encode_defunct(text=badge_data.message)
         recovered_address = w3.eth.account.recover_message(message, signature=badge_data.signature)
         
+        logger.info(f"Recovered address: {recovered_address}")
+        
         if recovered_address.lower() != badge_data.wallet_address.lower():
+            logger.error(f"Signature mismatch: {recovered_address} != {badge_data.wallet_address}")
             return {"success": False, "message": "Invalid signature"}
         
+        logger.info("Signature verified, minting...")
+        
         # Mint using backend wallet (deployer)
-        success = await polygon_integration.mint_badge(
+        tx_hash = await polygon_integration.mint_badge(
             badge_data.wallet_address,
             badge_data.badge_type,
             badge_data.zk_proof_hash
         )
         
-        if success:
+        logger.info(f"Mint result: {tx_hash}")
+        
+        if tx_hash:
             # Save to database
             badge_doc = {
                 "id": str(uuid.uuid4()),
@@ -260,7 +270,7 @@ async def mint_badge(badge_data: BadgeMintRequest):
             
             return {
                 "success": True,
-                "tx_hash": success,
+                "tx_hash": tx_hash,
                 "token_id": badge_doc["token_id"],
                 "message": "Badge minted successfully"
             }
@@ -276,6 +286,95 @@ class DemoBadge(BaseModel):
     badge_type: str
     zk_proof_hash: str
     is_demo: bool = True
+
+# Waitlist routes
+@api_router.post("/waitlist")
+async def join_waitlist(data: WaitlistCreate):
+    """Join minter waitlist"""
+    existing = await db.waitlist.find_one({"wallet_address": data.wallet_address})
+    if existing:
+        return {"success": False, "message": "Already in waitlist"}
+    
+    entry = WaitlistEntry(
+        id=str(uuid.uuid4()),
+        wallet_address=data.wallet_address,
+        email=data.email,
+        reason=data.reason,
+        created_at=datetime.now(timezone.utc)
+    )
+    
+    await db.waitlist.insert_one(entry.model_dump())
+    return {"success": True, "message": "Added to waitlist", "id": entry.id}
+
+@api_router.get("/waitlist")
+async def get_waitlist():
+    """Get all waitlist entries"""
+    entries = await db.waitlist.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    return entries
+
+@api_router.post("/waitlist/{entry_id}/approve")
+async def approve_waitlist(entry_id: str):
+    """Approve waitlist entry and authorize as minter"""
+    entry = await db.waitlist.find_one({"id": entry_id})
+    if not entry:
+        raise HTTPException(status_code=404, detail="Entry not found")
+    
+    if entry["status"] == "approved":
+        return {"success": False, "message": "Already approved"}
+    
+    # Authorize on blockchain
+    from web3 import Web3
+    from eth_account import Account
+    import os
+    
+    w3 = Web3(Web3.HTTPProvider("https://rpc-amoy.polygon.technology"))
+    private_key = os.getenv("POLYGON_PRIVATE_KEY", "").strip('"')
+    account = Account.from_key(private_key)
+    
+    contract_address = "0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678"
+    contract_abi = [{
+        "inputs": [{"name": "minter", "type": "address"}],
+        "name": "authorizeMinter",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }]
+    
+    contract = w3.eth.contract(address=Web3.to_checksum_address(contract_address), abi=contract_abi)
+    
+    tx = contract.functions.authorizeMinter(
+        Web3.to_checksum_address(entry["wallet_address"])
+    ).build_transaction({
+        'from': account.address,
+        'gas': 100000,
+        'gasPrice': w3.to_wei('35', 'gwei'),
+        'nonce': w3.eth.get_transaction_count(account.address)
+    })
+    
+    signed_txn = w3.eth.account.sign_transaction(tx, private_key)
+    tx_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+    receipt = w3.eth.wait_for_transaction_receipt(tx_hash, timeout=120)
+    
+    if receipt['status'] == 1:
+        await db.waitlist.update_one(
+            {"id": entry_id},
+            {"$set": {
+                "status": "approved",
+                "approved_at": datetime.now(timezone.utc).isoformat()
+            }}
+        )
+        return {"success": True, "tx_hash": tx_hash.hex(), "message": "Approved and authorized"}
+    else:
+        return {"success": False, "message": "Blockchain authorization failed"}
+
+@api_router.post("/waitlist/{entry_id}/reject")
+async def reject_waitlist(entry_id: str):
+    """Reject waitlist entry"""
+    await db.waitlist.update_one(
+        {"id": entry_id},
+        {"$set": {"status": "rejected"}}
+    )
+    return {"success": True, "message": "Entry rejected"}
 
 # Demo Badge routes
 @api_router.post("/badges/demo")

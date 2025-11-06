@@ -17,6 +17,9 @@ import Premium from '@/components/Premium';
 import MintBadge from '@/components/MintBadge';
 import VerifyIdentity from '@/components/VerifyIdentity';
 import AdminMonitoring from '@/components/AdminMonitoring';
+import Waitlist from '@/components/Waitlist';
+import AdminWaitlist from '@/components/AdminWaitlist';
+import DirectMint from '@/components/DirectMint';
 
 function App() {
   return (
@@ -37,7 +40,11 @@ function App() {
             <Route path="/testnet" element={<Testnet />} />
             <Route path="/mint" element={<MintBadge />} />
             <Route path="/verify" element={<VerifyIdentity />} />
+            <Route path="/verify-identity" element={<VerifyIdentity />} />
+            <Route path="/direct-mint" element={<DirectMint />} />
+            <Route path="/waitlist" element={<Waitlist />} />
             <Route path="/admin" element={<AdminMonitoring />} />
+            <Route path="/admin/waitlist" element={<AdminWaitlist />} />
           </Routes>
           <Footer />
         </BrowserRouter>
