@@ -108,6 +108,20 @@ export default function ProofOfHumanity() {
     setLoading(true);
     setError('');
     try {
+      // Step 1: Request MetaMask signature for confirmation
+      const { ethereum } = window;
+      if (!ethereum) {
+        throw new Error('MetaMask not installed');
+      }
+
+      const message = `Mint ZK-ID Badge\n\nProof Hash: ${proofHash.slice(0, 20)}...\nScore: ${score}/100\nWallet: ${address}\n\nBy signing, you confirm badge minting.`;
+      
+      const signature = await ethereum.request({
+        method: 'personal_sign',
+        params: [message, address]
+      });
+
+      // Step 2: Send to backend with signature
       const response = await fetch(`${BACKEND_URL}/api/poh/issue`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -115,7 +129,9 @@ export default function ProofOfHumanity() {
           proof_hash: proofHash,
           nullifier: nullifier,
           wallet_address: address,
-          public_signals: [score]
+          public_signals: [score],
+          message: message,
+          signature: signature
         })
       });
       
@@ -130,7 +146,11 @@ export default function ProofOfHumanity() {
         throw new Error('No transaction hash received');
       }
     } catch (error) {
-      setError('Badge minting failed: ' + error.message);
+      if (error.code === 4001) {
+        setError('User rejected the signature request');
+      } else {
+        setError('Badge minting failed: ' + error.message);
+      }
     } finally {
       setLoading(false);
     }
