@@ -52,37 +52,23 @@ const ZKBadgeDisplay = () => {
     uniqueness: {
       icon: Shield,
       title: 'Proof of Uniqueness',
-      description: 'Verified unique identity through ZK proofs',
+      description: 'Verified unique identity through trustless ZK proofs',
       color: 'from-purple-500 to-purple-700',
       textColor: 'text-purple-100'
     },
     identity: {
       icon: Award,
       title: 'Identity Verified',
-      description: 'Basic identity verification completed',
+      description: 'Decentralized identity verification via GitHub & Twitter',
       color: 'from-blue-500 to-blue-700',
       textColor: 'text-blue-100'
     },
     reputation: {
       icon: Star,
       title: 'Reputation Badge',
-      description: 'High reputation score achieved',
+      description: 'High on-chain reputation score achieved',
       color: 'from-yellow-500 to-yellow-700',
       textColor: 'text-yellow-100'
-    },
-    civic: {
-      icon: CheckCircle,
-      title: 'Civic Verified',
-      description: 'Verified through Civic identity platform',
-      color: 'from-green-500 to-green-700',
-      textColor: 'text-green-100'
-    },
-    worldcoin: {
-      icon: Globe,
-      title: 'Worldcoin Verified',
-      description: 'Proof of personhood via Worldcoin',
-      color: 'from-indigo-500 to-indigo-700',
-      textColor: 'text-indigo-100'
     }
   };
 
@@ -258,29 +244,20 @@ const ZKBadgeDisplay = () => {
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
-              {!badges.civic && (
-                <div className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg">
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className="text-white">Civic Verification</span>
-                  </div>
-                  <Badge variant="outline">Available</Badge>
-                </div>
-              )}
-              {!badges.worldcoin && (
-                <div className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg">
-                  <div className="flex items-center space-x-3">
-                    <Globe className="h-5 w-5 text-indigo-400" />
-                    <span className="text-white">Worldcoin Verification</span>
-                  </div>
-                  <Badge variant="outline">Available</Badge>
-                </div>
-              )}
               {!badges.uniqueness && (
                 <div className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg">
                   <div className="flex items-center space-x-3">
                     <Shield className="h-5 w-5 text-purple-400" />
-                    <span className="text-white">Proof of Uniqueness</span>
+                    <span className="text-white">Complete PoH Verification</span>
+                  </div>
+                  <Badge variant="outline">Available</Badge>
+                </div>
+              )}
+              {!badges.reputation && (
+                <div className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg">
+                  <div className="flex items-center space-x-3">
+                    <Star className="h-5 w-5 text-yellow-400" />
+                    <span className="text-white">Build On-Chain Reputation</span>
                   </div>
                   <Badge variant="outline">Available</Badge>
                 </div>
