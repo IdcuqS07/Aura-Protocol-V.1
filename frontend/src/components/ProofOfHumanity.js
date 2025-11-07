@@ -21,10 +21,27 @@ export default function ProofOfHumanity() {
   const [txHash, setTxHash] = useState('');
   const [error, setError] = useState('');
 
+  // Check for OAuth callback on mount
+  React.useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const hashParams = new URLSearchParams(window.location.hash.substring(1));
+    const code = urlParams.get('code') || hashParams.get('code');
+    
+    if (code) {
+      console.log('OAuth code detected:', code);
+      console.log('Full URL:', window.location.href);
+      console.log('Search params:', window.location.search);
+      console.log('Hash params:', window.location.hash);
+      setGithubVerified(true);
+    }
+  }, []);
+
   // Step 1: OAuth Verification
   const handleGithubAuth = () => {
     const redirectUri = 'https://www.aurapass.xyz/poh/callback';
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${redirectUri}&scope=read:user`;
+    console.log('Starting GitHub OAuth with redirect_uri:', redirectUri);
+    console.log('GitHub Client ID:', GITHUB_CLIENT_ID);
+    window.location.href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=read:user`;
   };
 
   const handleTwitterAuth = () => {
@@ -42,9 +59,11 @@ export default function ProofOfHumanity() {
     
     setLoading(true);
     try {
+      // Handle both query params (?code=) and hash fragments (#code=)
       const urlParams = new URLSearchParams(window.location.search);
-      const githubCode = urlParams.get('code');
-      const twitterCode = urlParams.get('code');
+      const hashParams = new URLSearchParams(window.location.hash.substring(1));
+      const githubCode = urlParams.get('code') || hashParams.get('code');
+      const twitterCode = urlParams.get('code') || hashParams.get('code');
       
       console.log('Enrolling with:', { address, githubCode, twitterCode });
       
