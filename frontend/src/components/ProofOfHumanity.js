@@ -38,15 +38,19 @@ export default function ProofOfHumanity() {
 
   // Step 1: OAuth Verification
   const handleGithubAuth = () => {
-    const redirectUri = 'https://www.aurapass.xyz/poh/callback';
+    // Use current domain (www or non-www)
+    const redirectUri = `${window.location.origin}/poh/callback`;
     console.log('Starting GitHub OAuth with redirect_uri:', redirectUri);
     console.log('GitHub Client ID:', GITHUB_CLIENT_ID);
+    console.log('Current origin:', window.location.origin);
     window.location.href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=read:user`;
   };
 
   const handleTwitterAuth = () => {
-    const redirectUri = 'https://www.aurapass.xyz/poh/callback';
+    // Use current domain (www or non-www)
+    const redirectUri = `${window.location.origin}/poh/callback`;
     const codeChallenge = 'challenge';
+    console.log('Starting Twitter OAuth with redirect_uri:', redirectUri);
     window.location.href = `https://twitter.com/i/oauth2/authorize?response_type=code&client_id=${TWITTER_CLIENT_ID}&redirect_uri=${redirectUri}&scope=tweet.read%20users.read&state=state&code_challenge=${codeChallenge}&code_challenge_method=plain`;
   };
 
