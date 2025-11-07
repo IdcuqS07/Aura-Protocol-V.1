@@ -1,18 +1,21 @@
 import { ethers } from 'ethers';
 
-const BADGE_CONTRACT_ADDRESS = '0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678';
+// V2: Permissionless minting (anyone can mint for themselves)
+const BADGE_CONTRACT_ADDRESS = '0x3d586E681b12B07825F17Ce19B28e1F576a1aF89';
 
 const BADGE_ABI = [
   'function issueBadge(address recipient, string badgeType, string zkProofHash) returns (uint256)',
   'function getUserBadges(address user) view returns (uint256[])',
   'function badges(uint256 tokenId) view returns (uint256 id, address owner, string badgeType, string zkProofHash, uint256 issuedAt)',
-  'function authorizedMinters(address minter) view returns (bool)',
+  'function hasBadgeType(address user, string badgeType) view returns (bool)',
+  'function lastMintTime(address user) view returns (uint256)',
+  'function MINT_COOLDOWN() view returns (uint256)',
   'event BadgeIssued(uint256 indexed tokenId, address indexed recipient, string badgeType)'
 ];
 
 /**
  * USER-CONTROLLED MINTING (User pays gas)
- * User mints badge directly from frontend
+ * V2: Permissionless - anyone can mint for themselves
  */
 export async function mintBadgeUserPays(badgeType, zkProofHash) {
   try {
@@ -26,11 +29,11 @@ export async function mintBadgeUserPays(badgeType, zkProofHash) {
 
     const contract = new ethers.Contract(BADGE_CONTRACT_ADDRESS, BADGE_ABI, signer);
 
-    // Check if user is authorized minter
-    const isAuthorized = await contract.authorizedMinters(userAddress);
-    
-    if (!isAuthorized) {
-      throw new Error('Wallet not authorized to mint. Please use backend minting.');
+    // V2: No authorization check needed (permissionless)
+    // Check if user already has this badge type
+    const hasBadge = await contract.hasBadgeType(userAddress, badgeType);
+    if (hasBadge) {
+      throw new Error(`You already have a ${badgeType} badge`);
     }
 
     // Estimate gas
@@ -152,30 +155,25 @@ export async function mintBadgeBackendPays(badgeType, zkProofHash) {
 
 /**
  * SMART MINTING (Auto-select best method)
- * Try user minting first, fallback to backend
+ * V2: Always use user-controlled (permissionless)
+ * Fallback to backend only if user has no MATIC
  */
 export async function mintBadgeSmart(badgeType, zkProofHash) {
   try {
-    // Check if user is authorized minter
-    const provider = new ethers.BrowserProvider(window.ethereum);
-    const signer = await provider.getSigner();
-    const userAddress = await signer.getAddress();
-
-    const contract = new ethers.Contract(BADGE_CONTRACT_ADDRESS, BADGE_ABI, provider);
-    const isAuthorized = await contract.authorizedMinters(userAddress);
-
-    if (isAuthorized) {
-      console.log('User is authorized minter, using user-controlled minting');
-      return await mintBadgeUserPays(badgeType, zkProofHash);
-    } else {
-      console.log('User not authorized, using backend-controlled minting');
-      return await mintBadgeBackendPays(badgeType, zkProofHash);
-    }
+    // V2: Try user-controlled first (permissionless)
+    console.log('V2: Using permissionless user-controlled minting');
+    return await mintBadgeUserPays(badgeType, zkProofHash);
 
   } catch (error) {
-    console.error('Smart minting error:', error);
-    // Fallback to backend
-    return await mintBadgeBackendPays(badgeType, zkProofHash);
+    console.error('User minting failed:', error);
+    
+    // Fallback to backend only if user has no MATIC
+    if (error.message.includes('insufficient funds')) {
+      console.log('User has no MATIC, falling back to backend');
+      return await mintBadgeBackendPays(badgeType, zkProofHash);
+    }
+    
+    throw error;
   }
 }
 
@@ -209,26 +207,34 @@ export async function getUserBadges(userAddress) {
 }
 
 /**
- * Check if user is authorized minter
+ * Check minter status (V2: Always permissionless)
  */
 export async function checkMinterStatus(userAddress) {
   try {
     const provider = new ethers.BrowserProvider(window.ethereum);
     const contract = new ethers.Contract(BADGE_CONTRACT_ADDRESS, BADGE_ABI, provider);
     
-    const isAuthorized = await contract.authorizedMinters(userAddress);
+    // V2: Check cooldown and existing badges instead of authorization
+    const lastMint = await contract.lastMintTime(userAddress);
+    const cooldown = await contract.MINT_COOLDOWN();
+    const now = Math.floor(Date.now() / 1000);
+    const canMintNow = Number(lastMint) + Number(cooldown) <= now;
     
     return {
-      isAuthorized,
-      canMintDirectly: isAuthorized,
-      needsBackend: !isAuthorized
+      isAuthorized: true, // V2: Always true (permissionless)
+      canMintDirectly: true,
+      needsBackend: false,
+      canMintNow,
+      cooldownRemaining: canMintNow ? 0 : Number(lastMint) + Number(cooldown) - now
     };
   } catch (error) {
     console.error('Error checking minter status:', error);
     return {
-      isAuthorized: false,
-      canMintDirectly: false,
-      needsBackend: true
+      isAuthorized: true, // V2: Always permissionless
+      canMintDirectly: true,
+      needsBackend: false,
+      canMintNow: true,
+      cooldownRemaining: 0
     };
   }
 }

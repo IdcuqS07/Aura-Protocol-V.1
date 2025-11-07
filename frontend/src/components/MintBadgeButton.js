@@ -52,26 +52,20 @@ const MintBadgeButton = ({ badgeType, zkProofHash, onSuccess }) => {
           <CardContent className="pt-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                {minterStatus.canMintDirectly ? (
-                  <>
-                    <Zap className="h-4 w-4 text-green-400" />
-                    <span className="text-sm text-gray-300">
-                      You can mint directly (you pay gas)
-                    </span>
-                  </>
-                ) : (
-                  <>
-                    <Server className="h-4 w-4 text-blue-400" />
-                    <span className="text-sm text-gray-300">
-                      Backend minting (protocol pays gas)
-                    </span>
-                  </>
-                )}
+                <Zap className="h-4 w-4 text-green-400" />
+                <span className="text-sm text-gray-300">
+                  Permissionless minting (you pay gas)
+                </span>
               </div>
-              <Badge variant={minterStatus.canMintDirectly ? 'default' : 'secondary'}>
-                {minterStatus.canMintDirectly ? 'Direct' : 'Backend'}
+              <Badge variant="default" className="bg-green-600">
+                V2: Trustless
               </Badge>
             </div>
+            {!minterStatus.canMintNow && (
+              <div className="mt-2 text-xs text-yellow-400">
+                ⏳ Cooldown: {Math.ceil(minterStatus.cooldownRemaining / 60)} minutes remaining
+              </div>
+            )}
           </CardContent>
         </Card>
       )}
@@ -170,11 +164,7 @@ const MintBadgeButton = ({ badgeType, zkProofHash, onSuccess }) => {
 
       {/* Info */}
       <div className="text-xs text-gray-400 text-center">
-        {minterStatus?.canMintDirectly ? (
-          <>You will pay gas fees (~0.001 MATIC)</>
-        ) : (
-          <>Protocol will pay gas fees for you</>
-        )}
+        V2: Fully permissionless • You pay gas (~0.001 MATIC) • 1 hour cooldown
       </div>
     </div>
   );

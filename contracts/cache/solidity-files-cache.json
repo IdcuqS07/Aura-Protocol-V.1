@@ -552,6 +552,44 @@
       "artifacts": [
         "CreditPassport"
       ]
+    },
+    "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/contracts/contracts/SimpleZKBadgeV2.sol": {
+      "lastModificationDate": 1762522823764,
+      "contentHash": "fa86353cb5bacc7a3122750796d10242",
+      "sourceName": "contracts/SimpleZKBadgeV2.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "SimpleZKBadgeV2"
+      ]
     }
   }
 }
