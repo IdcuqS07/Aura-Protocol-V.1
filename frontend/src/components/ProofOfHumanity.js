@@ -38,20 +38,18 @@ export default function ProofOfHumanity() {
 
   // Step 1: OAuth Verification
   const handleGithubAuth = () => {
-    // Use current domain (www or non-www)
-    const redirectUri = `${window.location.origin}/poh/callback`;
-    console.log('Starting GitHub OAuth with redirect_uri:', redirectUri);
-    console.log('GitHub Client ID:', GITHUB_CLIENT_ID);
-    console.log('Current origin:', window.location.origin);
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=read:user`;
+    // Force www domain for consistency
+    const redirectUri = 'https://www.aurapass.xyz/poh/callback';
+    const authUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=read:user`;
+    console.log('GitHub OAuth URL:', authUrl);
+    window.location.href = authUrl;
   };
 
   const handleTwitterAuth = () => {
-    // Use current domain (www or non-www)
-    const redirectUri = `${window.location.origin}/poh/callback`;
+    // Force www domain for consistency
+    const redirectUri = 'https://www.aurapass.xyz/poh/callback';
     const codeChallenge = 'challenge';
-    console.log('Starting Twitter OAuth with redirect_uri:', redirectUri);
-    window.location.href = `https://twitter.com/i/oauth2/authorize?response_type=code&client_id=${TWITTER_CLIENT_ID}&redirect_uri=${redirectUri}&scope=tweet.read%20users.read&state=state&code_challenge=${codeChallenge}&code_challenge_method=plain`;
+    window.location.href = `https://twitter.com/i/oauth2/authorize?response_type=code&client_id=${TWITTER_CLIENT_ID}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=tweet.read%20users.read&state=state&code_challenge=${codeChallenge}&code_challenge_method=plain`;
   };
 
   // Step 2: Enroll
