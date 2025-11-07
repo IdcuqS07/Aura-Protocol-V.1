@@ -18,6 +18,8 @@ export default function ProofOfHumanity() {
   const [loading, setLoading] = useState(false);
   const [githubVerified, setGithubVerified] = useState(false);
   const [twitterVerified, setTwitterVerified] = useState(false);
+  const [txHash, setTxHash] = useState('');
+  const [error, setError] = useState('');
 
   // Step 1: OAuth Verification
   const handleGithubAuth = () => {
@@ -104,6 +106,7 @@ export default function ProofOfHumanity() {
   // Step 4: Mint Badge
   const handleMintBadge = async () => {
     setLoading(true);
+    setError('');
     try {
       const response = await fetch(`${BACKEND_URL}/api/poh/issue`, {
         method: 'POST',
@@ -117,10 +120,17 @@ export default function ProofOfHumanity() {
       });
       
       const data = await response.json();
-      alert(`Badge minted! TX: ${data.tx_hash}`);
-      setStep(4);
+      if (data.tx_hash) {
+        setTxHash(data.tx_hash);
+        setStep(4);
+        setTimeout(() => {
+          window.location.href = '/dashboard';
+        }, 5000);
+      } else {
+        throw new Error('No transaction hash received');
+      }
     } catch (error) {
-      alert('Badge minting failed: ' + error.message);
+      setError('Badge minting failed: ' + error.message);
     } finally {
       setLoading(false);
     }
@@ -211,8 +221,56 @@ export default function ProofOfHumanity() {
         </div>
       )}
 
+      {/* Success Message */}
+      {txHash && (
+        <div className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 border-2 border-green-500/50 p-6 rounded-lg shadow-lg shadow-green-500/20 mb-6">
+          <div className="space-y-4">
+            <div className="flex items-center space-x-3">
+              <div className="p-2 bg-green-500/20 rounded-full">
+                <svg className="h-8 w-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-green-400 font-bold text-lg">✅ Badge Minted Successfully!</p>
+                <p className="text-green-300 text-sm">Your ZK-ID badge is now on-chain</p>
+              </div>
+            </div>
+            
+            <div className="p-4 bg-black/30 rounded-lg space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-green-300 text-sm font-medium">Transaction Hash:</span>
+                <span className="text-xs text-green-400 bg-green-500/10 px-2 py-1 rounded">Polygon Amoy</span>
+              </div>
+              <p className="text-green-200 font-mono text-sm break-all">{txHash}</p>
+            </div>
+
+            <a
+              href={`https://amoy.polygonscan.com/tx/${txHash}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center space-x-2 w-full px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition font-medium shadow-lg"
+            >
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+              <span>View Transaction on PolygonScan</span>
+            </a>
+
+            <p className="text-center text-green-300/80 text-xs">Redirecting to dashboard in 5 seconds...</p>
+          </div>
+        </div>
+      )}
+
+      {/* Error Message */}
+      {error && (
+        <div className="bg-red-900/20 border-2 border-red-500/50 p-4 rounded-lg mb-6">
+          <p className="text-red-400">{error}</p>
+        </div>
+      )}
+
       {/* Step 4: Success */}
-      {step === 4 && (
+      {step === 4 && !txHash && (
         <div className="bg-white p-6 rounded-lg shadow text-center">
           <div className="text-6xl mb-4">🎉</div>
           <h2 className="text-2xl font-bold mb-4">Badge Minted Successfully!</h2>
