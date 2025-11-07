@@ -1,0 +1,17 @@
+{
+  "name": "aura-protocol-subgraph",
+  "version": "1.0.0",
+  "description": "The Graph subgraph for Aura Protocol",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ aura-protocol/aura-protocol-amoy",
+    "create-local": "graph create --node http://localhost:8020/ aura-protocol/aura-protocol-amoy",
+    "remove-local": "graph remove --node http://localhost:8020/ aura-protocol/aura-protocol-amoy",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 aura-protocol/aura-protocol-amoy"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "^0.56.0",
+    "@graphprotocol/graph-ts": "^0.31.0"
+  }
+}

@@ -1,0 +1,48 @@
+type Badge @entity {
+  id: ID!
+  tokenId: BigInt!
+  owner: Bytes!
+  badgeType: String!
+  zkProofHash: Bytes!
+  issuedAt: BigInt!
+  txHash: Bytes!
+}
+
+type Passport @entity {
+  id: ID!
+  tokenId: BigInt!
+  owner: Bytes!
+  creditScore: BigInt!
+  pohScore: BigInt!
+  badgeCount: BigInt!
+  onchainActivity: BigInt!
+  issuedAt: BigInt!
+  lastUpdated: BigInt!
+  txHash: Bytes!
+}
+
+type ScoreUpdate @entity {
+  id: ID!
+  passport: Passport!
+  oldScore: BigInt!
+  newScore: BigInt!
+  timestamp: BigInt!
+  txHash: Bytes!
+}
+
+type User @entity {
+  id: ID!
+  address: Bytes!
+  badges: [Badge!]! @derivedFrom(field: "owner")
+  passport: Passport
+  totalBadges: BigInt!
+  createdAt: BigInt!
+}
+
+type GlobalStats @entity {
+  id: ID!
+  totalBadges: BigInt!
+  totalPassports: BigInt!
+  totalUsers: BigInt!
+  averageCreditScore: BigInt!
+}
