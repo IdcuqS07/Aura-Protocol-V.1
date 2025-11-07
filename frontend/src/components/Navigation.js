@@ -16,6 +16,7 @@ const Navigation = () => {
     { path: '/', label: 'Home' },
     { path: '/poh', label: 'Verify' },
     { path: '/passport', label: 'Passport' },
+    { path: '/oracle', label: 'AI Oracle' },
     { path: '/badges', label: 'Badges' },
     { path: '/api', label: 'API' },
     { path: '/analytics', label: 'Analytics' },

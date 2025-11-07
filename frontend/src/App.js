@@ -17,6 +17,7 @@ import AdminWaitlist from '@/components/AdminWaitlist';
 import DirectMint from '@/components/DirectMint';
 import ProofOfHumanity from '@/components/ProofOfHumanity';
 import OnChainData from '@/pages/OnChainData';
+import RiskOracle from '@/components/RiskOracle';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/poh" element={<ProofOfHumanity />} />
             <Route path="/poh/callback" element={<ProofOfHumanity />} />
             <Route path="/onchain" element={<OnChainData />} />
+            <Route path="/oracle" element={<RiskOracle />} />
           </Routes>
           <Footer />
         </BrowserRouter>

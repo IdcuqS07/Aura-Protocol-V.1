@@ -723,6 +723,10 @@ app.include_router(public_api_router, prefix="/api")
 from graph_routes import router as graph_router
 app.include_router(graph_router)
 
+# Include Oracle router
+from oracle_routes import router as oracle_router
+app.include_router(oracle_router, prefix="/api")
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
