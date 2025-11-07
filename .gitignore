@@ -36,6 +36,16 @@ deployment.json
 backend.log
 frontend.log
 
+# Private keys and secrets
+*private_key*
+*PRIVATE_KEY*
+*.secret
+secrets/
+
+# Test scripts with sensitive data
+test_direct_mint.py
+test_standalone_flow.py
+
 # Archives
 *.tar.gz
 *.zip
