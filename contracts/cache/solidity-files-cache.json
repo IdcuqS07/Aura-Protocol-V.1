@@ -514,6 +514,44 @@
       "artifacts": [
         "IERC165"
       ]
+    },
+    "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/contracts/contracts/CreditPassport.sol": {
+      "lastModificationDate": 1762481564696,
+      "contentHash": "111569909a87b4704d308a30600c30c1",
+      "sourceName": "contracts/CreditPassport.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.19"
+      ],
+      "artifacts": [
+        "CreditPassport"
+      ]
     }
   }
 }
