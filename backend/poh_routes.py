@@ -45,6 +45,21 @@ class IssueRequest(BaseModel):
 
 # ============ ROUTES ============
 
+@router.get("/callback")
+async def oauth_callback(code: Optional[str] = None, state: Optional[str] = None):
+    """
+    OAuth callback handler for GitHub and Twitter
+    Redirects back to frontend with code parameter
+    """
+    from fastapi.responses import RedirectResponse
+    
+    if not code:
+        return RedirectResponse(url="https://www.aurapass.xyz/verify?error=no_code")
+    
+    # Redirect back to frontend with code
+    return RedirectResponse(url=f"https://www.aurapass.xyz/verify?code={code}&state={state or ''}")
+
+
 @router.post("/enroll")
 async def enroll_user(request: EnrollRequest):
     from server import db
