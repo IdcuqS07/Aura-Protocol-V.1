@@ -29,10 +29,9 @@ export default function ProofOfHumanity() {
     
     if (code) {
       console.log('OAuth code detected:', code);
-      console.log('Full URL:', window.location.href);
-      console.log('Search params:', window.location.search);
-      console.log('Hash params:', window.location.hash);
       setGithubVerified(true);
+      // Clean URL
+      window.history.replaceState({}, document.title, '/verify');
     }
   }, []);
 

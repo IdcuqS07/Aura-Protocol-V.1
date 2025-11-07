@@ -52,13 +52,16 @@ async def oauth_callback(code: Optional[str] = None, state: Optional[str] = None
     Redirects back to frontend with code parameter
     """
     from fastapi.responses import RedirectResponse
-    from fastapi import Request
     
     if not code:
         return RedirectResponse(url="https://www.aurapass.xyz/verify?error=no_code")
     
-    # Redirect back to frontend with code (use www version)
-    return RedirectResponse(url=f"https://www.aurapass.xyz/verify?code={code}&state={state or ''}")
+    # Redirect back to frontend with code
+    redirect_url = f"https://www.aurapass.xyz/verify?code={code}"
+    if state:
+        redirect_url += f"&state={state}"
+    
+    return RedirectResponse(url=redirect_url, status_code=302)
 
 
 @router.post("/enroll")
