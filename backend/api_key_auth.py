@@ -36,6 +36,29 @@ async def verify_api_key(api_key: str = Security(API_KEY_HEADER)):
     
     raise HTTPException(status_code=403, detail="Invalid API key")
 
+async def verify_api_key_public(db, api_key: str):
+    """Verify API key for public API (no Security dependency)"""
+    # Check database
+    key_info = await db.api_keys.find_one({"api_key": api_key, "is_active": True})
+    if key_info:
+        return key_info
+    
+    # Fallback to demo keys
+    if api_key in VALID_API_KEYS:
+        return {"tier": "demo", "rate_limit": VALID_API_KEYS[api_key]["rate_limit"], "requests_used": 0}
+    
+    raise HTTPException(status_code=403, detail="Invalid API key")
+
+async def check_rate_limit(db, api_key_info):
+    """Check if API key has exceeded rate limit"""
+    requests_used = api_key_info.get("requests_used", 0)
+    rate_limit = api_key_info.get("rate_limit", 100)
+    
+    if requests_used >= rate_limit:
+        raise HTTPException(status_code=429, detail="Rate limit exceeded. Upgrade your plan for more requests.")
+    
+    return True
+
 def generate_api_key(tier: str = "free") -> str:
     """Generate new API key"""
     return f"aura_{tier}_{secrets.token_urlsafe(8).lower()}"

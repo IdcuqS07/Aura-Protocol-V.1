@@ -830,6 +830,10 @@ app.include_router(poh_router, prefix="/api")
 # Include Passport router
 app.include_router(passport_router, prefix="/api")
 
+# Include Public API router
+from public_api_routes import router as public_api_router
+app.include_router(public_api_router, prefix="/api")
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
