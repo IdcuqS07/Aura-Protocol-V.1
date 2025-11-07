@@ -14,17 +14,12 @@ const Navigation = () => {
 
   const navItems = [
     { path: '/', label: 'Home' },
-    { path: '/roadmap', label: 'Roadmap' },
-    { path: '/dashboard', label: 'Dashboard' },
+    { path: '/poh', label: 'Verify' },
     { path: '/passport', label: 'Passport' },
-    { path: '/zk-badges', label: 'Badges' },
-    { path: '/verify', label: 'Verify' },
-    { path: '/direct-mint', label: 'Direct Mint' },
-    { path: '/waitlist', label: 'Waitlist' },
+    { path: '/badges', label: 'Badges' },
+    { path: '/api', label: 'API' },
     { path: '/analytics', label: 'Analytics' },
-    { path: '/onchain', label: 'On-Chain' },
-    { path: '/premium', label: 'Premium' },
-    ...(isAdmin ? [{ path: '/admin/waitlist', label: '🔐 Admin' }] : []),
+    ...(isAdmin ? [{ path: '/admin/waitlist', label: 'Admin' }] : []),
   ];
 
   const isActive = (path) => location.pathname === path;

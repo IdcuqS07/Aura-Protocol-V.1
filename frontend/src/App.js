@@ -8,15 +8,10 @@ import CreditPassport from '@/components/CreditPassport';
 import Analytics from '@/components/Analytics';
 import Roadmap from '@/components/Roadmap';
 import Navigation from '@/components/Navigation';
-import ZKVerification from '@/components/ZKVerification';
-import ProofOfUniqueness from '@/components/ProofOfUniqueness';
 import ZKBadgeDisplay from '@/components/ZKBadgeDisplay';
 import Footer from '@/components/Footer';
-import Testnet from '@/components/Testnet';
-import Premium from '@/components/Premium';
-import MintBadge from '@/components/MintBadge';
+import APIDashboard from '@/components/APIDashboard';
 import VerifyIdentity from '@/components/VerifyIdentity';
-import AdminMonitoring from '@/components/AdminMonitoring';
 import Waitlist from '@/components/Waitlist';
 import AdminWaitlist from '@/components/AdminWaitlist';
 import DirectMint from '@/components/DirectMint';
@@ -35,17 +30,9 @@ function App() {
             <Route path="/passport" element={<CreditPassport />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/roadmap" element={<Roadmap />} />
-            <Route path="/zk-verification" element={<ZKVerification />} />
-            <Route path="/proof-uniqueness" element={<ProofOfUniqueness />} />
-            <Route path="/zk-badges" element={<ZKBadgeDisplay />} />
-            <Route path="/premium" element={<Premium />} />
-            <Route path="/testnet" element={<Testnet />} />
-            <Route path="/mint" element={<MintBadge />} />
+            <Route path="/badges" element={<ZKBadgeDisplay />} />
+            <Route path="/api" element={<APIDashboard />} />
             <Route path="/verify" element={<VerifyIdentity />} />
-            <Route path="/verify-identity" element={<VerifyIdentity />} />
-            <Route path="/direct-mint" element={<DirectMint />} />
-            <Route path="/waitlist" element={<Waitlist />} />
-            <Route path="/admin" element={<AdminMonitoring />} />
             <Route path="/admin/waitlist" element={<AdminWaitlist />} />
             <Route path="/poh" element={<ProofOfHumanity />} />
             <Route path="/poh/callback" element={<ProofOfHumanity />} />
