@@ -258,9 +258,19 @@ async def issue_badge(request: IssueRequest):
         if existing_badge:
             raise HTTPException(400, "Badge already issued for this identity")
         
-        # TODO: Mint SBT on-chain
-        # For now, simulate minting
-        tx_hash = f"0x{uuid.uuid4().hex}{uuid.uuid4().hex}"
+        # Mint SBT on-chain
+        from blockchain import polygon_integration
+        
+        mint_result = await polygon_integration.mint_badge(
+            request.wallet_address,
+            "proof_of_humanity",
+            request.proof_hash
+        )
+        
+        if not mint_result:
+            raise HTTPException(500, "Failed to mint badge on-chain")
+        
+        tx_hash = mint_result['tx_hash'] if isinstance(mint_result, dict) else mint_result
         token_id = await db.badges.count_documents({}) + 1
         
         # Store badge
