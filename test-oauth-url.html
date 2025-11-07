@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test OAuth URL</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #1a1a1a; color: #0f0; }
+        .box { background: #000; border: 2px solid #0f0; padding: 20px; margin: 10px 0; }
+        button { background: #0f0; color: #000; padding: 10px 20px; border: none; cursor: pointer; font-size: 16px; }
+        button:hover { background: #0a0; }
+        .url { word-break: break-all; background: #222; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>🔍 GitHub OAuth URL Tester</h1>
+    
+    <div class="box">
+        <h2>Current Configuration:</h2>
+        <p><strong>Client ID:</strong> Ov23liBkJpXGppFuyWWV</p>
+        <p><strong>Redirect URI:</strong> https://www.aurapass.xyz/poh/callback</p>
+        <p><strong>Scope:</strong> read:user</p>
+    </div>
+
+    <div class="box">
+        <h2>Generated OAuth URL:</h2>
+        <div class="url" id="oauthUrl"></div>
+        <button onclick="testOAuth()">🚀 Test GitHub OAuth</button>
+    </div>
+
+    <div class="box">
+        <h2>Instructions:</h2>
+        <ol>
+            <li>Click the button above to test OAuth</li>
+            <li>If you see error "redirect_uri is not associated", go to GitHub settings</li>
+            <li>Update callback URL to: <strong>https://www.aurapass.xyz/poh/callback</strong></li>
+            <li>Try again</li>
+        </ol>
+    </div>
+
+    <script>
+        const CLIENT_ID = 'Ov23liBkJpXGppFuyWWV';
+        const REDIRECT_URI = 'https://www.aurapass.xyz/poh/callback';
+        const SCOPE = 'read:user';
+
+        const oauthUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${SCOPE}`;
+        
+        document.getElementById('oauthUrl').textContent = oauthUrl;
+
+        function testOAuth() {
+            console.log('Testing OAuth with URL:', oauthUrl);
+            window.location.href = oauthUrl;
+        }
+    </script>
+</body>
+</html>
