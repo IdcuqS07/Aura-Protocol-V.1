@@ -99,7 +99,12 @@ async def enroll_user(request: EnrollRequest):
                 logger.error(f"Twitter verification failed: {str(e)}")
         
         # Fetch on-chain data
-        onchain_data = await get_onchain_data(request.wallet_address)
+        onchain_data = None
+        try:
+            onchain_data = await get_onchain_data(request.wallet_address)
+        except Exception as e:
+            logger.warning(f"On-chain data fetch failed (continuing without it): {str(e)}")
+            onchain_data = {'score': 0, 'tx_count': 0, 'balance': '0'}
         
         # Calculate score
         score = calculate_uniqueness_score(github_data, twitter_data, onchain_data)
