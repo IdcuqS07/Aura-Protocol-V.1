@@ -705,6 +705,9 @@ async def verify_proof_endpoint(proof_hash: str, user_id: str, api_key_info = Se
 async def startup_event():
     polygon_integration.load_contract_addresses()
     set_db(db)
+    # Inject db into poh_routes
+    import poh_routes
+    poh_routes.set_db(db)
 
 # Include the router in the main app
 app.include_router(api_router)

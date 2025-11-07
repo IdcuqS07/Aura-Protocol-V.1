@@ -64,9 +64,15 @@ async def oauth_callback(code: Optional[str] = None, state: Optional[str] = None
     return RedirectResponse(url=redirect_url, status_code=302)
 
 
+# DB will be injected by server.py
+db = None
+
+def set_db(database):
+    global db
+    db = database
+
 @router.post("/enroll")
 async def enroll_user(request: EnrollRequest):
-    from server import db
     """
     Step 1: Enroll user with identity signals
     
@@ -151,7 +157,6 @@ async def enroll_user(request: EnrollRequest):
 
 @router.post("/prove")
 async def generate_proof(request: ProveRequest):
-    from server import db
     """
     Step 2: Generate ZK proof from enrollment
     
@@ -225,7 +230,6 @@ async def generate_proof(request: ProveRequest):
 
 @router.post("/issue")
 async def issue_badge(request: IssueRequest):
-    from server import db
     """
     Step 3: Verify proof and mint ZK-ID Badge
     
