@@ -21,6 +21,7 @@ import Waitlist from '@/components/Waitlist';
 import AdminWaitlist from '@/components/AdminWaitlist';
 import DirectMint from '@/components/DirectMint';
 import ProofOfHumanity from '@/components/ProofOfHumanity';
+import OnChainData from '@/pages/OnChainData';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
             <Route path="/admin/waitlist" element={<AdminWaitlist />} />
             <Route path="/poh" element={<ProofOfHumanity />} />
             <Route path="/poh/callback" element={<ProofOfHumanity />} />
+            <Route path="/onchain" element={<OnChainData />} />
           </Routes>
           <Footer />
         </BrowserRouter>

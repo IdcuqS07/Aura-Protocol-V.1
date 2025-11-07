@@ -22,6 +22,7 @@ const Navigation = () => {
     { path: '/direct-mint', label: 'Direct Mint' },
     { path: '/waitlist', label: 'Waitlist' },
     { path: '/analytics', label: 'Analytics' },
+    { path: '/onchain', label: 'On-Chain' },
     { path: '/premium', label: 'Premium' },
     ...(isAdmin ? [{ path: '/admin/waitlist', label: '🔐 Admin' }] : []),
   ];
