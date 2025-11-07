@@ -232,7 +232,7 @@ async def issue_badge(request: IssueRequest):
         
         # TODO: Mint SBT on-chain
         # For now, simulate minting
-        tx_hash = f"0x{uuid.uuid4().hex}"
+        tx_hash = f"0x{uuid.uuid4().hex}{uuid.uuid4().hex}"
         token_id = await db.badges.count_documents({}) + 1
         
         # Store badge
