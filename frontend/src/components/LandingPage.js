@@ -79,7 +79,7 @@ const LandingPage = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/dashboard"
+                to="/verify"
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all"
                 data-testid="get-started-btn"
               >
@@ -156,11 +156,11 @@ const LandingPage = () => {
               Join the decentralized credibility ecosystem on Polygon
             </p>
             <Link
-              to="/dashboard"
+              to="/verify"
               className="inline-flex items-center px-8 py-4 bg-white text-purple-900 rounded-lg font-bold hover:shadow-lg hover:shadow-white/30 transition-all"
               data-testid="cta-dashboard-btn"
             >
-              Launch Dashboard <ArrowRight className="ml-2 w-5 h-5" />
+              Start Verification <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
           </div>
         </div>

@@ -123,7 +123,7 @@ const Dashboard = () => {
 
   const handleVerifyIdentity = (method) => {
     setShowVerifyModal(false);
-    window.location.href = '/verify-identity';
+    window.location.href = '/verify';
   };
 
   const handleCreatePassport = async () => {
@@ -375,22 +375,22 @@ const Dashboard = () => {
             <h3 className="text-2xl font-bold text-white mb-4">Verify Identity</h3>
             <p className="text-gray-400 mb-6">Choose a verification method:</p>
             <div className="space-y-3">
-              {['civic', 'worldcoin', 'lens'].map((method) => (
-                <button
-                  key={method}
-                  onClick={() => handleVerifyIdentity(method)}
-                  className="w-full p-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-left transition"
-                  data-testid={`verify-${method}-btn`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-6 h-6 text-purple-400" />
-                    <div>
-                      <div className="text-white font-medium capitalize">{method}</div>
-                      <div className="text-gray-400 text-sm">Verify with {method}</div>
-                    </div>
+              <button
+                onClick={() => handleVerifyIdentity('poh')}
+                className="w-full p-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 border border-purple-500/30 rounded-xl text-left transition"
+                data-testid="verify-poh-btn"
+              >
+                <div className="flex items-center space-x-3">
+                  <Shield className="w-6 h-6 text-white" />
+                  <div>
+                    <div className="text-white font-bold">Proof of Humanity (PoH)</div>
+                    <div className="text-purple-100 text-sm">GitHub + Twitter + On-chain verification</div>
                   </div>
-                </button>
-              ))}
+                </div>
+              </button>
+              <div className="text-center py-2">
+                <span className="text-gray-500 text-sm">Trustless verification - No KYC required</span>
+              </div>
             </div>
             <button
               onClick={() => setShowVerifyModal(false)}
