@@ -834,6 +834,10 @@ app.include_router(passport_router, prefix="/api")
 from public_api_routes import router as public_api_router
 app.include_router(public_api_router, prefix="/api")
 
+# Include Graph router
+from graph_routes import router as graph_router
+app.include_router(graph_router)
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
