@@ -20,23 +20,22 @@ class CreditScoringService:
         Calculate credit score (0-1000)
         
         Formula:
-        - PoH Score (0-100) × 4 = 0-400 points
-        - Badge Count × 50 = 0-300 points (max 6)
-        - On-chain Activity = 0-200 points
-        - Reputation = 0-100 points
+        - PoH Score (0-100) × 4 = 0-400 points (40%)
+        - Badge Count × 50 = 0-300 points (30%, max 6 badges)
+        - On-chain Activity = 0-300 points (30%)
         """
         
-        # PoH contribution (0-400)
+        # PoH contribution (0-400, 40%)
         poh_contribution = min(poh_score * 4, 400)
         
-        # Badge contribution (0-300)
+        # Badge contribution (0-300, 30%)
         badge_contribution = min(badge_count * 50, 300)
         
-        # On-chain contribution (0-200)
-        onchain_contribution = min(onchain_activity, 200)
+        # On-chain contribution (0-300, 30%)
+        onchain_contribution = min(onchain_activity, 300)
         
-        # Reputation contribution (0-100)
-        reputation_contribution = min(reputation, 100)
+        # Reputation (bonus, not counted in main weights)
+        reputation_contribution = 0
         
         # Total score
         total_score = (
