@@ -236,18 +236,19 @@ import MintBadgeButton from '@/components/MintBadgeButton';
 
 ### For Aura Protocol:
 
-**Use Smart Minting (Hybrid Approach):**
+**Use User-Controlled Minting (Trustless Approach):**
 
-1. **Authorize backend wallet** as minter (fallback)
-2. **Don't authorize user wallets** initially
-3. **Use backend-controlled minting** for all users
-4. **Later:** Authorize power users for direct minting
+1. **Authorize ALL users** as minters (permissionless)
+2. **Users pay gas themselves** (~0.001 MATIC)
+3. **Backend as fallback** only (for users without MATIC)
+4. **Fully decentralized** - align with "Trustless World" vision
 
 **Why?**
-- ✅ Better UX (users don't need MATIC)
-- ✅ Controlled onboarding
-- ✅ Low cost (~$8/month for 1000 mints)
-- ✅ Can upgrade to user-controlled later
+- ✅ **Fully Decentralized** - No backend control
+- ✅ **Trustless** - Users don't need to trust backend
+- ✅ **Permissionless** - Anyone can mint
+- ✅ **Zero Backend Cost** - Users pay their own gas
+- ✅ **Align with Vision** - "Universal Trust in a Trustless World"
 
 ---
 
