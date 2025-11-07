@@ -191,26 +191,38 @@ const VerifyIdentity = () => {
         )}
 
         {txHash && (
-          <Card className="bg-green-900/20 border-green-500/50 mb-6">
-            <CardContent className="py-4">
-              <div className="flex items-center justify-between">
+          <Card className="bg-gradient-to-r from-green-900/30 to-emerald-900/30 border-green-500/50 mb-6 shadow-lg shadow-green-500/20">
+            <CardContent className="py-6">
+              <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-400" />
+                  <div className="p-2 bg-green-500/20 rounded-full">
+                    <CheckCircle className="h-8 w-8 text-green-400" />
+                  </div>
                   <div>
-                    <p className="text-green-400 font-medium">Verification successful! Badge minted on-chain.</p>
-                    <p className="text-sm text-green-300 font-mono mt-1">TX: {txHash.slice(0, 10)}...{txHash.slice(-8)}</p>
-                    <p className="text-xs text-green-200/80 mt-1">✅ Confirmed on Polygon Amoy</p>
+                    <p className="text-green-400 font-bold text-lg">✅ Badge Minted Successfully!</p>
+                    <p className="text-green-300 text-sm">Your ZK-ID badge is now on-chain</p>
                   </div>
                 </div>
+                
+                <div className="p-4 bg-black/30 rounded-lg space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-green-300 text-sm font-medium">Transaction Hash:</span>
+                    <span className="text-xs text-green-400 bg-green-500/10 px-2 py-1 rounded">Polygon Amoy</span>
+                  </div>
+                  <p className="text-green-200 font-mono text-sm break-all">{txHash}</p>
+                </div>
+
                 <a
                   href={`https://amoy.polygonscan.com/tx/${txHash}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center space-x-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition"
+                  className="flex items-center justify-center space-x-2 w-full px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white rounded-lg transition font-medium shadow-lg"
                 >
-                  <ExternalLink className="h-4 w-4" />
-                  <span>View on Explorer</span>
+                  <ExternalLink className="h-5 w-5" />
+                  <span>View Transaction on PolygonScan</span>
                 </a>
+
+                <p className="text-center text-green-300/80 text-xs">Redirecting to dashboard in 3 seconds...</p>
               </div>
             </CardContent>
           </Card>
