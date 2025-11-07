@@ -33,13 +33,18 @@ export default function ProofOfHumanity() {
 
   // Step 2: Enroll
   const handleEnroll = async () => {
-    if (!address) return;
+    if (!address) {
+      alert('Please connect your wallet first');
+      return;
+    }
     
     setLoading(true);
     try {
       const urlParams = new URLSearchParams(window.location.search);
       const githubCode = urlParams.get('code');
       const twitterCode = urlParams.get('code');
+      
+      console.log('Enrolling with:', { address, githubCode, twitterCode });
       
       const response = await fetch(`${BACKEND_URL}/api/poh/enroll`, {
         method: 'POST',
@@ -53,12 +58,20 @@ export default function ProofOfHumanity() {
         })
       });
       
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.detail || 'Enrollment failed');
+      }
+      
       const data = await response.json();
+      console.log('Enrollment response:', data);
+      
       setEnrollmentId(data.enrollment_id);
       setScore(data.score);
       setStep(2);
     } catch (error) {
-      alert('Enrollment failed: ' + error.message);
+      console.error('Enrollment error:', error);
+      alert('Enrollment failed: ' + error.message + '\n\nMake sure backend is running on port 9000');
     } finally {
       setLoading(false);
     }
