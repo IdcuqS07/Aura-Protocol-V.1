@@ -73,8 +73,11 @@ const RiskOracle = () => {
             <Brain className="w-12 h-12 text-purple-400" />
             <h1 className="text-4xl font-bold text-white">AI Risk Oracle</h1>
           </div>
+          <p className="text-xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 mb-2">
+            The Future of Trust is Trustless — and It Starts with Aura
+          </p>
           <p className="text-gray-400 text-lg">
-            Aura's Flagship Feature - AI-Powered Risk Assessment
+            AI-Powered Risk Assessment
           </p>
         </div>
 
