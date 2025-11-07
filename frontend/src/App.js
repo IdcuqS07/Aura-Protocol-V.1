@@ -33,7 +33,7 @@ function App() {
             <Route path="/badges" element={<ZKBadgeDisplay />} />
             <Route path="/api" element={<APIDashboard />} />
             <Route path="/verify" element={<VerifyIdentity />} />
-            <Route path="/admin/waitlist" element={<AdminWaitlist />} />
+
             <Route path="/poh" element={<ProofOfHumanity />} />
             <Route path="/poh/callback" element={<ProofOfHumanity />} />
             <Route path="/onchain" element={<OnChainData />} />

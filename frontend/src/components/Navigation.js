@@ -19,7 +19,6 @@ const Navigation = () => {
     { path: '/badges', label: 'Badges' },
     { path: '/api', label: 'API' },
     { path: '/analytics', label: 'Analytics' },
-    ...(isAdmin ? [{ path: '/admin/waitlist', label: 'Admin' }] : []),
   ];
 
   const isActive = (path) => location.pathname === path;
