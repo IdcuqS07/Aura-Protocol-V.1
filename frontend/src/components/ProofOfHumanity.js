@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAccount } from 'wagmi';
+import { useWallet } from './WalletContext';
 
 const BACKEND_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:9000' 
@@ -9,7 +9,7 @@ const GITHUB_CLIENT_ID = process.env.REACT_APP_GITHUB_CLIENT_ID || '';
 const TWITTER_CLIENT_ID = process.env.REACT_APP_TWITTER_CLIENT_ID || '';
 
 export default function ProofOfHumanity() {
-  const { address } = useAccount();
+  const { address, isConnected } = useWallet();
   const [step, setStep] = useState(1);
   const [enrollmentId, setEnrollmentId] = useState('');
   const [score, setScore] = useState(0);

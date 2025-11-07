@@ -9,6 +9,7 @@ from typing import Optional, Dict
 from datetime import datetime, timezone
 import uuid
 import logging
+from typing import Optional, Dict
 
 from polygon_id_service import polygon_id_service
 from github_service import exchange_code_for_token as github_exchange, get_github_data
@@ -251,6 +252,9 @@ async def issue_badge(request: IssueRequest):
         
         logger.info(f"Badge #{token_id} issued to {request.wallet_address}")
         
+        # Auto-update or create passport
+        await update_or_create_passport(db, request.wallet_address)
+        
         return {
             'success': True,
             'tx_hash': tx_hash,
@@ -284,3 +288,66 @@ def calculate_uniqueness_score(github_data: Optional[Dict], twitter_data: Option
     score += onchain_data.get('score', 0)
     
     return min(score, 100)
+
+
+async def update_or_create_passport(db, wallet_address: str):
+    """Update or create passport after badge mint"""
+    from credit_scoring import credit_scoring_service
+    
+    try:
+        # Get user data
+        user_data = await credit_scoring_service.get_user_data_for_scoring(db, wallet_address)
+        
+        # Calculate credit score
+        score_result = credit_scoring_service.calculate_credit_score(
+            poh_score=user_data["poh_score"],
+            badge_count=user_data["badge_count"],
+            onchain_activity=user_data["onchain_activity"],
+            reputation=user_data["reputation"]
+        )
+        
+        # Check if passport exists
+        existing_passport = await db.passports.find_one({"user_id": wallet_address})
+        
+        if existing_passport:
+            # Update existing passport
+            await db.passports.update_one(
+                {"user_id": wallet_address},
+                {"$set": {
+                    "credit_score": score_result["credit_score"],
+                    "grade": score_result["grade"],
+                    "risk_level": score_result["risk_level"],
+                    "breakdown": score_result["breakdown"],
+                    "poh_score": user_data["poh_score"],
+                    "badge_count": user_data["badge_count"],
+                    "onchain_activity": user_data["onchain_activity"],
+                    "reputation": user_data["reputation"],
+                    "last_updated": datetime.now(timezone.utc).isoformat()
+                }}
+            )
+            logger.info(f"Passport updated for {wallet_address} - new score: {score_result['credit_score']}")
+        else:
+            # Create new passport
+            import uuid
+            passport = {
+                "id": str(uuid.uuid4()),
+                "user_id": wallet_address,
+                "wallet_address": wallet_address,
+                "passport_id": f"PASS-{uuid.uuid4().hex[:12].upper()}",
+                "credit_score": score_result["credit_score"],
+                "grade": score_result["grade"],
+                "risk_level": score_result["risk_level"],
+                "breakdown": score_result["breakdown"],
+                "poh_score": user_data["poh_score"],
+                "badge_count": user_data["badge_count"],
+                "onchain_activity": user_data["onchain_activity"],
+                "reputation": user_data["reputation"],
+                "soulbound_token_id": None,
+                "issued_at": datetime.now(timezone.utc).isoformat(),
+                "last_updated": datetime.now(timezone.utc).isoformat()
+            }
+            await db.passports.insert_one(passport)
+            logger.info(f"Passport created for {wallet_address} with score {score_result['credit_score']}")
+            
+    except Exception as e:
+        logger.error(f"Failed to update/create passport: {str(e)}")

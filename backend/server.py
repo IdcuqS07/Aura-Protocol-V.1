@@ -15,6 +15,7 @@ from proof_service import ProofService
 from api_key_auth import verify_api_key, set_db
 from waitlist import WaitlistEntry, WaitlistCreate
 from poh_routes import router as poh_router
+from passport_routes import router as passport_router
 
 
 ROOT_DIR = Path(__file__).parent
@@ -825,6 +826,9 @@ app.include_router(api_router)
 
 # Include PoH router
 app.include_router(poh_router, prefix="/api")
+
+# Include Passport router
+app.include_router(passport_router, prefix="/api")
 
 app.add_middleware(
     CORSMiddleware,

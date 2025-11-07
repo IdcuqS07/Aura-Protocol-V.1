@@ -1,53 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Shield, Award, Lock, CheckCircle, Calendar, Hash, TrendingUp, Activity } from 'lucide-react';
+import { useWallet } from './WalletContext';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz');
 const API = `${BACKEND_URL}/api`;
 
 const CreditPassport = () => {
+  const { address, isConnected } = useWallet();
   const [passport, setPassport] = useState(null);
-  const [user, setUser] = useState(null);
   const [badges, setBadges] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const demoUserId = 'demo-user-123';
+  const [creating, setCreating] = useState(false);
 
   useEffect(() => {
-    loadPassportData();
-  }, []);
+    if (isConnected && address) {
+      loadPassportData();
+    } else {
+      setLoading(false);
+    }
+  }, [isConnected, address]);
 
   const loadPassportData = async () => {
-    // Use mock data for faster loading
-    const mockUser = {
-      id: 'demo-user-123',
-      username: 'demo_user',
-      wallet_address: '0x1234567890abcdef1234567890abcdef12345678'
-    };
-
-    const mockPassport = {
-      passport_id: 'PASS-ABC123DEF456',
-      risk_level: 'low',
-      soulbound_token_id: 'SBT-789XYZ',
-      total_transactions: 12,
-      total_volume: 25000,
-      credit_score: 750,
-      reputation_score: 85.5,
-      zk_proof_hash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890ab',
-      issued_at: new Date().toISOString(),
-      last_updated: new Date().toISOString()
-    };
-
-    const mockBadges = [
-      { id: '1', badge_type: 'identity', token_id: 'ZK-ID001' },
-      { id: '2', badge_type: 'uniqueness', token_id: 'ZK-UNQ001' },
-      { id: '3', badge_type: 'civic', token_id: 'ZK-CIV001' }
-    ];
-
-    setUser(mockUser);
-    setPassport(mockPassport);
-    setBadges(mockBadges);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const passportRes = await axios.get(`${API}/passport/${address}`);
+      if (passportRes.data.success) {
+        setPassport(passportRes.data.passport);
+      }
+      const badgesRes = await axios.get(`${API}/badges/demo/${address}`);
+      setBadges(badgesRes.data.badges || []);
+    } catch (error) {
+      console.error('Load passport error:', error);
+      setPassport(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+  
+  const handleCreatePassport = async () => {
+    try {
+      setCreating(true);
+      const response = await axios.post(`${API}/passport/create`, {
+        user_id: address,
+        wallet_address: address
+      });
+      if (response.data.success) {
+        alert('Credit Passport created!');
+        loadPassportData();
+      }
+    } catch (error) {
+      alert(error.response?.data?.detail || 'Failed to create passport');
+    } finally {
+      setCreating(false);
+    }
   };
 
   const getRiskColor = (risk) => {
@@ -67,6 +73,18 @@ const CreditPassport = () => {
     return 'Poor';
   };
 
+  if (!isConnected) {
+    return (
+      <div className="min-h-screen pt-16 px-4 py-8">
+        <div className="max-w-4xl mx-auto text-center py-20">
+          <Shield className="w-24 h-24 text-gray-600 mx-auto mb-6" />
+          <h1 className="text-4xl font-bold text-white mb-4">Connect Wallet</h1>
+          <p className="text-gray-400">Please connect your wallet to view your Credit Passport.</p>
+        </div>
+      </div>
+    );
+  }
+  
   if (loading) {
     return (
       <div className="min-h-screen pt-16 flex items-center justify-center">
@@ -82,14 +100,23 @@ const CreditPassport = () => {
           <Shield className="w-24 h-24 text-gray-600 mx-auto mb-6" />
           <h1 className="text-4xl font-bold text-white mb-4">No Credit Passport Found</h1>
           <p className="text-gray-400 mb-8">
-            You need to verify your identity and create a passport first.
+            Complete Proof of Humanity verification to create your Credit Passport.
           </p>
-          <a
-            href="/dashboard"
-            className="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all"
-          >
-            Go to Dashboard
-          </a>
+          <div className="space-x-4">
+            <a
+              href="/poh"
+              className="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+            >
+              Start PoH Verification
+            </a>
+            <button
+              onClick={handleCreatePassport}
+              disabled={creating}
+              className="inline-block px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-green-500/50 transition-all disabled:opacity-50"
+            >
+              {creating ? 'Creating...' : 'Create Passport'}
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -139,11 +166,11 @@ const CreditPassport = () => {
                   </div>
                   <div className="p-4 bg-white/10 backdrop-blur-sm rounded-xl">
                     <div className="text-white/70 text-xs mb-1">Reputation</div>
-                    <div className="text-2xl font-bold text-white">{passport.reputation_score.toFixed(1)}</div>
+                    <div className="text-2xl font-bold text-white">{passport.reputation || 0}</div>
                   </div>
                   <div className="p-4 bg-white/10 backdrop-blur-sm rounded-xl">
-                    <div className="text-white/70 text-xs mb-1">Transactions</div>
-                    <div className="text-2xl font-bold text-white">{passport.total_transactions}</div>
+                    <div className="text-white/70 text-xs mb-1">Badges</div>
+                    <div className="text-2xl font-bold text-white">{badges.length}</div>
                   </div>
                 </div>
 
@@ -270,22 +297,17 @@ const CreditPassport = () => {
               <div className="p-4 bg-slate-900/50 rounded-xl">
                 <div className="text-sm text-gray-400 mb-1">Total Volume</div>
                 <div className="text-3xl font-bold text-green-400">
-                  ${passport.total_volume.toLocaleString()}
+                  Score: {passport.credit_score || 0}
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3 bg-slate-900/50 rounded-lg">
-                  <div className="text-xs text-gray-400 mb-1">Transactions</div>
-                  <div className="text-xl font-bold text-white">{passport.total_transactions}</div>
+                  <div className="text-xs text-gray-400 mb-1">PoH Score</div>
+                  <div className="text-xl font-bold text-white">{passport.poh_score || 0}</div>
                 </div>
                 <div className="p-3 bg-slate-900/50 rounded-lg">
-                  <div className="text-xs text-gray-400 mb-1">Avg. Size</div>
-                  <div className="text-xl font-bold text-white">
-                    ${passport.total_transactions > 0 
-                      ? (passport.total_volume / passport.total_transactions).toFixed(0)
-                      : 0
-                    }
-                  </div>
+                  <div className="text-xs text-gray-400 mb-1">On-Chain</div>
+                  <div className="text-xl font-bold text-white">{passport.onchain_activity || 0}</div>
                 </div>
               </div>
             </div>
@@ -300,7 +322,7 @@ const CreditPassport = () => {
           </p>
           <div className="p-4 bg-slate-900/50 rounded-lg font-mono text-sm">
             <div className="text-purple-400">GET</div>
-            <div className="text-gray-300 mt-1">{BACKEND_URL}/api/proof/verify/{user?.id}</div>
+            <div className="text-gray-300 mt-1">{BACKEND_URL}/api/proof/verify/{address}</div>
           </div>
         </div>
       </div>

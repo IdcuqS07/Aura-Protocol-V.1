@@ -16,44 +16,59 @@ const VerifyIdentity = () => {
 
   const verificationMethods = [
     {
+      id: 'poh',
+      name: 'Proof of Humanity',
+      icon: Shield,
+      color: 'green',
+      description: 'Real verification via GitHub, Twitter & on-chain data',
+      badgeType: 'Proof of Humanity',
+      isReal: true,
+      redirect: '/poh'
+    },
+    {
       id: 'uniqueness',
       name: 'Proof of Uniqueness',
       icon: Shield,
       color: 'purple',
-      description: 'Verify you are a unique human',
-      badgeType: 'Proof of Uniqueness'
+      description: 'Verify you are a unique human (Demo Mode)',
+      badgeType: 'Proof of Uniqueness',
+      isDemo: true
     },
     {
       id: 'identity',
       name: 'Identity Verified',
       icon: CheckCircle,
       color: 'blue',
-      description: 'Verify your digital identity',
-      badgeType: 'Identity Verified'
+      description: 'Verify your digital identity (Demo Mode)',
+      badgeType: 'Identity Verified',
+      isDemo: true
     },
     {
       id: 'reputation',
       name: 'Reputation Badge',
       icon: Shield,
       color: 'yellow',
-      description: 'Build your on-chain reputation',
-      badgeType: 'Reputation Badge'
+      description: 'Build your on-chain reputation (Demo Mode)',
+      badgeType: 'Reputation Badge',
+      isDemo: true
     },
     {
       id: 'aura-proof',
       name: 'Aura Proof',
       icon: CheckCircle,
       color: 'green',
-      description: 'Zero-knowledge proof verification',
-      badgeType: 'Aura Proof'
+      description: 'Zero-knowledge proof verification (Demo Mode)',
+      badgeType: 'Aura Proof',
+      isDemo: true
     },
     {
       id: 'aura-identity',
       name: 'Aura Identity',
       icon: Globe,
       color: 'indigo',
-      description: 'Decentralized identity verification',
-      badgeType: 'Aura Identity'
+      description: 'Decentralized identity verification (Demo Mode)',
+      badgeType: 'Aura Identity',
+      isDemo: true
     }
   ];
 
@@ -81,6 +96,11 @@ const VerifyIdentity = () => {
   };
 
   const handleVerify = async (method) => {
+    if (method.redirect) {
+      window.location.href = method.redirect;
+      return;
+    }
+
     if (!isConnected) {
       setError('Please connect your wallet first');
       return;
@@ -208,11 +228,12 @@ const VerifyIdentity = () => {
           {verificationMethods.map((method) => {
             const Icon = method.icon;
             const colorMap = {
-              purple: { bg: 'bg-purple-500/20', text: 'text-purple-400', btn: 'bg-purple-600 hover:bg-purple-700' },
-              blue: { bg: 'bg-blue-500/20', text: 'text-blue-400', btn: 'bg-blue-600 hover:bg-blue-700' },
-              yellow: { bg: 'bg-yellow-500/20', text: 'text-yellow-400', btn: 'bg-yellow-600 hover:bg-yellow-700' },
-              green: { bg: 'bg-green-500/20', text: 'text-green-400', btn: 'bg-green-600 hover:bg-green-700' },
-              indigo: { bg: 'bg-indigo-500/20', text: 'text-indigo-400', btn: 'bg-indigo-600 hover:bg-indigo-700' }
+              purple: { bg: 'bg-purple-500/20', text: 'text-purple-400', btn: 'bg-purple-600 hover:bg-purple-700', border: 'border-purple-500/50' },
+              blue: { bg: 'bg-blue-500/20', text: 'text-blue-400', btn: 'bg-blue-600 hover:bg-blue-700', border: 'border-blue-500/50' },
+              yellow: { bg: 'bg-yellow-500/20', text: 'text-yellow-400', btn: 'bg-yellow-600 hover:bg-yellow-700', border: 'border-yellow-500/50' },
+              green: { bg: 'bg-green-500/20', text: 'text-green-400', btn: 'bg-green-600 hover:bg-green-700', border: 'border-green-500/50' },
+              indigo: { bg: 'bg-indigo-500/20', text: 'text-indigo-400', btn: 'bg-indigo-600 hover:bg-indigo-700', border: 'border-indigo-500/50' },
+              gray: { bg: 'bg-gray-500/20', text: 'text-gray-400', btn: 'bg-gray-600 hover:bg-gray-700', border: 'border-gray-500/50' }
             };
             const colors = colorMap[method.color];
             const iconBg = colors.bg;
@@ -220,13 +241,17 @@ const VerifyIdentity = () => {
             const btnBg = colors.btn;
             
             return (
-              <Card key={method.id} className="bg-slate-800/50 border-slate-700 hover:border-purple-500/50 transition">
+              <Card key={method.id} className={`bg-slate-800/50 border-slate-700 hover:${colors.border} transition ${method.isReal ? 'ring-2 ring-green-500/30' : ''}`}>
                 <CardHeader>
                   <div className="flex items-center space-x-3 mb-2">
                     <div className={`p-3 ${iconBg} rounded-lg`}>
                       <Icon className={`h-8 w-8 ${iconColor}`} />
                     </div>
-                    <CardTitle className="text-white text-xl">{method.name}</CardTitle>
+                    <div className="flex-1">
+                      <CardTitle className="text-white text-xl">{method.name}</CardTitle>
+                      {method.isReal && <span className="text-xs text-green-400 font-semibold">✓ REAL VERIFICATION</span>}
+                      {method.isDemo && <span className="text-xs text-gray-400">DEMO MODE</span>}
+                    </div>
                   </div>
                   <CardDescription>{method.description}</CardDescription>
                 </CardHeader>
