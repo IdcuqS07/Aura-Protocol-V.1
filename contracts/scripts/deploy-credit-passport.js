@@ -25,11 +25,12 @@ async function main() {
 
   // Save deployment info
   const fs = require('fs');
+  const network = await hre.ethers.provider.getNetwork();
   const deploymentInfo = {
     creditPassport: address,
     deployer: deployer.address,
     network: hre.network.name,
-    chainId: (await hre.ethers.provider.getNetwork()).chainId,
+    chainId: network.chainId.toString(),
     timestamp: new Date().toISOString()
   };
 
