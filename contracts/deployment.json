@@ -4,8 +4,9 @@
   "contracts": {
     "SimpleZKBadge": "0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678",
     "ProofRegistry": "0x296DB144E62C8C826bffA4503Dc9Fbf29F25D44B",
-    "CreditPassport": "0x2E707Ce007dFAb6767da02d740451EACf18E1e58"
+    "CreditPassport": "0x1112373c9954B9bbFd91eb21175699b609A1b551"
   },
   "deployer": "0xC3EcE9AC328CB232dDB0BC677d2e980a1a3D3974",
-  "timestamp": "2025-01-20T00:00:00.000Z"
+  "timestamp": "2025-01-20T00:00:00.000Z",
+  "note": "CreditPassport V2 - User can mint their own passport (decentralized)"
 }

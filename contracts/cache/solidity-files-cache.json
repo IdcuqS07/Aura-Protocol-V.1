@@ -516,8 +516,8 @@
       ]
     },
     "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/contracts/contracts/CreditPassport.sol": {
-      "lastModificationDate": 1762481564696,
-      "contentHash": "111569909a87b4704d308a30600c30c1",
+      "lastModificationDate": 1762585811535,
+      "contentHash": "892bf90c59093727a5a792bc6af92364",
       "sourceName": "contracts/CreditPassport.sol",
       "solcConfig": {
         "version": "0.8.19",

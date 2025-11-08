@@ -34,6 +34,35 @@ contract CreditPassport is ERC721, Ownable {
         _;
     }
     
+    function mintPassport(
+        uint256 pohScore,
+        uint256 badgeCount
+    ) external returns (uint256) {
+        require(userPassport[msg.sender] == 0, "Passport already exists");
+        
+        _tokenIds++;
+        uint256 newTokenId = _tokenIds;
+        
+        uint256 creditScore = calculateCreditScore(pohScore, badgeCount, 0);
+        
+        passports[newTokenId] = Passport({
+            id: newTokenId,
+            owner: msg.sender,
+            creditScore: creditScore,
+            pohScore: pohScore,
+            badgeCount: badgeCount,
+            onchainActivity: 0,
+            issuedAt: block.timestamp,
+            lastUpdated: block.timestamp
+        });
+        
+        userPassport[msg.sender] = newTokenId;
+        _safeMint(msg.sender, newTokenId);
+        
+        emit PassportIssued(newTokenId, msg.sender, creditScore);
+        return newTokenId;
+    }
+    
     function issuePassport(
         address recipient,
         uint256 pohScore,
