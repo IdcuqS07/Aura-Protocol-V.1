@@ -1,255 +1,249 @@
-# ✅ DEPLOYMENT CHECKLIST
+# 🚀 DEPLOYMENT CHECKLIST
 
-**Feature**: User Mint Credit Passport  
-**Date**: January 2025  
-**Status**: Ready to Deploy
+Quick checklist to complete Gelombang 2 deployment.
 
 ---
 
-## 📦 PRE-DEPLOYMENT
+## ✅ STEP 1: Deploy PoH Backend (5 minutes)
 
-### Code Ready
-- [x] Smart contract deployed: `0x1112373c9954B9bbFd91eb21175699b609A1b551`
-- [x] Backend API updated
-- [x] Frontend component updated
-- [x] All code pushed to GitHub
-- [x] Documentation complete
-
-### Files Changed
-- [x] `contracts/contracts/CreditPassport.sol`
-- [x] `backend/passport_routes.py`
-- [x] `frontend/src/utils/passportContract.js`
-- [x] `frontend/src/components/CreditPassport.js`
-
----
-
-## 🚀 DEPLOYMENT STEPS
-
-### Step 1: Backend
+### Commands:
 ```bash
+# 1. SSH to VPS
+ssh root@165.232.166.78
+
+# 2. Navigate to backend
 cd /var/www/aura-backend-new
+
+# 3. Backup current server
+cp server.py server.py.backup
+
+# 4. Pull latest code
 git pull origin main
-/var/www/restart-backend.sh
-```
-- [ ] Git pull successful
-- [ ] Backend restarted
-- [ ] No errors in logs
-- [ ] Port 9000 listening
 
-### Step 2: Frontend
-```bash
-cd /var/www/aura-frontend
-git pull origin main
-yarn install
-yarn build
-sudo systemctl restart nginx
+# 5. Verify files exist
+ls -la poh_routes.py github_service.py twitter_service.py onchain_service.py polygon_id_service.py
+
+# 6. Restart backend on port 9000
+pm2 delete aura-backend
+pm2 start "uvicorn server:app --host 0.0.0.0 --port 9000" --name aura-backend
+pm2 save
+
+# 7. Verify port 9000
+lsof -i :9000
+
+# 8. Check logs
+pm2 logs aura-backend --lines 50
+
+# 9. Test API (should return JSON)
+curl http://localhost:9000/api/
+
+# 10. Test PoH endpoint (should return error about missing fields, not 404)
+curl http://localhost:9000/api/poh/enroll
 ```
-- [ ] Git pull successful
-- [ ] Dependencies installed
-- [ ] Build successful
-- [ ] Nginx restarted
+
+### Expected Result:
+- ✅ PoH routes loaded
+- ✅ No 404 errors
+- ✅ Backend running on port 9000
+- ✅ API returns JSON response
+- ✅ Port 9000 is listening
 
 ---
 
-## ✅ VERIFICATION
+## ✅ STEP 2: Setup OAuth Credentials (30 minutes)
 
-### Backend Health
-```bash
-curl http://localhost:9000/api/passport/score/0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
-```
-- [ ] Returns 200 OK
-- [ ] JSON response valid
-- [ ] No errors
+### A. GitHub OAuth App
+1. Go to: https://github.com/settings/developers
+2. Click "New OAuth App"
+3. Fill in:
+   - **Application name**: Aura Protocol
+   - **Homepage URL**: https://www.aurapass.xyz
+   - **Authorization callback URL**: `https://api.aurapass.xyz/api/poh/callback`
+4. Click "Register application"
+5. Copy **Client ID** and **Client Secret**
 
-### Frontend Health
-```bash
-curl -I https://www.aurapass.xyz
-```
-- [ ] Returns 200 OK
-- [ ] No 404 errors
-- [ ] Site loads
+### B. Twitter OAuth App
+1. Go to: https://developer.twitter.com/en/portal/dashboard
+2. Create new app or use existing
+3. Go to "User authentication settings"
+4. Enable OAuth 2.0
+5. Add callback URL: `https://api.aurapass.xyz/api/poh/callback`
+6. Copy **Client ID** and **Client Secret**
 
-### Contract Address
+### C. Alchemy API Key
+1. Go to: https://www.alchemy.com/
+2. Sign up or login
+3. Create new app:
+   - **Chain**: Polygon
+   - **Network**: Amoy (testnet)
+4. Copy **API Key**
+
+### D. Update VPS .env
 ```bash
-grep -r "0x1112373c9954B9bbFd91eb21175699b609A1b551" /var/www/aura-frontend/build/
+# SSH to VPS
+ssh root@165.232.166.78
+
+# Edit .env file
+cd /var/www/aura-backend-new
+nano .env
+
+# Add these lines:
+GITHUB_CLIENT_ID=your_github_client_id_here
+GITHUB_CLIENT_SECRET=your_github_client_secret_here
+GITHUB_REDIRECT_URI=https://api.aurapass.xyz/api/poh/callback
+
+TWITTER_CLIENT_ID=your_twitter_client_id_here
+TWITTER_CLIENT_SECRET=your_twitter_client_secret_here
+TWITTER_REDIRECT_URI=https://api.aurapass.xyz/api/poh/callback
+
+ALCHEMY_API_KEY=your_alchemy_api_key_here
+
+# Save: Ctrl+X, Y, Enter
+
+# Restart backend
+pm2 restart aura-backend
 ```
-- [ ] Contract address found in build
-- [ ] Correct address
 
 ---
 
-## 🧪 FUNCTIONAL TESTING
+## ✅ STEP 3: Test PoH Flow (10 minutes)
 
-### Test 1: Visit Page
-- [ ] Go to https://www.aurapass.xyz/passport
-- [ ] Page loads without errors
-- [ ] No console errors
+### Test Steps:
+1. **Visit**: https://www.aurapass.xyz/verify
+2. **Connect Wallet**: Click "Connect Wallet"
+3. **Connect GitHub**:
+   - Click "Connect GitHub"
+   - Should redirect to GitHub
+   - Authorize app
+   - Should return to site with success message
+4. **Connect Twitter**:
+   - Click "Connect Twitter"
+   - Should redirect to Twitter
+   - Authorize app
+   - Should return to site with success message
+5. **Complete Enrollment**:
+   - Click "Complete Enrollment"
+   - Should calculate score (0-100)
+   - Should generate ZK proof
+6. **Mint Badge**:
+   - Click "Mint Badge"
+   - Confirm transaction in wallet
+   - Wait for confirmation
+   - Badge should appear in "My Badges"
 
-### Test 2: Connect Wallet
-- [ ] Click "Connect Wallet"
-- [ ] MetaMask popup appears
-- [ ] Wallet connects successfully
-- [ ] Address displayed
-
-### Test 3: Check Button
-- [ ] "Mint Passport (Pay Gas)" button visible
-- [ ] Button not disabled
-- [ ] Button clickable
-
-### Test 4: Fetch Score
-- [ ] Click "Mint Passport"
-- [ ] Confirmation dialog appears
-- [ ] Shows PoH score
-- [ ] Shows badge count
-- [ ] Shows estimated credit score
-- [ ] Shows gas estimate
-
-### Test 5: Mint Transaction
-- [ ] Click "Confirm" in dialog
-- [ ] MetaMask popup appears
-- [ ] Transaction details correct
-- [ ] Gas estimate reasonable (~0.007 MATIC)
-- [ ] Click "Confirm" in MetaMask
-- [ ] Loading state shows "Minting..."
-
-### Test 6: Confirmation
-- [ ] Transaction succeeds
-- [ ] Success message shows TX hash
-- [ ] Passport card appears
-- [ ] Credit score displayed
-- [ ] Badge count correct
-- [ ] Risk level shown
-
-### Test 7: Verify On-Chain
-- [ ] Visit PolygonScan
-- [ ] Search TX hash
-- [ ] Transaction confirmed
-- [ ] Contract interaction visible
-- [ ] Event emitted
+### Expected Results:
+- ✅ GitHub OAuth works
+- ✅ Twitter OAuth works
+- ✅ Score calculated (e.g., 75/100)
+- ✅ ZK proof generated
+- ✅ Badge minted on-chain
+- ✅ Transaction hash visible
 
 ---
 
-## 🔍 ERROR TESTING
+## ✅ STEP 4: Verify Everything Works
 
-### Test Error Cases
-- [ ] Try minting without PoH → Shows error
-- [ ] Try minting twice → Shows "already exists"
-- [ ] Reject MetaMask → Shows "rejected"
-- [ ] Insufficient gas → Shows error
-
----
-
-## 📊 MONITORING
-
-### Logs to Watch
+### Check Backend:
 ```bash
-# Backend
+# Check PM2 status
+pm2 status
+
+# Check logs
 pm2 logs aura-backend --lines 100
 
-# Nginx
-tail -f /var/log/nginx/access.log
-tail -f /var/log/nginx/error.log
+# Test PoH endpoint
+curl http://localhost:9000/api/poh/enroll
+
+# Test main API
+curl http://localhost:9000/api/
 ```
 
-### Metrics to Track
-- [ ] API calls to `/passport/score`
-- [ ] Successful mints
-- [ ] Failed mints
-- [ ] Average gas used
-- [ ] Response times
+### Check Frontend:
+1. Visit: https://www.aurapass.xyz/
+2. Check analytics dashboard (should show updated stats)
+3. Visit: https://www.aurapass.xyz/verify (PoH page)
+4. Visit: https://www.aurapass.xyz/badges (badges page)
+5. Visit: https://www.aurapass.xyz/passport (passport page)
+
+### Check Smart Contracts:
+1. Visit: https://amoy.polygonscan.com/address/0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678
+2. Check recent transactions
+3. Verify badge mints
+
+---
+
+## 📋 TROUBLESHOOTING
+
+### Issue: 404 on /api/poh/enroll
+**Solution**: Backend not updated. Run Step 1 again.
+
+### Issue: OAuth redirect fails
+**Solution**: Check callback URLs match exactly:
+- GitHub: `https://api.aurapass.xyz/api/poh/callback`
+- Twitter: `https://api.aurapass.xyz/api/poh/callback`
+
+### Issue: On-chain data fetch fails
+**Solution**: Check Alchemy API key is correct and app is on Polygon Amoy.
+
+### Issue: Badge mint fails
+**Solution**: 
+- Check wallet has MATIC for gas
+- Check contract address is correct
+- Check backend wallet has MATIC
+
+### Issue: PM2 not restarting
+**Solution**:
+```bash
+pm2 delete all
+pm2 start "uvicorn server:app --host 0.0.0.0 --port 9000" --name aura-backend
+pm2 save
+```
 
 ---
 
 ## 🎯 SUCCESS CRITERIA
 
-### Must Have
-- [x] Contract deployed
-- [ ] Backend deployed
-- [ ] Frontend deployed
-- [ ] Mint button works
-- [ ] Transaction succeeds
-- [ ] Passport displays
+After completing all steps, you should have:
 
-### Nice to Have
-- [ ] No console errors
-- [ ] Fast response times
-- [ ] Good UX
-- [ ] Clear error messages
-
----
-
-## 📝 POST-DEPLOYMENT
-
-### Documentation
-- [x] Update README
-- [x] Create deployment guide
-- [x] Document contract address
-- [x] Write testing guide
-
-### Communication
-- [ ] Announce feature
-- [ ] Update users
-- [ ] Share contract address
-- [ ] Provide support
-
-### Monitoring
-- [ ] Watch logs for 1 hour
-- [ ] Check for errors
-- [ ] Monitor gas usage
-- [ ] Track user adoption
+- ✅ PoH backend deployed and running
+- ✅ OAuth credentials configured
+- ✅ GitHub OAuth working
+- ✅ Twitter OAuth working
+- ✅ On-chain data fetching working
+- ✅ Score calculation working (0-100)
+- ✅ ZK proof generation working
+- ✅ Badge minting working
+- ✅ All endpoints returning 200 (not 404)
+- ✅ Site fully functional at https://www.aurapass.xyz
 
 ---
 
-## 🚨 ROLLBACK PLAN
+## 📞 NEED HELP?
 
-If something goes wrong:
+If you encounter issues:
 
-```bash
-# Backend
-cd /var/www/aura-backend-new
-git reset --hard HEAD~3
-/var/www/restart-backend.sh
-
-# Frontend
-cd /var/www/aura-frontend
-git reset --hard HEAD~3
-yarn build
-sudo systemctl restart nginx
-```
+1. Check PM2 logs: `pm2 logs aura-backend`
+2. Check backend logs: `tail -f /var/www/aura-backend-new/backend.log`
+3. Check nginx logs: `tail -f /var/log/nginx/error.log`
+4. Test endpoints with curl
+5. Check browser console for errors
 
 ---
 
-## 📞 SUPPORT
+## 🎉 COMPLETION
 
-### If Issues Occur
-1. Check logs: `pm2 logs aura-backend`
-2. Check nginx: `tail -f /var/log/nginx/error.log`
-3. Check contract: Visit PolygonScan
-4. Rollback if needed
+Once all steps are complete:
 
-### Contact
-- GitHub Issues
-- Discord
-- Email support
+**Gelombang 2 is LIVE!** 🚀
 
----
+You now have:
+- ✅ Real identity verification (PoH)
+- ✅ On-chain credit passports
+- ✅ Public Proof-as-a-Service API
+- ✅ Universal trust infrastructure
 
-## ✅ FINAL CHECKLIST
-
-Before going live:
-- [ ] All tests passed
-- [ ] No errors in logs
-- [ ] Contract verified
-- [ ] Documentation updated
-- [ ] Team notified
-- [ ] Monitoring active
-
-**Ready to deploy?** ✅
+**Next**: Onboard users, issue API keys, integrate with dApps!
 
 ---
 
-**Contract**: `0x1112373c9954B9bbFd91eb21175699b609A1b551`  
-**Network**: Polygon Amoy  
-**Feature**: User Mint Credit Passport (Decentralized)
-
-**Let's go!** 🚀
+> "Universal Trust in a Trustless World" - Aura Protocol

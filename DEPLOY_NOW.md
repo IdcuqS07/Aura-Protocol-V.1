@@ -1,206 +1,106 @@
-# 🚀 DEPLOY CREDIT PASSPORT - QUICK GUIDE
+# 🚀 DEPLOY NOW - One Command
 
-**Time**: 5 minutes  
-**Status**: Ready to deploy
+Deploy PoH backend to VPS with one command.
 
 ---
 
-## 📋 STEP-BY-STEP
+## ⚡ Quick Deploy
 
-### 1️⃣ SSH ke VPS
 ```bash
-ssh root@your-vps-ip
+./deploy.sh
 ```
 
-### 2️⃣ Update Backend
+This will:
+1. ✅ SSH to VPS
+2. ✅ Pull latest code
+3. ✅ Restart backend on port 9000
+4. ✅ Verify everything works
+
+---
+
+## 📋 Manual Deploy (if script fails)
+
 ```bash
+ssh root@165.232.166.78
+
 cd /var/www/aura-backend-new
 git pull origin main
-/var/www/restart-backend.sh
-```
 
-**Expected output**:
-```
-✅ Stopped PM2 process
-✅ Killed all uvicorn processes
-✅ Started new backend
-✅ Backend running on port 9000
-```
+pm2 delete aura-backend
+pm2 start "uvicorn server:app --host 0.0.0.0 --port 9000" --name aura-backend
+pm2 save
 
-### 3️⃣ Update Frontend
-```bash
-cd /var/www/aura-frontend
-git pull origin main
-yarn install
-yarn build
-sudo systemctl restart nginx
-```
-
-**Expected output**:
-```
-✅ Dependencies installed
-✅ Build complete
-✅ Nginx restarted
-```
-
-### 4️⃣ Verify Backend
-```bash
-curl http://localhost:9000/api/passport/score/0x96eb6DcBb03cE5818b9dF1446c1df378eb98De15
-```
-
-**Expected response**:
-```json
-{
-  "success": true,
-  "poh_score": 0,
-  "badge_count": 0,
-  "credit_score": 0
-}
-```
-
-### 5️⃣ Test Frontend
-```
-1. Open browser: https://www.aurapass.xyz/passport
-2. Connect wallet
-3. Should see "Mint Passport (Pay Gas)" button
-```
-
----
-
-## ✅ VERIFICATION
-
-### Check Backend Logs
-```bash
-pm2 logs aura-backend --lines 50
-```
-
-Look for:
-- ✅ No errors
-- ✅ "Application startup complete"
-- ✅ Listening on port 9000
-
-### Check Frontend
-```bash
-curl -I https://www.aurapass.xyz
-```
-
-Look for:
-- ✅ HTTP 200 OK
-- ✅ No 404 errors
-
----
-
-## 🧪 TEST MINTING
-
-### 1. Visit Passport Page
-```
-https://www.aurapass.xyz/passport
-```
-
-### 2. Connect Wallet
-- Click "Connect Wallet"
-- Approve MetaMask
-
-### 3. Mint Passport
-- Click "Mint Passport (Pay Gas)"
-- Confirm dialog (shows PoH score, badges, estimated score)
-- Approve MetaMask transaction
-- Wait for confirmation
-- Passport should appear
-
----
-
-## 🔍 TROUBLESHOOTING
-
-### Backend not starting?
-```bash
-# Check port 9000
 lsof -i :9000
-
-# Kill if needed
-kill -9 $(lsof -t -i:9000)
-
-# Restart
-/var/www/restart-backend.sh
-```
-
-### Frontend not updating?
-```bash
-cd /var/www/aura-frontend
-rm -rf build node_modules
-yarn install
-yarn build
-sudo systemctl restart nginx
-```
-
-### Contract not working?
-```bash
-# Check contract address in frontend
-grep -r "0x1112373c9954B9bbFd91eb21175699b609A1b551" /var/www/aura-frontend/src/
+curl http://localhost:9000/api/
 ```
 
 ---
 
-## 📊 MONITORING
+## ✅ Verify Backend on Port 9000
 
-### Watch Backend Logs
 ```bash
-pm2 logs aura-backend --lines 100 --raw
+./verify_backend.sh
 ```
 
-### Watch Nginx Logs
-```bash
-tail -f /var/log/nginx/access.log
-tail -f /var/log/nginx/error.log
-```
+Or manually:
 
-### Check PM2 Status
 ```bash
-pm2 status
-pm2 monit
+ssh root@165.232.166.78 "lsof -i :9000"
+ssh root@165.232.166.78 "curl http://localhost:9000/api/"
 ```
 
 ---
 
-## 🎯 SUCCESS CRITERIA
+## 🔑 After Deployment
 
-- ✅ Backend responds to `/api/passport/score/{address}`
-- ✅ Frontend shows "Mint Passport" button
-- ✅ MetaMask popup appears on click
-- ✅ Transaction succeeds on Polygon Amoy
-- ✅ Passport appears after minting
-- ✅ No console errors
+Setup OAuth credentials (30 min):
 
----
+1. **GitHub OAuth**: https://github.com/settings/developers
+   - Callback: `https://api.aurapass.xyz/api/poh/callback`
 
-## 🚨 ROLLBACK (if needed)
+2. **Twitter OAuth**: https://developer.twitter.com/
+   - Callback: `https://api.aurapass.xyz/api/poh/callback`
 
+3. **Alchemy API**: https://www.alchemy.com/
+   - Network: Polygon Amoy
+
+4. **Update .env**:
 ```bash
-# Backend
+ssh root@165.232.166.78
 cd /var/www/aura-backend-new
-git reset --hard HEAD~1
-/var/www/restart-backend.sh
+nano .env
 
-# Frontend
-cd /var/www/aura-frontend
-git reset --hard HEAD~1
-yarn build
-sudo systemctl restart nginx
+# Add:
+GITHUB_CLIENT_ID=xxx
+GITHUB_CLIENT_SECRET=xxx
+TWITTER_CLIENT_ID=xxx
+TWITTER_CLIENT_SECRET=xxx
+ALCHEMY_API_KEY=xxx
+
+# Save and restart
+pm2 restart aura-backend
 ```
 
 ---
 
-## 📝 COMMANDS SUMMARY
+## 🧪 Test
 
-```bash
-# Full deployment (copy-paste)
-ssh root@your-vps-ip << 'EOF'
-cd /var/www/aura-backend-new && git pull origin main && /var/www/restart-backend.sh
-cd /var/www/aura-frontend && git pull origin main && yarn install && yarn build && sudo systemctl restart nginx
-echo "✅ Deployment complete!"
-EOF
-```
+Visit: https://www.aurapass.xyz/verify
+
+1. Connect GitHub ✅
+2. Connect Twitter ✅
+3. Complete enrollment ✅
+4. Mint badge ✅
 
 ---
 
-**Ready? Copy commands above and deploy!** 🚀
+## 📚 Full Documentation
+
+- `DEPLOYMENT_CHECKLIST.md` - Complete checklist
+- `VERIFY_PORT_9000.md` - Port verification guide
+- `QUICK_START.md` - 45-minute guide
+- `GELOMBANG2_STATUS.md` - Status report
+
+---
+
+> **Backend MUST run on port 9000 for Nginx proxy to work!**
