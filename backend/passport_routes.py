@@ -204,11 +204,13 @@ async def calculate_score(user_id: str):
         return {
             "success": True,
             "user_id": user_id,
+            "poh_score": user_data["poh_score"],
+            "badge_count": user_data["badge_count"],
+            "onchain_activity": user_data["onchain_activity"],
             "credit_score": score_result["credit_score"],
             "grade": score_result["grade"],
             "risk_level": score_result["risk_level"],
-            "breakdown": score_result["breakdown"],
-            "user_data": user_data
+            "breakdown": score_result["breakdown"]
         }
         
     except Exception as e:

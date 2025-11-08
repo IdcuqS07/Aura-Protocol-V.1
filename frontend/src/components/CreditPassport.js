@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Shield, Award, Lock, CheckCircle, Calendar, Hash, TrendingUp, Activity } from 'lucide-react';
+import { Shield, Award, Lock, CheckCircle, Calendar, Hash, TrendingUp, Activity, Loader } from 'lucide-react';
 import { useWallet } from './WalletContext';
+import { mintPassport, getPassport as getOnChainPassport, hasPassport } from '../utils/passportContract';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz');
 const API = `${BACKEND_URL}/api`;
@@ -38,19 +39,48 @@ const CreditPassport = () => {
     }
   };
   
-  const handleCreatePassport = async () => {
+  const handleMintPassport = async () => {
     try {
       setCreating(true);
-      const response = await axios.post(`${API}/passport/create`, {
+      
+      // Get user score data from backend
+      const scoreRes = await axios.get(`${API}/passport/score/${address}`);
+      if (!scoreRes.data.success) {
+        alert('Failed to fetch your data. Complete PoH first.');
+        return;
+      }
+      
+      const { poh_score, badge_count, credit_score } = scoreRes.data;
+      
+      // Confirm with user
+      const confirmed = window.confirm(
+        `Mint Credit Passport?\n\n` +
+        `PoH Score: ${poh_score}\n` +
+        `Badges: ${badge_count}\n` +
+        `Estimated Credit Score: ${credit_score}\n\n` +
+        `Gas fee: ~0.007 MATIC`
+      );
+      
+      if (!confirmed) return;
+      
+      // Mint on-chain
+      const { txHash, tokenId } = await mintPassport(poh_score, badge_count);
+      
+      // Save to backend
+      await axios.post(`${API}/passport/create`, {
         user_id: address,
         wallet_address: address
       });
-      if (response.data.success) {
-        alert('Credit Passport created!');
-        loadPassportData();
-      }
+      
+      alert(`Passport minted!\nTX: ${txHash}`);
+      loadPassportData();
     } catch (error) {
-      alert(error.response?.data?.detail || 'Failed to create passport');
+      console.error('Mint error:', error);
+      if (error.message?.includes('Passport already exists')) {
+        alert('You already have a passport!');
+      } else {
+        alert(error.message || 'Failed to mint passport');
+      }
     } finally {
       setCreating(false);
     }
@@ -110,11 +140,18 @@ const CreditPassport = () => {
               Start PoH Verification
             </a>
             <button
-              onClick={handleCreatePassport}
+              onClick={handleMintPassport}
               disabled={creating}
-              className="inline-block px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-green-500/50 transition-all disabled:opacity-50"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-green-500/50 transition-all disabled:opacity-50"
             >
-              {creating ? 'Creating...' : 'Create Passport'}
+              {creating ? (
+                <>
+                  <Loader className="w-5 h-5 mr-2 animate-spin" />
+                  Minting...
+                </>
+              ) : (
+                'Mint Passport (Pay Gas)'
+              )}
             </button>
           </div>
         </div>
