@@ -111,7 +111,26 @@ const VerifyIdentity = () => {
     setTxHash('');
 
     try {
-      // Switch to Polygon Amoy
+      // For demo badges, use demo endpoint (no blockchain)
+      if (method.isDemo) {
+        const response = await axios.post(`${BACKEND_URL}/api/badges/demo`, {
+          wallet_address: address,
+          badge_type: method.badgeType,
+          zk_proof_hash: `${method.id}_proof_${Date.now()}`
+        });
+        
+        if (response.data.success) {
+          setTxHash(response.data.token_id); // Use token_id as "tx hash" for demo
+          setTimeout(() => {
+            window.location.href = '/dashboard';
+          }, 3000);
+        } else {
+          setError(response.data.message || 'Badge creation failed');
+        }
+        return;
+      }
+
+      // For real badges, mint on-chain
       await switchToPolygonAmoy();
 
       // User signs message to prove ownership

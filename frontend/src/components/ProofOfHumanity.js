@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useWallet } from './WalletContext';
 
-const BACKEND_URL = window.location.hostname === 'localhost' 
-  ? 'http://localhost:9000' 
-  : 'https://www.aurapass.xyz';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'http://159.65.134.137:9000');
 
 const GITHUB_CLIENT_ID = process.env.REACT_APP_GITHUB_CLIENT_ID || '';
 const TWITTER_CLIENT_ID = process.env.REACT_APP_TWITTER_CLIENT_ID || '';

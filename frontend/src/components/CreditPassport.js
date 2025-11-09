@@ -13,6 +13,8 @@ const CreditPassport = () => {
   const [badges, setBadges] = useState([]);
   const [loading, setLoading] = useState(true);
   const [creating, setCreating] = useState(false);
+  const [riskPrediction, setRiskPrediction] = useState(null);
+  const [loadingRisk, setLoadingRisk] = useState(false);
 
   useEffect(() => {
     if (isConnected && address) {
@@ -28,6 +30,7 @@ const CreditPassport = () => {
       const passportRes = await axios.get(`${API}/passport/${address}`);
       if (passportRes.data.success) {
         setPassport(passportRes.data.passport);
+        loadRiskPrediction();
       }
       const badgesRes = await axios.get(`${API}/badges/demo/${address}`);
       setBadges(badgesRes.data.badges || []);
@@ -36,6 +39,22 @@ const CreditPassport = () => {
       setPassport(null);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadRiskPrediction = async () => {
+    try {
+      setLoadingRisk(true);
+      const res = await axios.post(`${API}/oracle/risk-score`, {
+        wallet_address: address
+      });
+      if (res.data.success) {
+        setRiskPrediction(res.data.prediction);
+      }
+    } catch (error) {
+      console.error('Risk prediction error:', error);
+    } finally {
+      setLoadingRisk(false);
     }
   };
   
@@ -50,7 +69,10 @@ const CreditPassport = () => {
         return;
       }
       
-      const { poh_score, badge_count, credit_score } = scoreRes.data;
+      // Support both old and new format
+      const { user_data, credit_score, poh_score: poh_direct, badge_count: badge_direct } = scoreRes.data;
+      const poh_score = user_data?.poh_score || poh_direct || 0;
+      const badge_count = user_data?.badge_count || badge_direct || 0;
       
       // Confirm with user
       const confirmed = window.confirm(
@@ -348,6 +370,105 @@ const CreditPassport = () => {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* AI Risk Oracle */}
+          <div className="md:col-span-2 p-6 bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm rounded-2xl border border-purple-500/30" data-testid="ai-risk-oracle">
+            <h3 className="text-xl font-bold text-white mb-6 flex items-center">
+              <Activity className="w-6 h-6 mr-2 text-purple-400" />
+              AI Risk Oracle
+              <span className="ml-3 px-3 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full">FLAGSHIP FEATURE</span>
+            </h3>
+            {loadingRisk ? (
+              <div className="text-center py-8">
+                <Loader className="w-8 h-8 text-purple-400 mx-auto mb-2 animate-spin" />
+                <div className="text-gray-400">Analyzing risk factors...</div>
+              </div>
+            ) : riskPrediction ? (
+              <div className="grid md:grid-cols-3 gap-6">
+                {/* Risk Score */}
+                <div className="p-6 bg-slate-900/50 rounded-xl text-center">
+                  <div className="text-sm text-gray-400 mb-2">AI Risk Score</div>
+                  <div className={`text-5xl font-bold mb-2 ${
+                    riskPrediction.risk_level === 'low' ? 'text-green-400' :
+                    riskPrediction.risk_level === 'medium' ? 'text-yellow-400' :
+                    'text-red-400'
+                  }`}>
+                    {riskPrediction.risk_score}
+                  </div>
+                  <div className="text-xs text-gray-500">out of 100</div>
+                  <div className={`mt-3 px-3 py-1 rounded-full text-sm font-medium inline-block ${
+                    riskPrediction.risk_level === 'low' ? 'bg-green-500/20 text-green-300' :
+                    riskPrediction.risk_level === 'medium' ? 'bg-yellow-500/20 text-yellow-300' :
+                    'bg-red-500/20 text-red-300'
+                  }`}>
+                    {riskPrediction.risk_level.toUpperCase()} RISK
+                  </div>
+                </div>
+
+                {/* Trust Score */}
+                <div className="p-6 bg-slate-900/50 rounded-xl text-center">
+                  <div className="text-sm text-gray-400 mb-2">Trust Score</div>
+                  <div className="text-5xl font-bold text-blue-400 mb-2">
+                    {riskPrediction.trust_score}
+                  </div>
+                  <div className="text-xs text-gray-500">out of 100</div>
+                  <div className="mt-3">
+                    <div className="w-full bg-gray-700 rounded-full h-2">
+                      <div 
+                        className="bg-gradient-to-r from-blue-600 to-purple-600 h-2 rounded-full transition-all"
+                        style={{ width: `${riskPrediction.trust_score}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Confidence */}
+                <div className="p-6 bg-slate-900/50 rounded-xl text-center">
+                  <div className="text-sm text-gray-400 mb-2">Confidence</div>
+                  <div className="text-5xl font-bold text-purple-400 mb-2">
+                    {Math.round(riskPrediction.confidence * 100)}%
+                  </div>
+                  <div className="text-xs text-gray-500">prediction accuracy</div>
+                  <div className="mt-3 text-xs text-gray-400">
+                    Based on {Object.keys(riskPrediction.factors).length} risk factors
+                  </div>
+                </div>
+
+                {/* Risk Factors */}
+                {Object.keys(riskPrediction.factors).length > 0 && (
+                  <div className="md:col-span-3 p-4 bg-slate-900/30 rounded-xl">
+                    <div className="text-sm font-medium text-white mb-3">Risk Factors Detected:</div>
+                    <div className="space-y-2">
+                      {Object.entries(riskPrediction.factors).map(([key, factor]) => (
+                        <div key={key} className="flex items-start space-x-3 text-sm">
+                          <div className={`px-2 py-1 rounded text-xs font-medium ${
+                            factor.severity === 'high' ? 'bg-red-500/20 text-red-300' :
+                            factor.severity === 'medium' ? 'bg-yellow-500/20 text-yellow-300' :
+                            'bg-blue-500/20 text-blue-300'
+                          }`}>
+                            {factor.severity}
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-gray-300">{factor.description}</div>
+                            <div className="text-gray-500 text-xs mt-1">Impact: {factor.impact}%</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="text-center py-8">
+                <button
+                  onClick={loadRiskPrediction}
+                  className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all"
+                >
+                  Generate AI Risk Assessment
+                </button>
+              </div>
+            )}
           </div>
         </div>
 

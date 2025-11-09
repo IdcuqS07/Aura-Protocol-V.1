@@ -1,0 +1,32 @@
+🚀 MANUAL DEPLOYMENT - AI RISK ORACLE
+======================================
+
+✅ Frontend sudah di-build dan di-archive!
+File: frontend/build.tar.gz
+
+Jalankan command ini satu per satu:
+
+1. Upload ke VPS:
+   scp frontend/build.tar.gz root@103.127.132.132:/tmp/
+
+2. SSH ke VPS:
+   ssh root@103.127.132.132
+
+3. Di VPS, jalankan:
+   cd /var/www/aurapass.xyz
+   rm -rf *
+   tar xzf /tmp/build.tar.gz
+   chown -R www-data:www-data /var/www/aurapass.xyz
+   chmod -R 755 /var/www/aurapass.xyz
+   rm /tmp/build.tar.gz
+   nginx -t && systemctl reload nginx
+   exit
+
+4. Test:
+   Buka: https://www.aurapass.xyz/passport
+   - Connect wallet
+   - Scroll ke bawah
+   - Lihat section "AI Risk Oracle" dengan badge "FLAGSHIP FEATURE"
+   - Klik "Generate AI Risk Assessment"
+
+✅ DONE!

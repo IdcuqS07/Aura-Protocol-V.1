@@ -1,12 +1,714 @@
 INFO:     Will watch for changes in these directories: ['/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend']
 INFO:     Uvicorn running on http://0.0.0.0:9000 (Press CTRL+C to quit)
-INFO:     Started reloader process [28981] using StatReload
-INFO:     Started server process [28984]
+INFO:     Started reloader process [32663] using StatReload
+INFO:     Started server process [32667]
 INFO:     Waiting for application startup.
-2025-11-07 15:51:00,425 - blockchain - WARNING - Deployment file not found. Using default addresses.
+2025-11-08 19:07:19,741 - blockchain - WARNING - Deployment file not found. Using default addresses.
 INFO:     Application startup complete.
+INFO:     127.0.0.1:57525 - "GET /api/health HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57553 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57553 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57564 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57564 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57567 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 19:08:35,186 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:57567 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57574 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57589 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57589 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:09:04,137 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:57592 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 19:09:12,347 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:57597 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57669 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57669 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:09:47,841 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:57673 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57694 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57694 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57700 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57700 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:10:15,907 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:57700 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57706 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57706 - "OPTIONS /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57706 - "POST /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57712 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57712 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57718 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57718 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57718 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:10:32,457 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:57718 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 19:11:30,219 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:57733 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57738 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57738 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57738 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57738 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57748 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57757 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57757 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:12:25,967 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:57799 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57799 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57799 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57803 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57803 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57809 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57809 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:13:13,691 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:57828 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57828 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57832 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57832 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:13:25,617 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:57832 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57832 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57832 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57901 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57901 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57953 - "GET /api/health HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57955 - "GET / HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:57957 - "GET /api/passport/score/0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58013 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58013 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58097 - "GET /api/passport/score/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58126 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58126 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58128 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 19:26:49,761 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58128 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 19:27:10,086 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58142 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58149 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58149 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58172 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58184 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58194 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58194 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58211 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58211 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58211 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 19:31:56,231 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58211 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58219 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58219 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:32:37,365 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58229 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58231 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58231 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58233 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58233 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58238 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58238 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58400 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58400 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58405 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 19:38:42,266 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58405 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58405 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58405 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58409 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58409 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:38:48,151 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58409 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58413 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58413 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58420 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58420 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:39:42,354 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58449 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58451 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58451 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58454 - "OPTIONS /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58454 - "POST /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58454 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+2025-11-08 19:39:54,552 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58454 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58458 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58458 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58464 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58464 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58476 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58476 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:40:11,649 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58476 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58637 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 19:56:20,738 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58637 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58637 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58637 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58644 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58644 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:56:29,282 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58644 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58649 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58649 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58655 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58668 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58668 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 19:57:52,795 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58668 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58668 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58668 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58671 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58671 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58703 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58703 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58703 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58726 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58766 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58769 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58776 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58776 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58779 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58782 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58782 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58782 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58789 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58789 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58789 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:58791 - "OPTIONS /api/passport/create HTTP/1.1" 200 OK
+2025-11-08 19:59:11,738 - passport_routes - INFO - Passport created for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d with score 0
+INFO:     127.0.0.1:58791 - "POST /api/passport/create HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58791 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58791 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58803 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58803 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58809 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+2025-11-08 20:00:08,630 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:58816 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58819 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58819 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+2025-11-08 20:00:22,980 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:58822 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 20:01:33,377 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:58833 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58849 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58849 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+2025-11-08 20:03:09,502 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:58849 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58851 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58851 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+2025-11-08 20:03:14,753 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:58851 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58896 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58896 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 20:04:11,345 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:58899 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58902 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/passport/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59154 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59154 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/passport/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59154 - "OPTIONS /api/passport/create HTTP/1.1" 200 OK
+2025-11-08 20:13:12,675 - passport_routes - INFO - Passport created for 0x2afd1492d6da5a60853c408e9424c44796c5a723 with score 0
+INFO:     127.0.0.1:59154 - "POST /api/passport/create HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/passport/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/badges/demo/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+2025-11-08 20:13:16,009 - oracle_routes - INFO - Risk score predicted for 0x2afd1492d6da5a60853c408e9424c44796c5a723: 94.18
+INFO:     127.0.0.1:59154 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/passport/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/badges/demo/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/passport/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59154 - "GET /api/badges/demo/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+2025-11-08 20:13:26,859 - oracle_routes - INFO - Risk score predicted for 0x2afd1492d6da5a60853c408e9424c44796c5a723: 94.18
+INFO:     127.0.0.1:59154 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59167 - "GET /api/passport/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59167 - "GET /api/badges/demo/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+2025-11-08 20:14:01,596 - oracle_routes - INFO - Risk score predicted for 0x2afd1492d6da5a60853c408e9424c44796c5a723: 94.18
+INFO:     127.0.0.1:59167 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59168 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59168 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59194 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 20:15:23,141 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:59194 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59194 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59194 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+2025-11-08 20:15:25,453 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:59194 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59201 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59201 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59206 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+2025-11-08 20:15:34,709 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:59206 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59206 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59206 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59246 - "GET /api/passport/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59246 - "GET /api/badges/demo/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+2025-11-08 20:17:02,165 - oracle_routes - INFO - Risk score predicted for 0x2afd1492d6da5a60853c408e9424c44796c5a723: 94.18
+INFO:     127.0.0.1:59246 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59246 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59246 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59393 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59393 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59395 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 20:25:59,750 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:59395 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59403 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59403 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59603 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59603 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+2025-11-08 20:32:30,993 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:59605 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60396 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60396 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60396 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 21:03:55,871 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:60396 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60401 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60401 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60710 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60710 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:60710 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60894 - "GET /api/passport/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60894 - "GET /api/badges/demo/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60895 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 21:45:55,984 - oracle_routes - INFO - Risk score predicted for 0x2afd1492d6da5a60853c408e9424c44796c5a723: 94.18
+INFO:     127.0.0.1:60895 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60896 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60896 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61133 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61133 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61133 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61142 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61149 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61153 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61696 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61696 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61696 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61696 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61709 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61709 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61750 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61750 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61750 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 22:20:19,069 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:61750 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61750 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61750 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61755 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61759 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61759 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+2025-11-08 22:20:33,933 - oracle_routes - INFO - Risk score predicted for 0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d: 94.18
+INFO:     127.0.0.1:61759 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61759 - "GET /api/passport/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61759 - "GET /api/badges/demo/0xa94d9728f3e25c5bfd4c0fc372eca4e631cae55d HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61761 - "GET /api/analytics HTTP/1.1" 200 OK
+2025-11-08 22:21:22,853 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:61847 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 22:21:27,495 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:61847 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61899 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61899 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61899 - "POST /api/oracle/risk-score HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61902 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61902 - "OPTIONS /api/passport/create HTTP/1.1" 200 OK
+2025-11-08 22:25:10,305 - passport_routes - INFO - Passport created for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 with score 0
+INFO:     127.0.0.1:61902 - "POST /api/passport/create HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61902 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61902 - "GET /api/badges/demo/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61908 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61908 - "GET /api/badges/demo/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61910 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61910 - "GET /api/badges/demo/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+2025-11-08 22:25:20,747 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:61910 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61913 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61915 - "GET /api/analytics HTTP/1.1" 200 OK
+2025-11-08 22:27:11,996 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:61932 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62175 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 22:46:00,920 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:62175 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62175 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62180 - "GET /api/analytics HTTP/1.1" 200 OK
+2025-11-08 22:46:07,678 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:62180 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62180 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62180 - "GET /api/badges/demo/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62247 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62247 - "GET /api/badges/demo/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62247 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 22:50:59,520 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:62247 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62273 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 22:52:05,974 - oracle_routes - INFO - Risk score predicted for 0x306bc2dbe58e36e071a993e485b4a9cb6d3d86eb: 92.18
+INFO:     127.0.0.1:62273 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62273 - "GET /api/passport/0x306bc2dbe58e36e071a993e485b4a9cb6d3d86eb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62273 - "GET /api/badges/demo/0x306bc2dbe58e36e071a993e485b4a9cb6d3d86eb HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62279 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62282 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62389 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62389 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62391 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-08 22:59:45,271 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:62391 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63021 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:05:55,919 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:63021 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63030 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63030 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63034 - "GET /api/badges/demo/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63034 - "GET /api/badges/demo/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+2025-11-09 01:05:59,339 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:63033 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:05:59,341 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:63030 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:06:03,900 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:63042 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:06:03,900 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:63043 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63049 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63049 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63049 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63049 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63107 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63107 - "GET /api/badges/demo/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63110 - "GET /api/passport/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63110 - "GET /api/badges/demo/0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63110 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:06:54,761 - oracle_routes - INFO - Risk score predicted for 0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266: 94.18
+INFO:     127.0.0.1:63110 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63142 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63142 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63142 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63144 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63144 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:07:40,787 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63142 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:07:40,789 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63147 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:07:43,014 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63147 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:07:43,015 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63142 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:07:50,467 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63169 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:07:50,469 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63168 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63168 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63168 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63178 - "OPTIONS /api/badges/demo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63178 - "POST /api/badges/demo HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63199 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63199 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63199 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63207 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63207 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:08:12,730 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63206 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:08:12,741 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63199 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:08:33,691 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63221 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:08:33,696 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63220 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63309 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63309 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63309 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63309 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63368 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63368 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63368 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:14:24,300 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63368 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63375 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63375 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+2025-11-09 01:14:35,336 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63382 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:14:35,339 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63383 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63390 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63390 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63395 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63395 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:14:40,872 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63390 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:14:40,872 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63394 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63398 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63398 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:14:52,261 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63398 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63400 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63400 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:15:23,858 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63411 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:15:23,867 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63410 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63417 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63417 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63421 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63421 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:15:29,524 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63420 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:15:29,527 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63417 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:15:42,946 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63427 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:15:42,947 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63426 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:18:00,207 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63480 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63480 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63480 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63483 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63483 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63488 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63488 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63491 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63488 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63492 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:18:18,946 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63494 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:18:18,947 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63491 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:19:41,761 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63531 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:19:41,763 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63532 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:20:49,985 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63665 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63665 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63665 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63795 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63795 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63799 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63799 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:23:55,236 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63795 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:23:55,237 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63798 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63835 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63835 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63842 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63842 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63846 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63846 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:27:28,021 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63845 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:27:28,022 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63842 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:27:32,746 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63852 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:27:32,747 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63853 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63859 - "OPTIONS /api/poh/enroll HTTP/1.1" 200 OK
+2025-11-09 01:27:41,088 - httpx - INFO - HTTP Request: POST https://polygon-amoy.g.alchemy.com/v2/zsi543hMtnSrWUHEELNgR "HTTP/1.1 200 OK"
+2025-11-09 01:27:41,329 - httpx - INFO - HTTP Request: POST https://polygon-amoy.g.alchemy.com/v2/zsi543hMtnSrWUHEELNgR "HTTP/1.1 200 OK"
+2025-11-09 01:27:41,887 - httpx - INFO - HTTP Request: POST https://polygon-amoy.g.alchemy.com/v2/zsi543hMtnSrWUHEELNgR "HTTP/1.1 200 OK"
+2025-11-09 01:27:41,892 - poh_routes - INFO - User 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f enrolled with score 0
+INFO:     127.0.0.1:63859 - "POST /api/poh/enroll HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63995 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:34:03,215 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:63995 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63995 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63995 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:34:10,388 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:64002 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:34:15,587 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:64007 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64009 - "GET /api/passport/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64009 - "GET /api/badges/demo/0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f HTTP/1.1" 200 OK
+2025-11-09 01:34:30,872 - oracle_routes - INFO - Risk score predicted for 0xeaad95a8403d9e4f14ef8c55680a4fbc0af21a4f: 82.18
+INFO:     127.0.0.1:64013 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64149 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64149 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64153 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 01:44:52,171 - oracle_routes - INFO - Risk score predicted for 0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974: 71.38
+INFO:     127.0.0.1:64153 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64153 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64153 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64159 - "GET /api/passport/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64159 - "GET /api/badges/demo/0xc3ece9ac328cb232ddb0bc677d2e980a1a3d3974 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65332 - "GET /api/passport/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65332 - "GET /api/passport/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65332 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:65335 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:65341 - "GET /api/passport/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65341 - "GET /api/passport/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65341 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:65343 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:65347 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65347 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65347 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65347 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65511 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65511 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65511 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65511 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65523 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:65524 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:65524 - "GET /api/passport/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65524 - "GET /api/passport/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:65524 - "GET /api/passport/score/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49178 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:49178 - "OPTIONS /api/passport/create HTTP/1.1" 200 OK
+2025-11-09 03:05:23,210 - passport_routes - INFO - Passport created for 0x064ca028a69cc582ccaf000ad6789edaad540f87 with score 0
+INFO:     127.0.0.1:49178 - "POST /api/passport/create HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49178 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49178 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49180 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 03:05:36,520 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:49180 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49182 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+2025-11-09 03:05:47,402 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:49182 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49182 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49182 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49194 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49194 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+2025-11-09 03:07:13,693 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:49194 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49198 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49198 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50311 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50311 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50314 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 09:42:15,553 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:50314 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50322 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50393 - "GET /api/passport/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50393 - "GET /api/passport/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50393 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50396 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50408 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50409 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:50409 - "GET /api/passport/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50409 - "GET /api/passport/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50409 - "GET /api/passport/score/0xf4f79b2c3f97f10d623b9c1008ef144d27dbf830 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50430 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50430 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+2025-11-09 09:44:03,688 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:50451 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 09:44:11,440 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:50457 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50461 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50461 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+2025-11-09 09:44:30,694 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:50468 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50471 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50473 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50539 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50539 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+2025-11-09 09:49:46,019 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:50539 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50606 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50608 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50696 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50734 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 09:56:51,915 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:50734 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50748 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50748 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50765 - "GET /api/passport/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50765 - "GET /api/badges/demo/0x2afd1492d6da5a60853c408e9424c44796c5a723 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50765 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 09:57:50,898 - oracle_routes - INFO - Risk score predicted for 0x2afd1492d6da5a60853c408e9424c44796c5a723: 94.18
+INFO:     127.0.0.1:50765 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50768 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50768 - "OPTIONS /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50768 - "POST /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50768 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50768 - "POST /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50771 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50772 - "POST /api/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50772 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+2025-11-09 09:58:25,965 - oracle_routes - INFO - Risk score predicted for 0x2afd1492d6da5a60853c408e9424c44796c5a723: 94.18
+INFO:     127.0.0.1:50773 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 09:58:32,723 - oracle_routes - INFO - Risk score predicted for 0x2afd1492d6da5a60853c408e9424c44796c5a723: 94.18
+INFO:     127.0.0.1:50774 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50786 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50786 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+2025-11-09 09:59:03,269 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:50786 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50843 - "OPTIONS /api/oracle/risk-score HTTP/1.1" 200 OK
+2025-11-09 09:59:33,131 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:50843 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50850 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50850 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50854 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50854 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+2025-11-09 09:59:43,622 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 94.18
+INFO:     127.0.0.1:50854 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50857 - "GET /api/admin/api-keys HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50893 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50893 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50905 - "OPTIONS /api/badges/mint HTTP/1.1" 200 OK
+2025-11-09 10:00:27,284 - server - INFO - Mint request for 0x064ca028a69cc582ccaf000ad6789edaad540f87
+2025-11-09 10:00:27,358 - server - INFO - Recovered address: 0x064CA028A69CC582cCAf000ad6789EdaaD540F87
+2025-11-09 10:00:27,359 - server - INFO - Signature verified, minting...
+2025-11-09 10:00:31,240 - blockchain - INFO - Badge minted successfully. TX: 92596d479482bfdccfa547a787422526e5fd7f3225fd3ae9e1e47d8291c9cba8, Gas: 0.007197715 MATIC
+2025-11-09 10:00:31,241 - server - INFO - Mint result: {'tx_hash': '92596d479482bfdccfa547a787422526e5fd7f3225fd3ae9e1e47d8291c9cba8', 'gas_used': 205649, 'gas_fee': '0.007197715'}
+INFO:     127.0.0.1:50905 - "POST /api/badges/mint HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50916 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+2025-11-09 10:00:38,247 - oracle_routes - INFO - Risk score predicted for 0x064ca028a69cc582ccaf000ad6789edaad540f87: 92.18
+INFO:     127.0.0.1:50916 - "POST /api/oracle/risk-score HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50937 - "GET /api/passport/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50937 - "GET /api/badges/demo/0x064ca028a69cc582ccaf000ad6789edaad540f87 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51020 - "GET /api/analytics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51020 - "GET /api/analytics HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'twitter_service.py'. Reloading...
 INFO:     Shutting down
 INFO:     Waiting for application shutdown.
 INFO:     Application shutdown complete.
-INFO:     Finished server process [28984]
-INFO:     Stopping reloader process [28981]
+INFO:     Finished server process [32667]
+Process SpawnProcess-2:
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/_subprocess.py", line 76, in subprocess_started
+    target(sockets=sockets)
+    ~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/server.py", line 61, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/server.py", line 68, in serve
+    config.load()
+    ~~~~~~~~~~~^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/config.py", line 467, in load
+    self.loaded_app = import_from_string(self.app)
+                      ~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/venv/lib/python3.13/site-packages/uvicorn/importer.py", line 21, in import_from_string
+    module = importlib.import_module(module_str)
+  File "/opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/lib/python3.13/importlib/__init__.py", line 88, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1387, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1331, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 935, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 1026, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/server.py", line 17, in <module>
+    from poh_routes import router as poh_router
+  File "/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/poh_routes.py", line 16, in <module>
+    from twitter_service import exchange_code_for_token as twitter_exchange, get_twitter_data
+ImportError: cannot import name 'exchange_code_for_token' from 'twitter_service' (/Users/idcuq/Documents/Akindo/Aura Protocol/Aura-Protocol-V.1-main/backend/twitter_service.py)

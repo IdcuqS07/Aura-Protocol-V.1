@@ -1,6 +1,7 @@
 # Aura Protocol V.1
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://www.aurapass.xyz/)
+[![Live App](https://img.shields.io/badge/app-live-success)](https://www.aurapass.xyz/)
+[![On-Chain](https://img.shields.io/badge/on--chain-Polygon%20Amoy-8247E5)](https://amoy.polygonscan.com/)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 Universal Trust in a Trustless World - Polygon ZK-ID Credit Layer
@@ -9,14 +10,18 @@ Universal Trust in a Trustless World - Polygon ZK-ID Credit Layer
 
 Aura Protocol is a decentralized credibility layer that builds **ZK Credit Passports** — on-chain financial identities that verify reputation without revealing personal data.
 
-**Live Demo**: [https://www.aurapass.xyz/](https://www.aurapass.xyz/)
+**🔗 REAL ON-CHAIN DEPLOYMENT** on Polygon Amoy Testnet
+
+**Live Application**: [https://www.aurapass.xyz/](https://www.aurapass.xyz/)
 
 ## ✨ Wave 2 Features (Latest)
 
-- ✅ **Soulbound NFT**: Non-transferable ZK-ID badges
+- ✅ **Soulbound NFT**: Non-transferable ZK-ID badges (ON-CHAIN)
+- ✅ **Credit Passport NFT**: Dynamic on-chain credit scores (ON-CHAIN)
+- ✅ **AI Risk Oracle**: ML-powered risk assessment (FLAGSHIP)
 - ✅ **Proof-as-a-Service API**: Generate and verify ZK proofs
-- ✅ **Premium Features**: Tiered pricing with API key management
-- ✅ **ProofRegistry Contract**: On-chain proof verification
+- ✅ **Smart Contracts Deployed**: Real contracts on Polygon Amoy
+- ✅ **The Graph Integration**: DeFi history indexing
 - ✅ **API Key Authentication**: Secure access with rate limiting
 
 ## 🛠️ Tech Stack
@@ -148,15 +153,27 @@ curl -X POST https://api.auraprotocol.com/proof/generate \
   -d '{"user_id": "user_123"}'
 ```
 
-**Demo API Keys:**
+**Test API Keys** (for development):
 - `demo_key_12345` - 100 requests/day
 - `premium_key_67890` - 1000 requests/day
 
-## 🧪 Smart Contracts
+**Note**: These are test keys. Production keys can be generated via the dashboard.
 
-### Deployed Contracts
-- **SimpleZKBadge**: Soulbound NFT for ZK-ID badges
-- **ProofRegistry**: On-chain proof verification
+## 🧪 Smart Contracts (DEPLOYED ON-CHAIN)
+
+### Deployed Contracts on Polygon Amoy Testnet
+- **SimpleZKBadge**: `0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678`
+  - Soulbound NFT for ZK-ID badges
+  - [View on PolygonScan](https://amoy.polygonscan.com/address/0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678)
+
+- **CreditPassport**: `0x1112373c9954B9bbFd91eb21175699b609A1b551`
+  - Dynamic credit score NFT (0-1000)
+  - User mint functionality
+  - [View on PolygonScan](https://amoy.polygonscan.com/address/0x1112373c9954B9bbFd91eb21175699b609A1b551)
+
+- **ProofRegistry**: `0x296DB144E62C8C826bffA4503Dc9Fbf29F25D44B`
+  - On-chain proof verification
+  - [View on PolygonScan](https://amoy.polygonscan.com/address/0x296DB144E62C8C826bffA4503Dc9Fbf29F25D44B)
 
 ### Testing
 ```bash
@@ -191,8 +208,11 @@ MIT License - see [LICENSE](LICENSE) for details
 
 ## 🔗 Links
 
-- **Live Demo**: https://www.aurapass.xyz/
+- **Live Application**: https://www.aurapass.xyz/
 - **GitHub**: https://github.com/IdcuqS07/Aura-Protocol-V.1
+- **Polygon Amoy Explorer**: https://amoy.polygonscan.com/
+- **SimpleZKBadge Contract**: https://amoy.polygonscan.com/address/0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678
+- **CreditPassport Contract**: https://amoy.polygonscan.com/address/0x1112373c9954B9bbFd91eb21175699b609A1b551
 - **Testnet Guide**: [/testnet](https://www.aurapass.xyz/testnet)
 
 ---

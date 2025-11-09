@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Brain, TrendingDown, Shield, AlertTriangle, CheckCircle } from 'lucide-react';
 import { useWallet } from './WalletContext';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:9000';
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://159.65.134.137:9000';
 
 const RiskOracle = () => {
   const { address, isConnected } = useWallet();

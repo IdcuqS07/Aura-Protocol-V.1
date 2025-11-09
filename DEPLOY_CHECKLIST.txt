@@ -1,0 +1,220 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║                    🚀 AURA PROTOCOL DEPLOYMENT CHECKLIST                     ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 1: SETUP OAUTH CREDENTIALS (5 min)                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+GitHub OAuth:
+  [ ] Go to https://github.com/settings/developers
+  [ ] Create new OAuth App
+  [ ] Set callback: https://www.aurapass.xyz/api/poh/callback
+  [ ] Copy Client ID
+  [ ] Copy Client Secret
+
+Alchemy API:
+  [ ] Go to https://www.alchemy.com/
+  [ ] Create app on Polygon Amoy
+  [ ] Copy API Key
+
+Update .env:
+  [ ] cd backend
+  [ ] nano .env
+  [ ] Paste GitHub Client ID
+  [ ] Paste GitHub Client Secret
+  [ ] Paste Alchemy API Key
+  [ ] Save file (Ctrl+O, Enter, Ctrl+X)
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 2: BUILD FRONTEND (5 min)                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  [ ] cd frontend
+  [ ] yarn install (if needed)
+  [ ] yarn build
+  [ ] cd build
+  [ ] tar -czf ../build.tar.gz .
+  [ ] cd ..
+  [ ] Verify: ls -lh build.tar.gz
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 3: UPLOAD TO VPS (2 min)                                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  [ ] scp frontend/build.tar.gz root@103.127.132.132:/tmp/
+  [ ] Enter password when prompted
+  [ ] Wait for upload to complete
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 4: DEPLOY ON VPS (10 min)                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+SSH to VPS:
+  [ ] ssh root@103.127.132.132
+
+Update Backend:
+  [ ] cd /root/Aura-Protocol-V.1-main
+  [ ] git pull origin main
+  [ ] nano backend/.env
+  [ ] Paste same credentials as local
+  [ ] Save (Ctrl+O, Enter, Ctrl+X)
+  [ ] systemctl restart aura-backend
+  [ ] systemctl status aura-backend (check running)
+
+Deploy Frontend:
+  [ ] cd /var/www/aurapass.xyz
+  [ ] rm -rf *
+  [ ] tar -xzf /tmp/build.tar.gz
+  [ ] chown -R www-data:www-data .
+  [ ] chmod -R 755 .
+  [ ] nginx -t (check config)
+  [ ] systemctl reload nginx
+
+Cleanup:
+  [ ] rm -f /tmp/build.tar.gz
+  [ ] exit (leave VPS)
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 5: VERIFY DEPLOYMENT (5 min)                                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+Test Backend:
+  [ ] curl https://www.aurapass.xyz/api/
+  [ ] curl https://www.aurapass.xyz/api/analytics
+  [ ] curl https://www.aurapass.xyz/api/oracle/stats
+
+Test Frontend:
+  [ ] open https://www.aurapass.xyz/
+  [ ] Site loads without errors
+  [ ] Navigation works
+  [ ] Connect wallet button visible
+
+Manual Testing:
+  [ ] Connect MetaMask wallet
+  [ ] See wallet address in header
+  [ ] Go to "Get Started"
+  [ ] Try minting a badge
+  [ ] Go to "Credit Passport"
+  [ ] Check AI Risk Oracle section
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 6: MONITORING SETUP (5 min)                                            │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  [ ] ssh root@103.127.132.132
+  [ ] tail -f /root/Aura-Protocol-V.1-main/backend/backend.log
+  [ ] Check for errors
+  [ ] Open new terminal
+  [ ] tail -f /var/log/nginx/access.log
+  [ ] Watch for incoming requests
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 7: INVITE BETA TESTERS (Ongoing)                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+Prepare:
+  [ ] Create Google Form for feedback
+  [ ] Setup Discord/Telegram support channel
+  [ ] Prepare announcement message
+
+Invite:
+  [ ] Post on Twitter/X
+  [ ] Share in Discord communities
+  [ ] Share in Telegram groups
+  [ ] Send to friends/network
+  [ ] Post on Reddit (r/ethereum, r/polygon)
+
+Target: 10-20 beta testers in Week 1
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+Backend not starting:
+  [ ] ssh root@103.127.132.132
+  [ ] systemctl status aura-backend
+  [ ] journalctl -u aura-backend -n 50
+  [ ] Check .env file has correct credentials
+
+Frontend not loading:
+  [ ] ssh root@103.127.132.132
+  [ ] ls -la /var/www/aurapass.xyz/
+  [ ] nginx -t
+  [ ] tail -f /var/log/nginx/error.log
+
+OAuth not working:
+  [ ] Check callback URL in GitHub app
+  [ ] Verify credentials in backend/.env
+  [ ] systemctl restart aura-backend
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ SUCCESS METRICS - WEEK 1                                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+  [ ] 10+ users connected wallet
+  [ ] 5+ badges minted
+  [ ] 3+ passports created
+  [ ] 1+ AI assessment generated
+  [ ] 0 critical bugs
+  [ ] Feedback collected from 5+ users
+
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ DAILY MONITORING COMMANDS                                                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+Check user activity:
+  mongo aura_protocol --eval "db.badges.count()"
+  mongo aura_protocol --eval "db.passports.count()"
+  mongo aura_protocol --eval "db.enrollments.count()"
+
+Check recent activity:
+  mongo aura_protocol --eval "db.badges.find().sort({created_at:-1}).limit(5)"
+
+Check services:
+  systemctl status aura-backend
+  systemctl status nginx
+  systemctl status mongodb
+
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║                         ✅ DEPLOYMENT COMPLETE!                              ║
+║                                                                              ║
+║                    🌐 https://www.aurapass.xyz/                              ║
+║                                                                              ║
+║                         Ready for User Testing! 🚀                           ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+QUICK REFERENCE:
+
+VPS Access:     ssh root@103.127.132.132
+Frontend URL:   https://www.aurapass.xyz/
+Backend API:    https://www.aurapass.xyz/api/
+Backend Logs:   tail -f /root/Aura-Protocol-V.1-main/backend/backend.log
+Nginx Logs:     tail -f /var/log/nginx/access.log
+Database:       mongo aura_protocol
+
+Restart Backend:  systemctl restart aura-backend
+Restart Nginx:    systemctl reload nginx
+Check Status:     systemctl status aura-backend
+
+
+ESTIMATED TIME: 30 minutes total
+DIFFICULTY: Easy (all automated)
+
+Good luck! 🎉

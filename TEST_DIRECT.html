@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Direct - Bypass Cloudflare</title>
+</head>
+<body>
+    <h1>Cara Test Tanpa Cloudflare Cache:</h1>
+    
+    <h2>Option 1: Edit hosts file (RECOMMENDED)</h2>
+    <pre>
+# Mac/Linux - Edit /etc/hosts
+sudo nano /etc/hosts
+
+# Tambahkan baris ini:
+159.65.134.137 www.aurapass.xyz
+
+# Save (Ctrl+O, Enter, Ctrl+X)
+# Flush DNS:
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+
+# Sekarang buka: http://www.aurapass.xyz
+# (akan langsung ke VPS, bypass Cloudflare)
+    </pre>
+
+    <h2>Option 2: Purge Cloudflare Cache</h2>
+    <ol>
+        <li>Login: <a href="https://dash.cloudflare.com">https://dash.cloudflare.com</a></li>
+        <li>Pilih domain: aurapass.xyz</li>
+        <li>Klik: Caching → Configuration</li>
+        <li>Klik: "Purge Everything"</li>
+        <li>Tunggu 30 detik</li>
+        <li>Hard refresh browser: Cmd+Shift+R</li>
+    </ol>
+
+    <h2>Option 3: Development Mode (Temporary)</h2>
+    <ol>
+        <li>Cloudflare dashboard → Caching</li>
+        <li>Enable "Development Mode" (3 jam bypass cache)</li>
+        <li>Refresh browser</li>
+    </ol>
+
+    <h2>Verifikasi File Baru:</h2>
+    <pre>
+# Check file yang di-serve:
+curl -s https://www.aurapass.xyz/ | grep -o "main\.[a-z0-9]*\.js"
+
+# Seharusnya: main.049a5338.js (NEW)
+# Jika masih: main.a78dda41.js atau main.b610ff65.js (OLD - cached)
+    </pre>
+
+    <h2>Status Deployment:</h2>
+    <ul>
+        <li>✅ VPS: main.049a5338.js (DEPLOYED)</li>
+        <li>❌ Cloudflare: Serving old cached file</li>
+        <li>✅ Backend: Working</li>
+        <li>✅ Fix: poh_score & badge_count extraction fixed</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,16 @@
+[Unit]
+Description=Aura Protocol Backend API
+After=network.target mongodb.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/var/www/Aura-Protocol-V.1/backend
+EnvironmentFile=/var/www/Aura-Protocol-V.1/backend/.env
+Environment="PATH=/var/www/Aura-Protocol-V.1/backend/venv/bin"
+ExecStart=/var/www/Aura-Protocol-V.1/backend/venv/bin/uvicorn server:app --host 0.0.0.0 --port 9001
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
