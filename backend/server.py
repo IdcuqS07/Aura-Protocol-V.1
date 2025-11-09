@@ -104,8 +104,18 @@ class AnalyticsData(BaseModel):
 
 # ============ ROUTES ============
 
-@api_router.get("/")
+@app.get("/")
 async def root():
+    return {
+        "message": "Aura Protocol API",
+        "version": "1.0.0",
+        "description": "Polygon ZK-ID Credit Layer",
+        "status": "operational",
+        "docs": "/docs"
+    }
+
+@api_router.get("/")
+async def api_root():
     return {
         "message": "Aura Protocol API",
         "version": "1.0.0",

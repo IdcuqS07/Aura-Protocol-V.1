@@ -1,6 +1,0 @@
-yarn run v1.22.22
-$ craco start
-(node:28513) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
-(Use `node --trace-deprecation ...` to show where the warning was created)
-Something is already running on port 3000.
-Done in 1.67s.
