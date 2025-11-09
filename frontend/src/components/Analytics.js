@@ -11,6 +11,9 @@ const Analytics = () => {
 
   useEffect(() => {
     loadAnalytics();
+    // Auto-refresh every 30 seconds
+    const interval = setInterval(loadAnalytics, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   const loadAnalytics = async () => {
