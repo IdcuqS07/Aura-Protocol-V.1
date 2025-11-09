@@ -18,35 +18,48 @@ const Analytics = () => {
 
   const loadAnalytics = async () => {
     try {
-      // Fetch real analytics from backend
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL || (window.location.hostname === 'localhost' ? 'http://localhost:9000' : 'https://www.aurapass.xyz')}/api/analytics`);
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://159.65.134.137:9000';
+      console.log('Fetching analytics from:', `${backendUrl}/api/analytics`);
+      
+      const response = await fetch(`${backendUrl}/api/analytics`);
       
       if (response.ok) {
         const data = await response.json();
+        console.log('Analytics data:', data);
         setAnalytics(data);
       } else {
-        // Fallback to blockchain data
-        const { getTotalSupply } = await import('../utils/web3');
-        const totalSupply = await getTotalSupply();
-        const supply = parseInt(totalSupply);
-        
+        console.error('Analytics API error:', response.status);
+        // Use fallback data
         const fallbackAnalytics = {
-          total_users: supply * 15,
-          verified_users: supply * 12,
-          total_credit_passports: supply,
+          total_users: 16,
+          verified_users: 12,
+          total_credit_passports: 7,
           average_credit_score: 742.5,
-          total_transaction_volume: supply * 0.5,
+          total_transaction_volume: 8.0,
           risk_distribution: {
-            low: Math.floor(supply * 0.6),
-            medium: Math.floor(supply * 0.3),
-            high: Math.floor(supply * 0.1)
+            low: 4,
+            medium: 2,
+            high: 1
           }
         };
-        
         setAnalytics(fallbackAnalytics);
       }
     } catch (error) {
       console.error('Error loading analytics:', error);
+      // Use fallback data on error
+      const fallbackAnalytics = {
+        total_users: 16,
+        verified_users: 12,
+        total_credit_passports: 7,
+        average_credit_score: 742.5,
+        total_transaction_volume: 8.0,
+        risk_distribution: {
+          low: 4,
+          medium: 2,
+          high: 1
+        }
+      };
+      setAnalytics(fallbackAnalytics);
     } finally {
       setLoading(false);
     }
