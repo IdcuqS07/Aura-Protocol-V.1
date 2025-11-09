@@ -1,151 +1,86 @@
-# 🚀 Quick Deploy Guide
+# Quick Deployment Guide
 
-## ⚡ One-Command Deploy
+## 🖥️ LOCAL DEVELOPMENT (Mac)
 
 ```bash
-# SSH to VPS and run this:
-cd /root/Aura-Protocol-V.1-main && \
-git pull origin main && \
-cd frontend && \
-yarn install && \
-yarn build && \
-pm2 restart all && \
-echo "✅ Deployment complete!"
+# Start frontend (connects to production backend)
+cd /Users/idcuq/Documents/Akindo/Aura\ Protocol/Aura-Protocol-V.1-main/frontend
+yarn start
+# Opens http://localhost:3000
 ```
 
-## 📋 Step-by-Step (If Above Fails)
+## 🚀 VPS DEPLOYMENT
 
-### 1. SSH to VPS
+### Backend Update
 ```bash
+# SSH to VPS
 ssh root@159.65.134.137
+
+# Navigate to project
+cd /root/Aura-Protocol-V.1-main/backend
+
+# Pull latest code
+git pull
+
+# Restart backend
+pm2 restart aura-backend
+
+# Verify
+curl http://159.65.134.137:9000/
 ```
 
-### 2. Navigate to Project
+### Frontend Update
 ```bash
-cd /root/Aura-Protocol-V.1-main
-```
-
-### 3. Pull Latest Changes
-```bash
-git pull origin main
-```
-
-### 4. Build Frontend
-```bash
-cd frontend
-yarn install
+# On Mac - Build frontend
+cd /Users/idcuq/Documents/Akindo/Aura\ Protocol/Aura-Protocol-V.1-main/frontend
 yarn build
+tar czf build.tar.gz build/
+
+# Upload to VPS
+scp build.tar.gz root@159.65.134.137:/tmp/
+
+# On VPS - Deploy
+ssh root@159.65.134.137
+cd /var/www/aurapass.xyz
+rm -rf *
+tar xzf /tmp/build.tar.gz
+mv build/* .
+rmdir build
+chown -R www-data:www-data /var/www/aurapass.xyz
+chmod -R 755 /var/www/aurapass.xyz
+nginx -t && systemctl reload nginx
 ```
 
-### 5. Restart Services
+## 📊 SYSTEM STATUS
+
+**Production URLs:**
+- Frontend: https://www.aurapass.xyz
+- Backend: http://159.65.134.137:9000
+- API Docs: http://159.65.134.137:9000/docs
+
+**Smart Contracts (Polygon Amoy):**
+- SimpleZKBadge: `0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678`
+- CreditPassport: `0x1112373c9954B9bbFd91eb21175699b609A1b551`
+- ProofRegistry: `0x296DB144E62C8C826bffA4503Dc9Fbf29F25D44B`
+
+## 🔍 MONITORING
+
 ```bash
-# Option A: PM2
-pm2 restart all
-
-# Option B: Nginx
-sudo systemctl restart nginx
-
-# Option C: Both
-pm2 restart all && sudo systemctl restart nginx
-```
-
-## ✅ Verify Deployment
-
-1. Visit: https://www.aurapass.xyz
-2. Press F12 (open console)
-3. Check Network tab
-4. Verify API calls go to: `http://159.65.134.137:9000`
-
-## 🔧 Troubleshooting
-
-### Build Fails
-```bash
-# Clear cache and rebuild
-cd frontend
-rm -rf node_modules
-rm -rf build
-yarn install
-yarn build
-```
-
-### Services Not Starting
-```bash
-# Check PM2 status
+# Check backend status
 pm2 status
-pm2 logs
+pm2 logs aura-backend
 
-# Restart specific service
-pm2 restart backend
-pm2 restart frontend
+# Check MongoDB
+systemctl status mongod
+
+# Check Nginx
+systemctl status nginx
+nginx -t
+
+# Test API
+curl http://159.65.134.137:9000/api/analytics
 ```
 
-### Port Already in Use
-```bash
-# Find process using port 9000
-lsof -i :9000
+## ✅ GELOMBANG 2 - 100% COMPLETE
 
-# Kill process
-kill -9 <PID>
-
-# Restart service
-pm2 restart backend
-```
-
-## 📊 Quick Checks
-
-### Backend Health
-```bash
-curl http://159.65.134.137:9000/api/health
-```
-
-### Frontend Build Size
-```bash
-cd frontend/build
-du -sh .
-```
-
-### PM2 Status
-```bash
-pm2 status
-pm2 logs --lines 50
-```
-
-## 🔗 Important URLs
-
-- **Frontend**: https://www.aurapass.xyz
-- **Backend**: http://159.65.134.137:9000
-- **Backend Health**: http://159.65.134.137:9000/api/health
-- **PolygonScan**: https://amoy.polygonscan.com
-
-## 📝 Files Changed (This Update)
-
-1. `frontend/.env` - Backend URL updated
-2. `frontend/src/config/api.js` - New config file
-3. `frontend/src/components/RiskOracle.js` - Fallback fixed
-4. `frontend/src/components/ProofOfHumanity.js` - Fallback fixed
-
-## 🎯 What Was Fixed
-
-- ✅ Removed localhost hardcoding
-- ✅ Added production backend URL to `.env`
-- ✅ Created centralized API config
-- ✅ Updated component fallbacks
-
-## ⚠️ Common Mistakes to Avoid
-
-1. ❌ Don't forget to run `yarn build` after changes
-2. ❌ Don't forget to restart services
-3. ❌ Don't commit `.env` file
-4. ❌ Don't test only on localhost
-
-## 💡 Pro Tips
-
-- Always test `yarn build` locally first
-- Check browser console after deploy
-- Monitor PM2 logs: `pm2 logs --lines 100`
-- Keep `.env` file backed up separately
-
----
-
-**Last Updated**: January 2025
-**Status**: ✅ Ready to deploy
+All 5 phases deployed and operational! 🎉
