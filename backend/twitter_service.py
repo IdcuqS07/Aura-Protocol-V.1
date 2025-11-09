@@ -40,3 +40,18 @@ async def verify_twitter_username(username: str) -> dict:
             "score": int(age_score + follower_score + tweet_score),
             "verified": True
         }
+
+async def exchange_code_for_token(code: str, redirect_uri: str) -> dict:
+    """Exchange OAuth code for access token"""
+    return {"access_token": "mock_token", "token_type": "bearer"}
+
+async def get_twitter_data(access_token: str) -> dict:
+    """Get Twitter user data from access token"""
+    return {
+        "username": "mock_user",
+        "account_age_days": 365,
+        "followers": 100,
+        "tweets": 500,
+        "score": 15,
+        "verified": True
+    }
