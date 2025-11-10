@@ -45,6 +45,14 @@ class IssueRequest(BaseModel):
 
 # ============ ROUTES ============
 
+@router.get("/")
+async def poh_root():
+    """PoH API root endpoint"""
+    return {
+        "message": "Proof of Humanity API",
+        "endpoints": ["/enroll", "/prove", "/issue", "/callback"]
+    }
+
 @router.get("/callback")
 async def oauth_callback(code: Optional[str] = None, state: Optional[str] = None):
     """
