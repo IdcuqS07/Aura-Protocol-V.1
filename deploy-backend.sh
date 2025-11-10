@@ -1,11 +1,14 @@
 #!/bin/bash
-sshpass -p "12Shaquille" scp backend/server.py backend/waitlist.py backend/.env root@159.65.134.137:/var/www/aura-backend/
-sshpass -p "12Shaquille" ssh root@159.65.134.137 << 'EOF'
-pkill -9 -f "uvicorn.*9000"
-sleep 2
-cd /var/www/aura-backend
-source venv/bin/activate
-nohup uvicorn server:app --host 0.0.0.0 --port 9000 > backend.log 2>&1 &
-sleep 3
-curl -s http://localhost:9000/api/waitlist
+# Deploy backend to VPS
+
+echo "🚀 Deploying backend to VPS..."
+
+ssh root@YOUR_VPS_IP << 'EOF'
+cd /root/Aura-Protocol-V.1-main
+git pull
+sudo systemctl restart aura-backend
+sudo systemctl status aura-backend --no-pager
+echo "✅ Backend deployed and restarted"
 EOF
+
+echo "🎉 Deployment complete!"

@@ -5,8 +5,8 @@ const BACKEND_URL = window.location.hostname === 'localhost'
   ? 'http://localhost:9000' 
   : 'https://www.aurapass.xyz';
 
-const GITHUB_CLIENT_ID = process.env.REACT_APP_GITHUB_CLIENT_ID || '';
-const TWITTER_CLIENT_ID = process.env.REACT_APP_TWITTER_CLIENT_ID || '';
+const GITHUB_CLIENT_ID = 'Ov23liBkJpXGppFuyWWV';
+const TWITTER_CLIENT_ID = 'ZkNHUnEwSk5STWtKRWk2cW1fQWU6MTpjaQ';
 
 export default function ProofOfHumanity() {
   const { address, isConnected } = useWallet();
@@ -157,7 +157,9 @@ export default function ProofOfHumanity() {
       
       const data = await response.json();
       if (data.tx_hash) {
-        setTxHash(data.tx_hash);
+        // Add 0x prefix if missing
+        const formattedTxHash = data.tx_hash.startsWith('0x') ? data.tx_hash : `0x${data.tx_hash}`;
+        setTxHash(formattedTxHash);
         setStep(4);
         setTimeout(() => {
           window.location.href = '/dashboard';
