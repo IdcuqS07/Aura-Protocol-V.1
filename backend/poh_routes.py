@@ -278,7 +278,14 @@ async def issue_badge(request: IssueRequest):
         if not mint_result:
             raise HTTPException(500, "Failed to mint badge on-chain")
         
-        tx_hash = mint_result['tx_hash'] if isinstance(mint_result, dict) else mint_result
+        # Extract tx_hash from result
+        if isinstance(mint_result, dict):
+            tx_hash = mint_result.get('tx_hash')
+            if not tx_hash:
+                raise HTTPException(500, "No transaction hash received")
+        else:
+            tx_hash = mint_result
+        
         token_id = await db.badges.count_documents({}) + 1
         
         # Store badge
