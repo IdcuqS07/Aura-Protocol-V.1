@@ -10,6 +10,7 @@ from typing import List, Optional, Dict
 import uuid
 from datetime import datetime, timezone
 import random
+from contextlib import asynccontextmanager
 from blockchain import polygon_integration
 from proof_service import ProofService
 from api_key_auth import verify_api_key, set_db
@@ -21,13 +22,40 @@ from passport_routes import router as passport_router
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# Create the main app without a prefix
-app = FastAPI(title="Aura Protocol API", version="1.0.0")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    logger.info("🚀 Starting Aura Protocol backend...")
+    try:
+        polygon_integration.load_contract_addresses()
+        set_db(db)
+        import poh_routes
+        poh_routes.set_db(db)
+        logger.info("✅ Startup initialization complete.")
+    except Exception as e:
+        logger.error(f"❌ Startup error: {e}")
+    
+    yield
+    
+    logger.info("🛑 Server shutting down, closing client...")
+    try:
+        client.close()
+    except Exception as e:
+        logger.error(f"Shutdown error: {e}")
+
+# Create the main app with lifespan
+app = FastAPI(title="Aura Protocol API", version="1.0.0", lifespan=lifespan)
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
@@ -710,14 +738,7 @@ async def verify_proof_endpoint(proof_hash: str, user_id: str, api_key_info = Se
     }
 
 
-# Load blockchain contract addresses on startup
-@app.on_event("startup")
-async def startup_event():
-    polygon_integration.load_contract_addresses()
-    set_db(db)
-    # Inject db into poh_routes
-    import poh_routes
-    poh_routes.set_db(db)
+
 
 # Include the router in the main app
 app.include_router(api_router)
@@ -747,14 +768,3 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()
