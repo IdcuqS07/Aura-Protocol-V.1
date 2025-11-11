@@ -708,6 +708,9 @@ async def startup_event():
     # Inject db into poh_routes
     import poh_routes
     poh_routes.set_db(db)
+    # Inject db into passport_routes
+    import passport_routes
+    passport_routes.set_db(db)
 
 # Include the router in the main app
 app.include_router(api_router)
