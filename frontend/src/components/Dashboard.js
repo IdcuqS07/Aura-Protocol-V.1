@@ -63,14 +63,27 @@ const Dashboard = () => {
         getTotalSupply()
       ]);
       
+      // Fetch real passport data from backend
+      let realPassport = null;
+      if (walletAddress) {
+        try {
+          const passportRes = await axios.get(`${API}/passport/${walletAddress}`);
+          if (passportRes.data.success) {
+            realPassport = passportRes.data.passport;
+          }
+        } catch (err) {
+          console.log('No passport found for user');
+        }
+      }
+      
       const userData = {
         id: 'demo-user-123',
         wallet_address: userAddr,
         username: walletAddress ? `user_${walletAddress.slice(2, 8)}` : 'demo_user',
         email: walletAddress ? `${walletAddress.slice(2, 8)}@aura.io` : 'demo@auraprotocol.io',
-        is_verified: badgeIds.length > 0,
-        credit_score: badgeIds.length > 0 ? 750 + (badgeIds.length * 25) : 650,
-        reputation_score: badgeIds.length > 0 ? 85.5 : 50.0
+        is_verified: badgeIds.length > 0 || realPassport !== null,
+        credit_score: realPassport ? realPassport.credit_score : (badgeIds.length > 0 ? 750 + (badgeIds.length * 25) : 650),
+        reputation_score: realPassport ? (realPassport.credit_score / 10) : (badgeIds.length > 0 ? 85.5 : 50.0)
       };
 
       // Fetch all badges in parallel
@@ -97,13 +110,23 @@ const Dashboard = () => {
         userBadges.push(...results.filter(b => b !== null));
       }
 
-      const mockPassport = badgeIds.length > 0 ? {
+      // Use real passport data if available
+      const passportData = realPassport ? {
+        passport_id: `PASS-${userAddr.slice(2, 14).toUpperCase()}`,
+        risk_level: realPassport.grade === 'AAA' || realPassport.grade === 'AA' ? 'low' : 
+                    realPassport.grade === 'A' || realPassport.grade === 'BBB' ? 'medium' : 'high',
+        soulbound_token_id: `SBT-${realPassport.token_id}`,
+        total_transactions: realPassport.breakdown?.onchain_tx_count || 0,
+        zk_proof_hash: realPassport.tx_hash,
+        credit_score: realPassport.credit_score,
+        grade: realPassport.grade
+      } : (badgeIds.length > 0 ? {
         passport_id: `PASS-${userAddr.slice(2, 14).toUpperCase()}`,
         risk_level: badgeIds.length >= 3 ? 'low' : badgeIds.length >= 2 ? 'medium' : 'high',
         soulbound_token_id: `SBT-${totalSupply}`,
         total_transactions: badgeIds.length * 4,
         zk_proof_hash: `0x${userAddr.slice(2)}abcdef1234567890`
-      } : null;
+      } : null);
 
       const mockTransactions = badgeIds.length > 0 ? [
         { id: '1', tx_type: 'lend', protocol: 'Aave', amount: 1000 },
@@ -112,7 +135,7 @@ const Dashboard = () => {
 
       setUser(userData);
       setBadges(userBadges);
-      setPassport(mockPassport);
+      setPassport(passportData);
       setTransactions(mockTransactions);
     } catch (error) {
       console.error('Error loading dashboard:', error);
