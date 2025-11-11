@@ -40,14 +40,9 @@ async def calculate_score(request: CalculateScoreRequest):
     Returns score data for user to mint NFT
     """
     try:
-        # Get PoH data
-        poh_data = await _db.poh_enrollments.find_one({"wallet_address": request.wallet_address})
-        poh_score = poh_data.get("uniqueness_score", 0) if poh_data else 0
-        
         # Get badges from blockchain
         from web3 import Web3
         import json
-        import os
         
         w3 = Web3(Web3.HTTPProvider("https://rpc-amoy.polygon.technology"))
         contract_address = "0x3d586E681b12B07825F17Ce19B28e1F576a1aF89"
@@ -58,18 +53,20 @@ async def calculate_score(request: CalculateScoreRequest):
         badge_ids = contract.functions.getUserBadges(Web3.to_checksum_address(request.wallet_address)).call()
         badge_count = len(badge_ids)
         
-        # Get on-chain activity (use badge count as proxy)
-        onchain_tx_count = badge_count
+        logger.info(f"Badge check for {request.wallet_address}: {badge_count} badges found")
+        
+        # If user has badge, they passed PoH → give 100 score
+        poh_score = 100 if badge_count > 0 else 0
         
         # Calculate score (0-1000)
         # PoH: 40% (400 points max)
         poh_points = int((poh_score / 100) * 400)
         
-        # Badges: 30% (300 points max, 30 per badge, max 10 badges)
-        badge_points = min(badge_count * 30, 300)
+        # Badges: 30% (300 points max, 100 per badge, max 3 badges)
+        badge_points = min(badge_count * 100, 300)
         
-        # Activity: 30% (300 points max)
-        activity_points = min(onchain_tx_count * 50, 300)
+        # Activity: 30% (300 points max, 100 per badge as proxy)
+        activity_points = min(badge_count * 100, 300)
         
         credit_score = poh_points + badge_points + activity_points
         
@@ -96,7 +93,6 @@ async def calculate_score(request: CalculateScoreRequest):
                 "poh_points": poh_points,
                 "badge_count": badge_count,
                 "badge_points": badge_points,
-                "onchain_tx_count": onchain_tx_count,
                 "activity_points": activity_points
             }
         }
