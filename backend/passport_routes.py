@@ -44,15 +44,22 @@ async def calculate_score(request: CalculateScoreRequest):
         poh_data = await _db.poh_enrollments.find_one({"wallet_address": request.wallet_address})
         poh_score = poh_data.get("uniqueness_score", 0) if poh_data else 0
         
-        # Get badges count
-        badges = await _db.badges.find({"wallet_address": request.wallet_address}).to_list(100)
-        badge_count = len(badges)
+        # Get badges from blockchain
+        from web3 import Web3
+        import json
+        import os
         
-        # Get on-chain activity from badges
-        onchain_tx_count = 0
-        for badge in badges:
-            if badge.get("tx_hash"):
-                onchain_tx_count += 1
+        w3 = Web3(Web3.HTTPProvider("https://rpc-amoy.polygon.technology"))
+        contract_address = "0x3d586E681b12B07825F17Ce19B28e1F576a1aF89"
+        
+        abi = json.loads('[{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getUserBadges","outputs":[{"internalType":"uint256[]","name":"","type":"uint256[]"}],"stateMutability":"view","type":"function"}]')
+        
+        contract = w3.eth.contract(address=Web3.to_checksum_address(contract_address), abi=abi)
+        badge_ids = contract.functions.getUserBadges(Web3.to_checksum_address(request.wallet_address)).call()
+        badge_count = len(badge_ids)
+        
+        # Get on-chain activity (use badge count as proxy)
+        onchain_tx_count = badge_count
         
         # Calculate score (0-1000)
         # PoH: 40% (400 points max)
