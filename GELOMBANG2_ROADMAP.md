@@ -37,14 +37,12 @@
 - ✅ Premium Features
 - ✅ Smart Contracts Deployed
 - ✅ 6 Badge Types (1 real, 5 demo)
+- ✅ Credit Passport implementation (Contract + Backend + Frontend)
+- ✅ The Graph integration
 
 **In Progress**:
 - 🔄 Proof of Humanity (PoH) - Real verification
-- 🔄 Credit Passport implementation
 - 🔄 Proof-as-a-Service API
-
-**Completed**:
-- ✅ The Graph integration
 
 **Pending**:
 - ⏳ AI Risk Oracle (basic ML)
@@ -103,49 +101,50 @@
 
 ---
 
-### **PHASE 2: Credit Passport Implementation**
+### **PHASE 2: Credit Passport Implementation** ✅ (COMPLETE)
 **Timeline**: 3-4 days  
 **Priority**: HIGH
 
 #### Tasks:
 1. **Smart Contract** (Saya - 90%)
-   - [ ] CreditPassport.sol (ERC-721 Soulbound)
-   - [ ] Credit score storage (0-1000)
-   - [ ] Badge aggregation
-   - [ ] Update mechanism
-   - [ ] Deploy to Polygon Amoy
+   - [x] CreditPassport.sol (ERC-721 Soulbound)
+   - [x] Credit score storage (0-1000)
+   - [x] Badge aggregation
+   - [x] Update mechanism
+   - [x] Deploy to Polygon Amoy (0xbAEe1fC5e41adB7aB303a23907cDEFAEf0aD763c)
 
 2. **Scoring Algorithm** (Saya - 90%)
-   - [ ] Aggregate all badges
-   - [ ] PoH score weight (40%)
-   - [ ] Badge count weight (30%)
-   - [ ] On-chain activity weight (30%)
-   - [ ] Calculate final score (0-1000)
+   - [x] Aggregate all badges
+   - [x] PoH score weight (40%)
+   - [x] Badge count weight (30%)
+   - [x] On-chain activity weight (30%)
+   - [x] Calculate final score (0-1000)
 
 3. **Backend** (Saya - 90%)
-   - [ ] `/passport/create` endpoint
-   - [ ] `/passport/update` endpoint
-   - [ ] `/passport/score` endpoint
-   - [ ] Score calculation service
-   - [ ] MongoDB schema
+   - [x] `/passport/calculate-score` endpoint
+   - [x] `/passport/store` endpoint
+   - [x] `/passport/{wallet_address}` endpoint
+   - [x] Score calculation service
+   - [x] MongoDB schema
 
 4. **Frontend** (Saya - 90%)
-   - [ ] Credit Passport page
-   - [ ] Score visualization
-   - [ ] Badge list display
-   - [ ] Mint/Update buttons
+   - [x] Credit Passport page
+   - [x] Score visualization
+   - [x] Badge list display
+   - [x] Mint button with MetaMask
 
 5. **Testing & Deployment** (Kamu - 10%)
-   - [ ] Test score calculation
-   - [ ] Test passport minting
-   - [ ] Deploy contract
-   - [ ] Deploy backend/frontend
+   - [x] Test score calculation
+   - [x] Test passport minting
+   - [x] Deploy contract
+   - [x] Deploy backend/frontend
 
 #### Output:
 - ✅ Credit Passport NFT (Dynamic SBT)
 - ✅ Credit Score (0-1000)
 - ✅ Badge aggregation
 - ✅ On-chain reputation
+- ✅ First passport minted: Token #0
 
 ---
 
@@ -329,15 +328,15 @@
 
 ## 🎯 CURRENT FOCUS
 
-**NOW**: Phase 1 - Complete PoH  
-**NEXT**: Phase 2 - Credit Passport  
-**THEN**: Phase 3 - Proof-as-a-Service
+**NOW**: Phase 3 - Proof-as-a-Service API  
+**NEXT**: Phase 1 - Complete PoH (OAuth setup)  
+**THEN**: Phase 5 - AI Risk Oracle (optional)
 
 ---
 
 **Last Updated**: January 2025  
 **Status**: 🔄 IN PROGRESS  
-**Completion**: 85% (Gelombang 2)
+**Completion**: 90% (Gelombang 2)
 
 ---
 
