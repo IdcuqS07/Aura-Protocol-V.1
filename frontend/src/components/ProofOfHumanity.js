@@ -123,53 +123,77 @@ export default function ProofOfHumanity() {
     }
   };
 
-  // Step 4: Mint Badge
+  // Step 4: Mint Badge (User pays gas)
   const handleMintBadge = async () => {
     setLoading(true);
     setError('');
     try {
-      // Step 1: Request MetaMask signature for confirmation
       const { ethereum } = window;
       if (!ethereum) {
         throw new Error('MetaMask not installed');
       }
 
-      const message = `Mint ZK-ID Badge\n\nProof Hash: ${proofHash.slice(0, 20)}...\nScore: ${score}/100\nWallet: ${address}\n\nBy signing, you confirm badge minting.`;
-      
-      const signature = await ethereum.request({
-        method: 'personal_sign',
-        params: [message, address]
-      });
+      // Import ethers
+      const { ethers } = window;
+      if (!ethers) {
+        throw new Error('Ethers.js not loaded');
+      }
 
-      // Step 2: Send to backend with signature
-      const response = await fetch(`${BACKEND_URL}/api/poh/issue`, {
+      // Contract details
+      const CONTRACT_ADDRESS = '0x9e6343BB504Af8a39DB516d61c4Aa0aF36c54678';
+      const CONTRACT_ABI = [
+        {
+          "inputs": [
+            {"name": "recipient", "type": "address"},
+            {"name": "badgeType", "type": "string"},
+            {"name": "zkProofHash", "type": "string"}
+          ],
+          "name": "issueBadge",
+          "outputs": [{"name": "", "type": "uint256"}],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ];
+
+      // Connect to contract
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer);
+
+      // Call issueBadge - USER PAYS GAS
+      const tx = await contract.issueBadge(
+        address,
+        'proof_of_humanity',
+        proofHash
+      );
+
+      // Wait for transaction
+      const receipt = await tx.wait();
+      const txHashResult = receipt.transactionHash;
+
+      // Store badge data in backend
+      await fetch(`${BACKEND_URL}/api/poh/store-badge`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           proof_hash: proofHash,
           nullifier: nullifier,
           wallet_address: address,
-          public_signals: [score],
-          message: message,
-          signature: signature
+          tx_hash: txHashResult,
+          score: score
         })
       });
-      
-      const data = await response.json();
-      if (data.tx_hash) {
-        // Add 0x prefix if missing
-        const formattedTxHash = data.tx_hash.startsWith('0x') ? data.tx_hash : `0x${data.tx_hash}`;
-        setTxHash(formattedTxHash);
-        setStep(4);
-        setTimeout(() => {
-          window.location.href = '/dashboard';
-        }, 5000);
-      } else {
-        throw new Error('No transaction hash received');
-      }
+
+      setTxHash(txHashResult);
+      setStep(4);
+      setTimeout(() => {
+        window.location.href = '/dashboard';
+      }, 5000);
     } catch (error) {
       if (error.code === 4001) {
-        setError('User rejected the signature request');
+        setError('User rejected the transaction');
+      } else if (error.code === 'INSUFFICIENT_FUNDS') {
+        setError('Insufficient MATIC for gas fee');
       } else {
         setError('Badge minting failed: ' + error.message);
       }

@@ -43,6 +43,14 @@ class IssueRequest(BaseModel):
     public_signals: list
 
 
+class StoreBadgeRequest(BaseModel):
+    proof_hash: str
+    nullifier: str
+    wallet_address: str
+    tx_hash: str
+    score: int
+
+
 # ============ ROUTES ============
 
 @router.get("/")
@@ -233,6 +241,71 @@ async def generate_proof(request: ProveRequest):
         raise
     except Exception as e:
         logger.error(f"Proof generation error: {str(e)}")
+        raise HTTPException(500, detail=str(e))
+
+
+@router.post("/store-badge")
+async def store_badge(request: StoreBadgeRequest):
+    """
+    Store badge data after user mints (user pays gas)
+    
+    Process:
+    1. Verify ZK proof
+    2. Check nullifier uniqueness
+    3. Store badge data
+    
+    Returns:
+        badge_id, success
+    """
+    try:
+        # Find proof
+        proof_doc = await db.proofs.find_one({'proof_hash': request.proof_hash})
+        if not proof_doc:
+            raise HTTPException(404, "Proof not found")
+        
+        # Verify proof
+        is_valid = polygon_id_service.verify_proof(proof_doc)
+        if not is_valid:
+            raise HTTPException(400, "Invalid proof")
+        
+        # Check nullifier uniqueness
+        existing_badge = await db.badges.find_one({'nullifier': request.nullifier})
+        if existing_badge:
+            raise HTTPException(400, "Badge already issued for this identity")
+        
+        token_id = await db.badges.count_documents({}) + 1
+        
+        # Store badge
+        badge = {
+            'id': str(uuid.uuid4()),
+            'wallet_address': request.wallet_address,
+            'nullifier': request.nullifier,
+            'proof_hash': request.proof_hash,
+            'token_id': token_id,
+            'tx_hash': request.tx_hash,
+            'score': request.score,
+            'verification_level': polygon_id_service._get_verification_level(request.score),
+            'issued_at': datetime.now(timezone.utc).isoformat()
+        }
+        
+        await db.badges.insert_one(badge)
+        
+        logger.info(f"Badge #{token_id} stored for {request.wallet_address}")
+        
+        # Auto-update or create passport
+        await update_or_create_passport(db, request.wallet_address)
+        
+        return {
+            'success': True,
+            'badge_id': badge['id'],
+            'token_id': token_id,
+            'message': 'Badge data stored successfully'
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Badge storage error: {str(e)}")
         raise HTTPException(500, detail=str(e))
 
 
