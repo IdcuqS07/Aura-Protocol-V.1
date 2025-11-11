@@ -1,9 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import '@/App.css';
 import { WalletProvider } from '@/components/WalletContext';
 import LandingPage from '@/components/LandingPage';
-import Dashboard from '@/components/Dashboard';
 import CreditPassport from '@/components/CreditPassport';
 import Analytics from '@/components/Analytics';
 import Roadmap from '@/components/Roadmap';
@@ -27,7 +26,7 @@ function App() {
           <Navigation />
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Navigate to="/passport" replace />} />
             <Route path="/passport" element={<CreditPassport />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/roadmap" element={<Roadmap />} />
